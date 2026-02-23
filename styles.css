@@ -641,7 +641,7 @@ a {
 .section-header {
   text-align: center;
   max-width: 640px;
-  margin: 0 auto 64px;
+  margin: 0 auto 48px;
 }
 
 .section-tag {
@@ -672,8 +672,8 @@ a {
    FEATURES
    ============================================ */
 .features {
-  padding: 100px 0;
-  padding-top: 140px;
+  padding: 70px 0;
+  padding-top: 120px;
 }
 
 .features-grid {
@@ -1076,7 +1076,7 @@ a {
    PRICING
    ============================================ */
 .pricing {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--surface);
 }
 
@@ -1339,7 +1339,7 @@ a {
    HOW IT WORKS
    ============================================ */
 .how-it-works {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--surface);
 }
 
@@ -1401,7 +1401,7 @@ a {
    SYNAGOGUES SECTION
    ============================================ */
 .synagogues-section {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--bg);
 }
 
@@ -1540,7 +1540,7 @@ a {
    DOWNLOAD SECTION
    ============================================ */
 .download-section {
-  padding: 80px 0 100px;
+  padding: 60px 0 80px;
 }
 
 .download-card {
