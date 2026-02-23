@@ -1608,6 +1608,13 @@ a {
   transform: translateY(-2px);
 }
 
+.store-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 .store-text {
   display: flex;
   flex-direction: column;
