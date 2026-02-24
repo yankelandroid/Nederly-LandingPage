@@ -325,6 +325,27 @@ a {
   background: #fff;
 }
 
+/* Navbar light theme */
+.navbar-light .nav-links a {
+  color: var(--text-secondary);
+}
+
+.navbar-light .nav-links a:hover {
+  color: var(--navy);
+}
+
+.navbar-light .logo-text {
+  color: var(--navy);
+}
+
+.navbar-light .logo-icon {
+  filter: none;
+}
+
+.navbar-light .mobile-menu-btn span {
+  background: var(--navy);
+}
+
 .navbar.scrolled .nav-links a {
   color: var(--text-secondary);
 }

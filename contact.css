@@ -4,8 +4,8 @@
 
 /* Hero */
 .contact-hero {
-  padding: 140px 0 60px;
-  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg) 100%);
+  padding: 160px 0 60px;
+  background: var(--bg);
   position: relative;
 }
 
@@ -15,8 +15,8 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 30% 40%, var(--gold-glow) 0%, transparent 50%);
+  bottom: -400px;
+  background: radial-gradient(circle at 50% 0%, var(--gold-glow) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -159,8 +159,15 @@
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .success-icon {
