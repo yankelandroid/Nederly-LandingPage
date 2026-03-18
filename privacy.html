@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de Confidentialité - Nederly</title>
+  <meta name="description" content="Politique de confidentialité de Nederly. Découvrez comment nous protégeons vos données personnelles.">
+  <link rel="icon" href="assets/logo_new.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-hero {
+      padding: 160px 0 60px;
+      background: var(--bg);
+      position: relative;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: -200px;
+      background: radial-gradient(circle at 50% 0%, var(--gold-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .legal-hero h1 {
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--navy);
+      position: relative;
+    }
+    .legal-hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      position: relative;
+    }
+    .legal-content {
+      padding: 0 0 100px;
+      position: relative;
+    }
+    .legal-card {
+      background: var(--surface);
+      border-radius: var(--radius-2xl);
+      padding: 48px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-lg);
+      max-width: 800px;
+    }
+    .legal-card section {
+      margin-bottom: 36px;
+    }
+    .legal-card section:last-child {
+      margin-bottom: 0;
+    }
+    .legal-card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .legal-card p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .legal-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .legal-card ul li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .legal-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .legal-card a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .legal-card a:hover {
+      text-decoration: underline;
+    }
+    .legal-card strong {
+      color: var(--navy);
+    }
+    @media (max-width: 768px) {
+      .legal-hero h1 { font-size: 32px; }
+      .legal-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-light" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo_new.png" alt="Nederly" class="logo-icon">
+        <span class="logo-text">NEDERLY</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features">Fonctionnalités</a>
+        <a href="index.html#how-it-works">Comment ça marche</a>
+        <a href="index.html#pricing">Tarifs</a>
+        <a href="index.html#synagogues">Synagogues</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="index.html#download" class="nav-cta">Télécharger</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="legal-hero">
+    <div class="container">
+      <h1>Politique de Confidentialité</h1>
+      <p>Dernière mise à jour : 18 mars 2026</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="legal-content">
+    <div class="container">
+      <div class="legal-card">
+
+        <section>
+          <h2>1. Introduction</h2>
+          <p>Nederly (« nous », « notre ») s'engage à protéger la vie privée de ses utilisateurs. Cette politique de confidentialité décrit comment nous collectons, utilisons et protégeons vos données personnelles lorsque vous utilisez notre application mobile et nos services associés.</p>
+        </section>
+
+        <section>
+          <h2>2. Données collectées</h2>
+          <p>Nous collectons les données suivantes :</p>
+          <ul>
+            <li><strong>Données d'identification :</strong> nom, prénom, adresse email, numéro de téléphone</li>
+            <li><strong>Données de connexion :</strong> identifiants de compte, tokens d'authentification</li>
+            <li><strong>Données de paiement :</strong> les paiements sont traités par Stripe. Nous ne stockons jamais vos numéros de carte bancaire.</li>
+            <li><strong>Données de localisation :</strong> position géographique (uniquement si vous l'autorisez) pour la recherche de synagogues à proximité</li>
+            <li><strong>Données d'utilisation :</strong> interactions avec l'application, participations aux enchères, historique de dons</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Utilisation des données</h2>
+          <p>Vos données sont utilisées pour :</p>
+          <ul>
+            <li>Fournir et améliorer nos services</li>
+            <li>Gérer votre compte et vos transactions</li>
+            <li>Traiter les paiements (enchères et dons)</li>
+            <li>Envoyer des notifications relatives à votre synagogue</li>
+            <li>Afficher les synagogues à proximité de votre position</li>
+            <li>Générer des reçus fiscaux pour vos dons</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Partage des données</h2>
+          <p>Nous ne vendons jamais vos données personnelles. Vos données peuvent être partagées avec :</p>
+          <ul>
+            <li><strong>Stripe :</strong> pour le traitement sécurisé des paiements</li>
+            <li><strong>Firebase (Google) :</strong> pour l'authentification et les notifications push</li>
+            <li><strong>Wise :</strong> pour les transferts internationaux vers les synagogues</li>
+            <li><strong>Votre synagogue :</strong> les administrateurs de votre synagogue peuvent voir votre nom et vos participations</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. Sécurité</h2>
+          <p>Nous utilisons des mesures de sécurité conformes aux standards de l'industrie : chiffrement SSL/TLS, authentification Firebase, stockage sécurisé des données et traitement des paiements via Stripe (certifié PCI DSS).</p>
+        </section>
+
+        <section>
+          <h2>6. Conservation des données</h2>
+          <p>Vos données sont conservées tant que votre compte est actif. Vous pouvez demander la suppression de votre compte et de vos données à tout moment en nous contactant.</p>
+        </section>
+
+        <section>
+          <h2>7. Vos droits (RGPD)</h2>
+          <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+          <ul>
+            <li>Droit d'accès à vos données personnelles</li>
+            <li>Droit de rectification des données inexactes</li>
+            <li>Droit à l'effacement (« droit à l'oubli »)</li>
+            <li>Droit à la portabilité de vos données</li>
+            <li>Droit d'opposition au traitement de vos données</li>
+          </ul>
+          <p>Pour exercer ces droits, contactez-nous à <a href="mailto:contact@nederly.io">contact@nederly.io</a>.</p>
+        </section>
+
+        <section>
+          <h2>8. Cookies</h2>
+          <p>Notre application mobile n'utilise pas de cookies. Notre site web utilise uniquement des cookies essentiels au fonctionnement du service.</p>
+        </section>
+
+        <section>
+          <h2>9. Modifications</h2>
+          <p>Nous nous réservons le droit de modifier cette politique de confidentialité. Toute modification sera publiée sur cette page avec une date de mise à jour.</p>
+        </section>
+
+        <section>
+          <h2>10. Contact</h2>
+          <p>
+            Pour toute question relative à cette politique de confidentialité :<br>
+            <strong>Nederly</strong><br>
+            Email : <a href="mailto:contact@nederly.io">contact@nederly.io</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 13px;">
+    <div class="container">
+      <p>© 2026 Nederly. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
