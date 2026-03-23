@@ -1142,6 +1142,110 @@ a {
   color: var(--text-secondary);
 }
 
+/* Billing toggle */
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-label-active {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.toggle-badge {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 4px;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background: var(--border-medium);
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  padding: 0;
+}
+
+.toggle-switch.active {
+  background: var(--gold);
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-switch.active .toggle-knob {
+  transform: translateX(22px);
+}
+
+/* Pricing guarantee & fees */
+.pricing-footer-info {
+  text-align: center;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.pricing-guarantee {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--success);
+}
+
+.pricing-guarantee svg {
+  flex-shrink: 0;
+}
+
+.pricing-fees {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Custom price for Enterprise */
+.price-custom {
+  font-size: 28px !important;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+}
+
+.pricing-card-featured .price-custom {
+  color: var(--gold);
+}
+
 .pricing-label {
   display: flex;
   align-items: center;
@@ -2137,5 +2241,9 @@ a {
     grid-template-columns: 1fr;
     max-width: 480px;
     margin: 0 auto;
+  }
+
+  .pricing-footer-info {
+    padding: 0 16px;
   }
 }

@@ -65,6 +65,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Pricing billing toggle
+let isAnnual = false;
+
+function toggleBilling() {
+  isAnnual = !isAnnual;
+  const toggle = document.getElementById('billingToggle');
+  const monthlyLabel = document.getElementById('toggleMonthly');
+  const annualLabel = document.getElementById('toggleAnnual');
+  const prices = document.querySelectorAll('.price-amount[data-monthly]');
+
+  toggle.classList.toggle('active', isAnnual);
+  monthlyLabel.classList.toggle('toggle-label-active', !isAnnual);
+  annualLabel.classList.toggle('toggle-label-active', isAnnual);
+
+  prices.forEach(el => {
+    el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+  });
+
+  // Update period labels
+  document.querySelectorAll('.price-period').forEach(el => {
+    el.textContent = isAnnual ? '/ mois (facturé annuellement)' : '/ mois';
+  });
+}
+
 // Live bid feed — replay animations in loop
 (function () {
   const liveFeed = document.querySelector('.live-feed');
