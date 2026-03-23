@@ -3,13 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nederly - La plateforme d'enchères pour les synagogues</title>
-  <meta name="description" content="Nederly simplifie la gestion des enchères de Aliyot a la Torah. Enchérissez, gérez et suivez vos Aliyot depuis votre smartphone.">
+  <title>Nederly - Enchères de Aliyot en ligne pour synagogues | Application mobile</title>
+  <meta name="description" content="Nederly est l'application qui modernise les enchères de Aliyot à la Torah. Enchérissez en temps réel, faites des dons et restez connecté à votre synagogue depuis votre smartphone.">
+  <meta name="keywords" content="enchères aliyot, synagogue, application synagogue, aliyah torah, enchères communautaires, dons synagogue, gestion synagogue, communauté juive">
+  <meta name="author" content="Nederly">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nederly.io/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nederly.io/">
+  <meta property="og:title" content="Nederly - Enchères de Aliyot en ligne pour synagogues">
+  <meta property="og:description" content="Modernisez les enchères de Aliyot à la Torah. Enchérissez en temps réel, faites des dons et restez connecté à votre synagogue.">
+  <meta property="og:image" content="https://nederly.io/assets/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Nederly">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nederly - Enchères de Aliyot en ligne pour synagogues">
+  <meta name="twitter:description" content="Modernisez les enchères de Aliyot à la Torah. Enchérissez en temps réel depuis votre smartphone.">
+  <meta name="twitter:image" content="https://nederly.io/assets/og-image.png">
+
+  <!-- Favicon -->
   <link rel="icon" href="assets/logo_new.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo_new.png">
+
+  <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Nederly",
+    "description": "Application mobile d'enchères de Aliyot à la Torah pour les synagogues. Enchérissez en temps réel, faites des dons et restez connecté à votre communauté.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Gratuit pour les fidèles"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Nederly",
+      "url": "https://nederly.io"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -27,7 +74,7 @@
         <a href="#synagogues">Synagogues</a>
         <a href="contact.html">Contact</a>
       </div>
-      <a href="#download" class="nav-cta">Télécharger</a>
+      <a href="#download" class="nav-cta">Télécharger gratuitement</a>
       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -48,10 +95,11 @@
           ENCHÈRES<br>
           DE <span class="text-gold-hero">ALIYOT</span>
         </h1>
-        <div class="hero-tagline">Reinventées pour votre communauté</div>
+        <div class="hero-tagline">Encherissez depuis votre smartphone. Fini les enchères papier.</div>
         <a href="#download" class="btn btn-hero">
-          Commencer
+          Télécharger gratuitement
         </a>
+        <div class="hero-proof">Déjà adopté par des dizaines de synagogues en France et en Israel</div>
       </div>
 
       <!-- Right: floating screenshots -->
@@ -369,7 +417,7 @@
             <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Duplication d'enchères</li>
             <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Support prioritaire</li>
           </ul>
-          <a href="contact.html" class="btn btn-outline pricing-btn">Commencer</a>
+          <a href="contact.html" class="btn btn-outline pricing-btn">Essai gratuit</a>
         </div>
         <div class="pricing-card pricing-card-featured">
           <div class="pricing-popular-badge">Le plus populaire</div>
@@ -484,7 +532,7 @@
                 <span class="dot dot-yellow"></span>
                 <span class="dot dot-green"></span>
               </div>
-              <span class="dash-url">app.nederly.com/dashboard</span>
+              <span class="dash-url">admin.nederly.io/dashboard</span>
             </div>
             <img src="assets/screen-admin-1.png" alt="NederlyPro Dashboard" class="dashboard-screenshot">
           </div>
@@ -497,16 +545,139 @@
     </div>
   </section>
 
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Témoignages</span>
+        <h2>Ils ont adopté Nederly.</h2>
+        <p class="section-desc">
+          Découvrez ce que nos utilisateurs pensent de l'application.
+        </p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"Depuis qu'on utilise Nederly, les enchères se font en toute simplicité. Les fidèles enchérissent avant Shabbat, et nous on gère tout depuis le dashboard. Un vrai gain de temps."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">D</div>
+            <div class="testimonial-info">
+              <strong>David K.</strong>
+              <span>Gabay, Synagogue Beth Israel</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"J'enchéris directement depuis mon téléphone, c'est tellement plus pratique. Et le paiement est automatique, plus besoin de courir après les chèques."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #6366F1;">Y</div>
+            <div class="testimonial-info">
+              <strong>Yossef M.</strong>
+              <span>Fidèle, Paris 19e</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"On a vu nos revenus d'enchères augmenter de 40% dès le premier mois. Les gens enchérissent plus facilement quand c'est sur leur téléphone."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #10B981;">M</div>
+            <div class="testimonial-info">
+              <strong>Moshe R.</strong>
+              <span>Président, Communauté Or Torah</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Questions fréquentes</span>
+        <h2>Vous avez des questions ?</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Est-ce que Nederly est gratuit pour les fidèles ?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Oui, l'application est 100% gratuite pour les fidèles. Seules les synagogues souscrivent à un abonnement pour gérer leurs enchères.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Comment fonctionne le paiement ?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Les paiements sont sécurisés via Stripe. Votre carte est enregistrée une seule fois, et le montant est débité automatiquement lorsque vous remportez une enchère.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Ma synagogue n'est pas encore sur Nederly, comment faire ?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Contactez-nous ou demandez à votre Gabay de s'inscrire sur <a href="https://admin.nederly.io" style="color: var(--gold); font-weight: 600;">admin.nederly.io</a>. La mise en place prend moins de 10 minutes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Est-ce compatible avec Shabbat ?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Absolument. Les enchères se font avant Shabbat et se ferment automatiquement. Aucune action n'est nécessaire pendant Shabbat.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Puis-je essayer avant de m'engager ?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Oui, les synagogues bénéficient d'une période d'essai gratuite. Contactez-nous pour en savoir plus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Download CTA Section -->
   <section class="download-section" id="download">
     <div class="container">
       <div class="download-card">
         <div class="download-bg-glow"></div>
         <div class="download-content">
-          <h2>Prêt à moderniser<br>vos enchères ?</h2>
+          <h2>Téléchargez Nederly<br>c'est gratuit.</h2>
           <p>
-            Téléchargez Nederly gratuitement et rejoignez des centaines
-            de familles qui utilisent déjà l'application.
+            Rejoignez des centaines de familles qui enchérissent
+            déjà depuis leur smartphone. Inscription en 30 secondes.
           </p>
           <div class="store-buttons">
             <a href="#" class="store-btn">
@@ -551,19 +722,19 @@
         </div>
         <div class="footer-links-group">
           <h4>Support</h4>
-          <a href="mailto:contact@nederly.com">Contact</a>
-          <a href="#">FAQ</a>
-          <a href="#">Centre d'aide</a>
+          <a href="contact.html">Contact</a>
+          <a href="support.html">FAQ</a>
+          <a href="support.html">Centre d'aide</a>
         </div>
         <div class="footer-links-group">
-          <h4>Legal</h4>
-          <a href="#">Mentions légales</a>
-          <a href="#">Politique de confidentialité</a>
-          <a href="#">CGU</a>
+          <h4>Légal</h4>
+          <a href="privacy.html">Politique de confidentialité</a>
+          <a href="privacy.html">Mentions légales</a>
+          <a href="privacy.html">CGU</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2025 Nederly. Tous droits réservés.</span>
+        <span>&copy; 2026 Nederly. Tous droits réservés.</span>
         <div class="footer-socials">
           <a href="#" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
