@@ -8,7 +8,9 @@
   <meta name="keywords" content="enchères aliyot, synagogue, application synagogue, aliyah torah, enchères communautaires, dons synagogue, gestion synagogue, communauté juive">
   <meta name="author" content="Nederly">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A1628">
   <link rel="canonical" href="https://nederly.io/">
+  <link rel="alternate" hreflang="fr" href="https://nederly.io/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -55,6 +57,56 @@
       "name": "Nederly",
       "url": "https://nederly.io"
     }
+  }
+  </script>
+
+  <!-- FAQ structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Est-ce que Nederly est gratuit pour les fidèles ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, l'application est 100% gratuite pour les fidèles. Seules les synagogues souscrivent à un abonnement pour gérer leurs enchères."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment fonctionne le paiement ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les paiements sont sécurisés via Stripe. Votre carte est enregistrée une seule fois, et le montant est débité automatiquement lorsque vous remportez une enchère."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ma synagogue n'est pas encore sur Nederly, comment faire ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Contactez-nous ou demandez à votre Gabay de s'inscrire sur admin.nederly.io. La mise en place prend moins de 10 minutes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce compatible avec Shabbat ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolument. Les enchères se font avant Shabbat et se ferment automatiquement. Aucune action n'est nécessaire pendant Shabbat."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Puis-je essayer avant de m'engager ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, les synagogues bénéficient d'une période d'essai gratuite. Contactez-nous pour en savoir plus."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -107,14 +159,14 @@
         <!-- Main phone: bid detail screen -->
         <div class="hero-phone hero-phone-main">
           <div class="phone-frame-img">
-            <img src="assets/screen-mobile-3.png" alt="Ecran d'enchère Nederly" class="phone-screenshot">
+            <img src="assets/screen-mobile-3.png" alt="Ecran d'enchère Nederly - enchères de Aliyot en temps réel" class="phone-screenshot" width="240" height="520">
           </div>
         </div>
 
         <!-- Secondary phone: encheres list -->
         <div class="hero-phone hero-phone-secondary">
           <div class="phone-frame-img">
-            <img src="assets/screen-mobile-2.png" alt="Mes enchères Nederly" class="phone-screenshot">
+            <img src="assets/screen-mobile-2.png" alt="Liste des enchères de Aliyot sur l'application Nederly" class="phone-screenshot" width="200" height="433" loading="lazy">
           </div>
         </div>
 
@@ -534,11 +586,11 @@
               </div>
               <span class="dash-url">admin.nederly.io/dashboard</span>
             </div>
-            <img src="assets/screen-admin-1.png" alt="NederlyPro Dashboard" class="dashboard-screenshot">
+            <img src="assets/screen-admin-1.png" alt="Dashboard NederlyPro - gestion des enchères de synagogue" class="dashboard-screenshot" width="600" height="400" loading="lazy">
           </div>
           <!-- Second admin screen floating -->
           <div class="dashboard-screenshot-float">
-            <img src="assets/screen-admin-2.png" alt="Galerie des encheres" class="dashboard-screenshot-sm">
+            <img src="assets/screen-admin-2.png" alt="Galerie des enchères - interface administrateur Nederly" class="dashboard-screenshot-sm" width="420" height="280" loading="lazy">
           </div>
         </div>
       </div>
@@ -688,7 +740,7 @@
               </div>
             </a>
             <a href="#" class="store-btn">
-              <img src="assets/google-play.png" alt="Google Play" class="store-icon-img">
+              <img src="assets/google-play.png" alt="Google Play" class="store-icon-img" width="24" height="24" loading="lazy">
               <div class="store-text">
                 <span class="store-small">Disponible sur</span>
                 <span class="store-name">Google Play</span>

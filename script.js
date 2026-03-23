@@ -31,7 +31,7 @@ navLinks.querySelectorAll('a').forEach(link => {
 
 // Scroll reveal animations
 const revealElements = document.querySelectorAll(
-  '.feature-card, .step-card, .pricing-card, .pricing-free-banner, .synagogues-content, .synagogues-visual, .download-card, .section-header, .bottom-card'
+  '.feature-card, .step-card, .pricing-card, .pricing-free-banner, .synagogues-content, .synagogues-visual, .download-card, .section-header, .bottom-card, .testimonial-card, .faq-item'
 );
 
 revealElements.forEach(el => el.classList.add('reveal'));
