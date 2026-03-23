@@ -308,6 +308,10 @@
   border-bottom: none;
 }
 
+.faq-shortcut .faq-item {
+  padding: 0 4px;
+}
+
 .faq-item summary {
   font-size: 14px;
   font-weight: 500;
