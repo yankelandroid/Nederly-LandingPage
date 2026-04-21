@@ -2510,11 +2510,12 @@ a {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 }
 
 .faq-item:hover {
-  border-color: rgba(201, 169, 98, 0.3);
+  border-color: rgba(201, 169, 98, 0.35);
+  box-shadow: 0 6px 18px rgba(10, 22, 40, 0.04);
 }
 
 .faq-question {
@@ -2532,33 +2533,71 @@ a {
   color: var(--navy);
   text-align: left;
   gap: 16px;
+  line-height: 1.4;
+  transition: color 0.25s ease;
 }
 
+.faq-question:hover { color: var(--gold-dark); }
+
+.faq-item.open .faq-question {
+  color: var(--gold-dark);
+  padding-bottom: 8px;
+}
+
+/* Chevron wrapped in a subtle circle badge */
 .faq-question svg {
   flex-shrink: 0;
-  color: var(--text-muted);
-  transition: transform 0.3s ease;
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text-secondary);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.faq-question:hover svg {
+  background: rgba(201, 169, 98, 0.1);
+  color: var(--gold);
 }
 
 .faq-item.open .faq-question svg {
   transform: rotate(180deg);
+  background: var(--gold);
+  color: var(--navy);
 }
 
 .faq-answer {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-answer > * {
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  min-height: 0;
 }
 
 .faq-item.open .faq-answer {
-  max-height: 200px;
+  grid-template-rows: 1fr;
 }
 
 .faq-answer p {
-  padding: 0 24px 20px;
+  padding: 4px 24px 22px;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--text-secondary);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.4s ease 0.08s, transform 0.4s ease 0.08s;
+}
+
+.faq-item.open .faq-answer p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================================
@@ -3131,6 +3170,10 @@ a {
 /* Gold hero word — shimmer sweep */
 .text-gold-hero {
   position: relative;
+  display: inline-block;
+  padding: 0.05em 0.18em 0.15em 0.05em;
+  margin-right: -0.1em;
+  line-height: 1.2;
   background: linear-gradient(100deg,
     var(--gold-dark) 0%,
     var(--gold) 35%,
@@ -3474,33 +3517,40 @@ a {
   border-color: rgba(201, 169, 98, 0.4);
 }
 
-/* ---------- FAQ chevron rotate + smooth open ---------- */
-.faq-item {
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-
+/* FAQ open state — gold accent panel */
 .faq-item.open {
-  border-color: rgba(201, 169, 98, 0.35) !important;
-  background: linear-gradient(135deg,
-    rgba(201, 169, 98, 0.04),
-    rgba(201, 169, 98, 0.02)) !important;
+  border-color: rgba(201, 169, 98, 0.45) !important;
+  box-shadow:
+    0 12px 30px rgba(10, 22, 40, 0.06),
+    0 0 0 1px rgba(201, 169, 98, 0.12);
+  background:
+    linear-gradient(135deg,
+      rgba(201, 169, 98, 0.04) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(201, 169, 98, 0.02) 100%) !important;
 }
 
-.faq-question svg {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              color 0.3s ease;
+/* Left gold rail when open */
+.faq-item {
+  position: relative;
 }
 
-.faq-item.open .faq-question svg {
-  transform: rotate(180deg);
-  color: var(--gold);
+.faq-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
-.faq-question {
-  transition: color 0.3s ease;
-}
-
-.faq-question:hover { color: var(--gold) !important; }
+.faq-item.open::before { transform: scaleY(1); }
 
 /* ---------- Pricing toggle — smooth knob glow ---------- */
 .toggle-switch.active .toggle-knob {
@@ -4245,5 +4295,294 @@ a {
     rgba(201, 169, 98, 0.3) 50%,
     transparent 100%);
   z-index: 5;
+}
+
+/* ============================================================
+   v6 — MOBILE RESPONSIVE FIXES (consolidated)
+   Applies at <= 1024px and <= 768px and <= 480px
+   ============================================================ */
+
+/* ---------- Tablet (<= 1024px) ---------- */
+@media (max-width: 1024px) {
+  .container { padding: 0 20px; }
+
+  .hero-side-label { display: none; }
+
+  .aurora-beam-1 { width: 600px; height: 340px; }
+  .aurora-beam-2 { width: 500px; height: 500px; }
+  .aurora-beam-3 { width: 360px; height: 300px; }
+
+  .hero-grid { background-size: 48px 48px; }
+
+  .hero-cta-group { justify-content: center; }
+  .hero-trust-row { justify-content: center; flex-wrap: wrap; }
+  .hero-content { text-align: center; }
+
+  .bottom-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+  .hero-bottom-cards { margin-top: -40px; }
+
+  .corner-bracket { width: 24px; height: 24px; }
+
+  .synagogues-cta-group { justify-content: center; }
+}
+
+/* ---------- Phone (<= 768px) ---------- */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+
+  /* Hero typography */
+  .hero h1 { font-size: 44px; line-height: 1; letter-spacing: -1.5px; }
+  .hero-tagline { font-size: 14px; line-height: 1.6; }
+
+  .hero-container {
+    gap: 32px;
+    padding-top: 96px;
+    padding-bottom: 80px;
+  }
+
+  /* Hero buttons — stack vertically, full width */
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: stretch;
+  }
+  .btn-hero,
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+  .btn-hero-secondary:hover { transform: none; }
+
+  .hero-trust-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+  .hero-trust-item { font-size: 11px; }
+
+  /* Hero decorations — softer on mobile */
+  .aurora-beam-1 { width: 380px; height: 220px; filter: blur(60px); }
+  .aurora-beam-2 { width: 360px; height: 360px; filter: blur(60px); }
+  .aurora-beam-3 { display: none; }
+  .hero-noise { opacity: 0.22; }
+  .hero-grid { background-size: 40px 40px; }
+
+  /* Scroll indicator — smaller, less intrusive */
+  .hero-scroll-indicator { bottom: 24px; gap: 6px; }
+  .scroll-line { height: 32px; }
+  .scroll-label { font-size: 9px; letter-spacing: 2px; }
+
+  /* Disable magnetic/tilt interactions that need pointer */
+  .btn-hero:hover,
+  .nav-cta:hover,
+  .btn-founders:hover { transform: none !important; }
+
+  /* Section headers */
+  .section-header { margin-bottom: 32px; }
+  .section-header h2 { font-size: 28px; line-height: 1.15; }
+  .section-header h2::after { display: none; }
+  .section-desc { font-size: 15px; }
+
+  /* Features */
+  .features { padding: 56px 0; padding-top: 72px; }
+  .features-grid { grid-template-columns: 1fr !important; gap: 16px; }
+  .feature-card { padding: 24px 20px; }
+  .feature-card-large {
+    grid-column: span 1 !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+  .feature-large-text h3 { font-size: 20px; }
+  .feature-card h3 { font-size: 17px; }
+
+  /* Live feed — enchères temps réel */
+  .live-feed { max-width: 100%; }
+  .live-feed-header {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+  .live-feed-info strong { font-size: 13px; }
+  .live-feed-info span { font-size: 10px; }
+  .live-timer-value { font-size: 11px; }
+  .live-viewers { padding: 8px 16px; }
+  .live-viewers-label { font-size: 10px; }
+  .lva { width: 20px; height: 20px; font-size: 9px; }
+  .live-feed-bids { padding: 10px 12px; }
+  .live-bid { padding: 10px 12px; gap: 10px; }
+  .live-bid-avatar { width: 32px; height: 32px; font-size: 12px; }
+  .live-bid-name { font-size: 12px; }
+  .live-bid-time { font-size: 10px; }
+  .live-bid-amount { font-size: 14px; }
+  .live-bid-amount-winner { font-size: 16px; }
+  .live-feed-alert { padding: 12px 16px; }
+  .live-feed-alert span { font-size: 12px; }
+
+  /* Parcours toggle responsive */
+  .parcours-toggle { width: 100%; max-width: 320px; flex-direction: row; }
+  .parcours-tab { flex: 1; padding: 10px 16px; font-size: 13px; }
+  .steps-grid { flex-direction: column; gap: 16px; align-items: stretch; }
+  .step-connector { display: none; }
+  .step-card { padding: 24px 20px; }
+  .step-card:hover { transform: none; }
+  .step-card h3 { font-size: 17px; }
+
+  /* Pricing */
+  .pricing { padding: 56px 0; }
+  .pricing-grid { gap: 16px; max-width: 100%; }
+  .pricing-card { padding: 28px 22px; }
+  .pricing-founders-banner {
+    flex-direction: column;
+    padding: 16px;
+    font-size: 13px;
+    gap: 4px;
+  }
+  .pricing-toggle { width: 100%; justify-content: center; flex-wrap: wrap; }
+  .pricing-card-price { margin: 8px 0 16px; }
+  .price-amount { font-size: 40px; }
+  .pricing-footer-info {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  /* Founders banner */
+  .founders-banner { padding: 56px 0; }
+  .founders-title { font-size: 26px; line-height: 1.15; }
+  .founders-desc { font-size: 14px; padding: 0 8px; }
+  .founders-badge { font-size: 10px; letter-spacing: 2px; }
+  .btn-founders {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+  .founders-perks { gap: 6px; padding: 0 8px; }
+  .founders-perk { font-size: 11px; padding: 6px 14px 6px 26px; }
+  .founders-perk::before { left: 10px; width: 6px; height: 6px; }
+  .founders-counter-line { font-size: 12px; padding: 6px 14px; }
+
+  /* Synagogues section */
+  .synagogues-section { padding: 56px 0; }
+  .synagogues-grid { gap: 32px; }
+  .synagogues-content h2 { font-size: 26px; }
+  .synagogues-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .synagogues-cta-group .btn { width: 100%; justify-content: center; }
+  .corner-bracket { width: 20px; height: 20px; }
+  .corner-bracket-tl { top: -8px; left: -8px; }
+  .corner-bracket-tr { top: -8px; right: -8px; }
+  .corner-bracket-bl { bottom: -8px; left: -8px; }
+  .corner-bracket-br { bottom: -8px; right: -8px; }
+  .dashboard-screenshot-float { display: none; }
+  .check-list li { font-size: 14px; }
+
+  /* Testimonials marquee — single column full-width on mobile */
+  .testimonials { padding: 56px 0; }
+  .testimonials-marquee {
+    grid-template-columns: 1fr !important;
+    max-height: 540px;
+    gap: 0;
+  }
+  .marquee-col { height: 540px; }
+  .marquee-col:nth-child(2),
+  .marquee-col:nth-child(3) { display: none !important; }
+  .tcard { padding: 22px 20px; }
+  .tcard blockquote { font-size: 14px; }
+  .tcard:hover { transform: none; }
+
+  /* FAQ */
+  .faq-section { padding: 56px 0; }
+  .faq-question { padding: 16px 18px; font-size: 14px; }
+  .faq-item.open .faq-answer { padding: 0 18px 16px; }
+
+  /* Download section */
+  .download-section { padding: 40px 0 56px; }
+  .download-card { padding: 40px 24px; border-radius: 24px; }
+  .download-content h2 { font-size: 24px; line-height: 1.2; }
+  .download-content p { font-size: 14px; }
+
+  /* Navbar mobile polish */
+  .navbar { padding: 12px 0; }
+  .logo-text { font-size: 16px; letter-spacing: 1.5px; }
+  .logo-icon { width: 30px; height: 30px; }
+
+  /* Footer */
+  .footer { padding: 40px 0 24px; }
+  .footer-desc { font-size: 13px; }
+
+  /* Bottom cards (highlight/stat/text) */
+  .bottom-card { padding: 22px 20px; }
+  .bottom-card-stat {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 14px;
+  }
+  .bottom-card-avatars { margin-bottom: 0; }
+  .bottom-card-number { font-size: 32px; }
+
+  /* Disable heavy hover effects on touch */
+  .feature-card:hover,
+  .pricing-card:hover,
+  .bottom-card:hover,
+  .tcard:hover,
+  .step-card:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Very small phones (<= 480px) ---------- */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 36px; letter-spacing: -1px; }
+  .hero-container { padding-top: 88px; padding-bottom: 64px; }
+
+  .section-header h2 { font-size: 24px; }
+
+  .founders-title { font-size: 22px; }
+  .synagogues-content h2 { font-size: 22px; }
+  .download-content h2 { font-size: 22px; }
+
+  .feature-large-text h3 { font-size: 18px; }
+  .feature-card h3 { font-size: 16px; }
+
+  /* Pricing card compact */
+  .pricing-card { padding: 22px 18px; }
+  .pricing-features li { font-size: 13px; }
+  .pricing-commission { padding: 12px 14px; }
+  .pricing-commission strong { font-size: 18px; }
+
+  /* Live feed stays readable */
+  .live-feed-header { flex-wrap: wrap; }
+  .live-feed-info { flex-basis: 100%; order: -1; }
+
+  /* Back-to-top smaller */
+  .back-to-top { width: 40px; height: 40px; right: 14px; bottom: 14px; }
+
+  /* Ticker, if added again in future, would need adjustments */
+}
+
+/* ---------- Landscape orientation on short phones ---------- */
+@media (max-width: 900px) and (max-height: 520px) and (orientation: landscape) {
+  .hero-container { padding-top: 80px; padding-bottom: 40px; }
+  .hero h1 { font-size: 32px; }
+  .hero-scroll-indicator { display: none; }
+}
+
+/* ---------- Touch devices: disable pointer-dependent flourishes ---------- */
+@media (hover: none) and (pointer: coarse) {
+  .hero-visual.tilting .hero-phone-main,
+  .hero-visual.tilting .hero-phone-secondary {
+    transform: none !important;
+  }
+  .feature-card::before,
+  .testimonial-card::before { display: none; }
+  .magnetic-offset { transform: none !important; }
 }
 
