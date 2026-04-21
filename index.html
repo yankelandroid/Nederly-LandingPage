@@ -160,8 +160,33 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg-pattern"></div>
+    <div class="hero-grid"></div>
     <div class="hero-glow hero-glow-1"></div>
     <div class="hero-glow hero-glow-2"></div>
+
+    <!-- Aurora beams + noise texture backdrop -->
+    <div class="hero-aurora" aria-hidden="true">
+      <span class="aurora-beam aurora-beam-1"></span>
+      <span class="aurora-beam aurora-beam-2"></span>
+      <span class="aurora-beam aurora-beam-3"></span>
+    </div>
+    <div class="hero-noise" aria-hidden="true"></div>
+
+    <!-- Animated star field -->
+    <canvas class="hero-stars" id="heroStars" aria-hidden="true"></canvas>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <span class="scroll-line"></span>
+      <span class="scroll-label">SCROLL</span>
+    </div>
+
+    <!-- Side label (editorial vibe) -->
+    <div class="hero-side-label" aria-hidden="true">
+      <span>NEDERLY</span>
+      <span class="hero-side-dot"></span>
+      <span>EST. 2025</span>
+    </div>
 
     <div class="container hero-container">
       <!-- Left: massive editorial text -->
@@ -291,6 +316,7 @@
 
   <!-- Features Section -->
   <section class="features" id="features">
+    <div class="features-bg" aria-hidden="true"></div>
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Fonctionnalités</span>
@@ -315,20 +341,41 @@
           </div>
           <div class="feature-visual">
             <div class="live-feed">
-              <!-- Header -->
+              <!-- Ambient glow -->
+              <div class="live-feed-glow" aria-hidden="true"></div>
+
+              <!-- Header with radar sweep -->
               <div class="live-feed-header">
                 <div class="live-indicator">
-                  <span class="live-dot"></span>
+                  <span class="live-dot">
+                    <span class="live-dot-ring"></span>
+                    <span class="live-dot-ring live-dot-ring-delay"></span>
+                  </span>
                   LIVE
                 </div>
                 <div class="live-feed-info">
                   <strong>Aliyah Rishon</strong>
                   <span>Parashat Tetzaveh</span>
                 </div>
-                <div class="live-timer">
+                <div class="live-timer" data-live-timer>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  2h 34min
+                  <span class="live-timer-value">02:34:12</span>
                 </div>
+              </div>
+
+              <!-- Viewers bar -->
+              <div class="live-viewers">
+                <div class="live-viewers-avatars">
+                  <span class="lva" style="background:#6366F1">D</span>
+                  <span class="lva" style="background:#10B981">M</span>
+                  <span class="lva" style="background:#EC4899">S</span>
+                  <span class="lva" style="background:#F97316">A</span>
+                  <span class="lva lva-more">+12</span>
+                </div>
+                <span class="live-viewers-label">
+                  <span class="live-viewers-dot"></span>
+                  16 fidèles regardent
+                </span>
               </div>
 
               <!-- Bid items -->
@@ -339,7 +386,7 @@
                     <span class="live-bid-name">David L.</span>
                     <span class="live-bid-time">il y a 5 min</span>
                   </div>
-                  <span class="live-bid-amount">180 EUR</span>
+                  <span class="live-bid-amount" data-bid-target="180">0 €</span>
                 </div>
                 <div class="live-bid live-bid-2">
                   <div class="live-bid-avatar" style="background: var(--gold); color: var(--navy);">Y</div>
@@ -347,7 +394,7 @@
                     <span class="live-bid-name">Yossef M.</span>
                     <span class="live-bid-time">il y a 2 min</span>
                   </div>
-                  <span class="live-bid-amount live-bid-amount-gold">220 EUR</span>
+                  <span class="live-bid-amount live-bid-amount-gold" data-bid-target="220">0 €</span>
                 </div>
                 <div class="live-bid live-bid-3 live-bid-latest">
                   <div class="live-bid-avatar" style="background: #10B981;">M</div>
@@ -355,11 +402,20 @@
                     <span class="live-bid-name">Moshe R.</span>
                     <span class="live-bid-time">à l'instant</span>
                   </div>
-                  <span class="live-bid-amount live-bid-amount-gold">280 EUR</span>
+                  <span class="live-bid-amount live-bid-amount-gold live-bid-amount-winner" data-bid-target="280">0 €</span>
                   <div class="live-bid-crown">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 19h19v2h-19zM22.5 7l-5 5-5-7-5 7-5-5 2.5 12h15z"/></svg>
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                    <span class="sparkle sparkle-4"></span>
                   </div>
                 </div>
+              </div>
+
+              <!-- Progress bar -->
+              <div class="live-feed-progress" aria-hidden="true">
+                <span class="lfp-fill"></span>
               </div>
 
               <!-- Bottom alert -->
@@ -367,7 +423,7 @@
                 <div class="alert-icon">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
-                <span>Surencheri ! Prix actuel : <strong>280 EUR</strong></span>
+                <span>Surenchère ! Prix actuel : <strong class="live-alert-amount" data-bid-target="280">0 €</strong></span>
               </div>
             </div>
           </div>
@@ -762,6 +818,11 @@
           </div>
         </div>
         <div class="synagogues-visual">
+          <!-- Corner brackets (editorial frame) -->
+          <span class="corner-bracket corner-bracket-tl" aria-hidden="true"></span>
+          <span class="corner-bracket corner-bracket-tr" aria-hidden="true"></span>
+          <span class="corner-bracket corner-bracket-bl" aria-hidden="true"></span>
+          <span class="corner-bracket corner-bracket-br" aria-hidden="true"></span>
           <div class="dashboard-screenshot-wrapper">
             <div class="dash-browser-bar">
               <div class="dash-dots">
@@ -792,7 +853,154 @@
           Gabayim et fidèles partagent leur expérience avec Nederly.
         </p>
       </div>
-      <div class="testimonials-grid">
+
+      <!-- Multi-column infinite marquee (inspired by testimonial-v2) -->
+      <div class="testimonials-marquee" aria-label="Carrousel témoignages">
+        <div class="marquee-col marquee-col-down">
+          <div class="marquee-track">
+            <!-- Track A: content duplicated in JS for seamless loop -->
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>Depuis qu'on utilise Nederly, les enchères se font en toute simplicité. Les fidèles enchérissent avant Shabbat, et nous on gère tout depuis le dashboard.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar">D</div>
+                <div class="tcard-meta"><strong>David K.</strong><span>Gabay, Synagogue Beth Israel</span></div>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>Reçus Cerfa automatiques — un rêve. Plus besoin de chercher les fiches de don en fin d'année, tout est envoyé tout seul aux fidèles.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: #6366F1;">E</div>
+                <div class="tcard-meta"><strong>Elie B.</strong><span>Président, Kehilat Beth David</span></div>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>L'offre Fondateur, c'est une évidence. Tarif bloqué à vie et accès direct à l'équipe produit — on sent qu'on construit l'outil avec eux.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: #10B981;">R</div>
+                <div class="tcard-meta"><strong>Rav Yaakov L.</strong><span>Communauté Ohel Yaakov</span></div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="marquee-col marquee-col-up">
+          <div class="marquee-track">
+            <figure class="tcard tcard-featured">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>On a vu nos revenus d'enchères augmenter de <strong>40%</strong> dès le premier mois. Les gens enchérissent plus facilement quand c'est sur leur téléphone.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: var(--gold); color: var(--navy);">M</div>
+                <div class="tcard-meta"><strong>Moshe R.</strong><span>Président, Or Torah</span></div>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>Interface propre, claire, validée halakhiquement. On a recommandé Nederly à trois synagogues voisines.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: #8B5CF6;">S</div>
+                <div class="tcard-meta"><strong>Shlomo A.</strong><span>Gabay, Paris 17e</span></div>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>J'enchéris directement depuis mon téléphone. Le paiement est automatique — plus besoin de courir après les chèques.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: #6366F1;">Y</div>
+                <div class="tcard-meta"><strong>Yossef M.</strong><span>Fidèle, Paris 19e</span></div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="marquee-col marquee-col-down marquee-col-slow">
+          <div class="marquee-track">
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>Le calendrier hébraïque natif évite toute erreur d'horaire avant Shabbat. C'est propre, carré, rassurant.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: #F97316;">A</div>
+                <div class="tcard-meta"><strong>Avraham H.</strong><span>Gabay, Marseille</span></div>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>Les notifications instantanées sur surenchère, c'est un game-changer. Les fidèles sont investis et suivent en live.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: #EC4899;">N</div>
+                <div class="tcard-meta"><strong>Nathan S.</strong><span>Fidèle, Jérusalem</span></div>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <div class="tcard-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <blockquote>Mise en place en 10 minutes. Zéro friction. On a lancé notre première semaine d'enchères dès le Shabbat suivant.</blockquote>
+              <figcaption>
+                <div class="tcard-avatar" style="background: #14B8A6;">B</div>
+                <div class="tcard-meta"><strong>Binyamin L.</strong><span>Gabay, Lyon</span></div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Old grid kept hidden as fallback -->
+      <div class="testimonials-grid" style="display: none;">
         <div class="testimonial-card">
           <div class="testimonial-stars">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

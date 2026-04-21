@@ -118,36 +118,120 @@ function switchParcours(target) {
   counter.textContent = '100';
 })();
 
-// Live bid feed — replay animations in loop
+// Live bid feed — cinematic replay (count-up numbers, timer, sync)
 (function () {
   const liveFeed = document.querySelector('.live-feed');
   if (!liveFeed) return;
 
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Animation timings (ms) — MUST match CSS delays
+  const BID_DELAYS = [400, 1700, 3000];
+  const ALERT_DELAY = 3600;
+  const LOOP_DURATION = 7000;
+
+  const amountElements = liveFeed.querySelectorAll('[data-bid-target]');
   const bids = liveFeed.querySelectorAll('.live-bid');
-  const alert = liveFeed.querySelector('.live-feed-alert');
+  const alertEl = liveFeed.querySelector('.live-feed-alert');
   const crown = liveFeed.querySelector('.live-bid-crown');
+  const sparkles = liveFeed.querySelectorAll('.sparkle');
+  const progressFill = liveFeed.querySelector('.lfp-fill');
+
+  // Format 280 -> "280 €"
+  function fmt(n) { return Math.round(n).toString() + ' €'; }
+
+  // Animate a single number from 0 -> target
+  function countUp(el, target, duration = 700) {
+    const start = performance.now();
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = fmt(target * ease(p));
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = fmt(target);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Reset all pieces and re-trigger their CSS animations
+  const animatedEls = [...bids, alertEl, crown, ...sparkles, progressFill].filter(Boolean);
+
+  let scheduledTimers = [];
+  function clearTimers() {
+    scheduledTimers.forEach(id => clearTimeout(id));
+    scheduledTimers = [];
+  }
 
   function replayFeed() {
-    // Reset all animations
-    bids.forEach(bid => {
-      bid.style.animation = 'none';
-      bid.offsetHeight; // force reflow
-      bid.style.animation = '';
+    clearTimers();
+
+    // Reset numbers to 0
+    amountElements.forEach(el => { el.textContent = '0 €'; });
+
+    // Reset CSS animations by briefly stripping them
+    animatedEls.forEach(el => {
+      el.style.animation = 'none';
+      // eslint-disable-next-line no-unused-expressions
+      el.offsetHeight; // force reflow
+      el.style.animation = '';
     });
-    if (alert) {
-      alert.style.animation = 'none';
-      alert.offsetHeight;
-      alert.style.animation = '';
+
+    if (prefersReduced) {
+      // Static snapshot for reduced-motion users
+      amountElements.forEach(el => {
+        el.textContent = fmt(parseFloat(el.dataset.bidTarget));
+      });
+      return;
     }
-    if (crown) {
-      crown.style.animation = 'none';
-      crown.offsetHeight;
-      crown.style.animation = '';
+
+    // Count up each bid in sync with the CSS delay
+    bids.forEach((bid, i) => {
+      const amountEl = bid.querySelector('[data-bid-target]');
+      if (!amountEl) return;
+      const target = parseFloat(amountEl.dataset.bidTarget);
+      scheduledTimers.push(setTimeout(() => {
+        countUp(amountEl, target, 700);
+      }, BID_DELAYS[i] + 150)); // start slightly after the card enters
+    });
+
+    // Alert amount count-up
+    const alertAmount = liveFeed.querySelector('.live-alert-amount');
+    if (alertAmount) {
+      const target = parseFloat(alertAmount.dataset.bidTarget);
+      scheduledTimers.push(setTimeout(() => {
+        countUp(alertAmount, target, 500);
+      }, ALERT_DELAY + 150));
     }
   }
 
-  // Replay every 7 seconds (total animation ~4s + 3s pause)
-  setInterval(replayFeed, 7000);
+  // Live countdown timer HH:MM:SS
+  const timerEl = liveFeed.querySelector('.live-timer-value');
+  if (timerEl && !prefersReduced) {
+    let totalSeconds = 2 * 3600 + 34 * 60 + 12;
+    function updateTimer() {
+      const h = Math.floor(totalSeconds / 3600);
+      const m = Math.floor((totalSeconds % 3600) / 60);
+      const s = totalSeconds % 60;
+      const pad = n => String(n).padStart(2, '0');
+      timerEl.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+      totalSeconds = totalSeconds > 0 ? totalSeconds - 1 : 2 * 3600 + 34 * 60 + 12;
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  }
+
+  // Start once visible; replay continuously
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        replayFeed();
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(liveFeed);
+
+  // Replay on interval
+  setInterval(replayFeed, LOOP_DURATION);
 })();
 
 // ============================================================
@@ -428,6 +512,100 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   }, { threshold: 0.4 });
 
   counters.forEach(el => io.observe(el));
+})();
+
+// ---------- Hero: subtle animated starfield (gold dust particles) ----------
+(function () {
+  const canvas = document.getElementById('heroStars');
+  if (!canvas || prefersReducedMotion) return;
+
+  const ctx = canvas.getContext('2d');
+  let width = 0, height = 0, stars = [];
+  const STAR_COUNT = 70;
+  let rafId = null;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = rect.width;
+    height = rect.height;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
+  }
+
+  function makeStars() {
+    stars = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.3 + 0.3,
+        a: Math.random() * 0.6 + 0.2,
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.08,
+        twinkle: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, width, height);
+    for (const s of stars) {
+      s.x += s.vx;
+      s.y += s.vy;
+      s.twinkle += 0.03;
+      if (s.x < 0) s.x = width;
+      if (s.x > width) s.x = 0;
+      if (s.y < 0) s.y = height;
+      if (s.y > height) s.y = 0;
+      const alpha = s.a * (0.55 + 0.45 * Math.sin(s.twinkle));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201, 169, 98, ${alpha.toFixed(3)})`;
+      ctx.fill();
+    }
+    rafId = requestAnimationFrame(draw);
+  }
+
+  function start() {
+    resize();
+    makeStars();
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(draw);
+  }
+
+  start();
+  window.addEventListener('resize', () => {
+    // Debounce reflow
+    cancelAnimationFrame(rafId);
+    setTimeout(start, 100);
+  }, { passive: true });
+
+  // Pause when hero leaves viewport for perf
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!rafId) rafId = requestAnimationFrame(draw);
+      } else {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      }
+    });
+  }, { threshold: 0 });
+  io.observe(canvas);
+})();
+
+// ---------- Testimonials: duplicate marquee content for seamless loop ----------
+(function () {
+  document.querySelectorAll('.marquee-track').forEach(track => {
+    // Clone children once so translateY(-50%) loops seamlessly
+    const originals = Array.from(track.children);
+    originals.forEach(node => {
+      const clone = node.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  });
 })();
 
 // ---------- FAQ smooth expand on click (enhances existing toggle) ----------
