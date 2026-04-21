@@ -149,3 +149,301 @@ function switchParcours(target) {
   // Replay every 7 seconds (total animation ~4s + 3s pause)
   setInterval(replayFeed, 7000);
 })();
+
+// ============================================================
+// v3 — MODERN UI ENHANCEMENTS
+// ============================================================
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------- Scroll progress bar ----------
+(function () {
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+
+  let ticking = false;
+  function update() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+})();
+
+// ---------- Back-to-top button ----------
+(function () {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Retour en haut');
+  btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  document.body.appendChild(btn);
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  });
+
+  let ticking = false;
+  function update() {
+    btn.classList.toggle('visible', window.scrollY > 600);
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// ---------- Hero H1 word-split for staggered reveal ----------
+(function () {
+  const h1 = document.querySelector('.hero h1');
+  if (!h1 || prefersReducedMotion) return;
+
+  // Split text nodes into <span class="word"> tokens while preserving <br> and existing spans
+  const tokenize = (node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const frag = document.createDocumentFragment();
+      const parts = node.textContent.split(/(\s+)/);
+      parts.forEach(part => {
+        if (part.trim() === '') {
+          frag.appendChild(document.createTextNode(part));
+        } else {
+          const span = document.createElement('span');
+          span.className = 'word';
+          span.textContent = part;
+          frag.appendChild(span);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      if (node.tagName === 'BR') return;
+      if (node.classList && node.classList.contains('text-gold-hero')) {
+        // wrap the whole gold phrase as one animated word
+        node.classList.add('word');
+        return;
+      }
+      Array.from(node.childNodes).forEach(tokenize);
+    }
+  };
+  Array.from(h1.childNodes).forEach(tokenize);
+
+  // Re-index nth-child delays (all .word siblings of h1 should animate)
+  const words = h1.querySelectorAll('.word');
+  words.forEach((w, i) => {
+    w.style.animationDelay = (0.1 + i * 0.12) + 's';
+  });
+})();
+
+// ---------- Enhanced staggered reveal observer (override with direction detection) ----------
+(function () {
+  // Add stagger class to grid parents whose direct children are reveal items
+  const staggerParents = [
+    '.features-grid',
+    '.steps-grid',
+    '.testimonials-grid',
+    '.pricing-grid',
+    '.bottom-cards-grid',
+    '.faq-list',
+    '.founders-perks'
+  ];
+  staggerParents.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => el.classList.add('stagger'));
+  });
+})();
+
+// ---------- Hero mouse-follow glow + subtle parallax ----------
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero || prefersReducedMotion) return;
+
+  const glow1 = hero.querySelector('.hero-glow-1');
+  const glow2 = hero.querySelector('.hero-glow-2');
+
+  let rafId = null;
+  let targetX = 50, targetY = 30;
+  let currentX = 50, currentY = 30;
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    targetX = ((e.clientX - rect.left) / rect.width) * 100;
+    targetY = ((e.clientY - rect.top) / rect.height) * 100;
+    if (!rafId) rafId = requestAnimationFrame(animate);
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    targetX = 50;
+    targetY = 30;
+  });
+
+  function animate() {
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+    hero.style.setProperty('--mx', currentX + '%');
+    hero.style.setProperty('--my', currentY + '%');
+
+    if (glow1) {
+      const dx = (currentX - 50) * 0.3;
+      const dy = (currentY - 50) * 0.3;
+      glow1.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+    }
+    if (glow2) {
+      const dx = (currentX - 50) * -0.2;
+      const dy = (currentY - 50) * -0.2;
+      glow2.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+    }
+
+    if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+    }
+  }
+})();
+
+// ---------- 3D tilt on hero phones ----------
+(function () {
+  const visual = document.querySelector('.hero-visual');
+  if (!visual || prefersReducedMotion) return;
+  // Skip tilt on touch-primary devices
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  const MAX_TILT = 8;
+  let rafId = null;
+  let targetRx = 0, targetRy = 0;
+  let curRx = 0, curRy = 0;
+
+  visual.addEventListener('mouseenter', () => visual.classList.add('tilting'));
+  visual.addEventListener('mousemove', (e) => {
+    const rect = visual.getBoundingClientRect();
+    const nx = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 .. 0.5
+    const ny = (e.clientY - rect.top) / rect.height - 0.5;
+    targetRy = nx * MAX_TILT * 2;
+    targetRx = -ny * MAX_TILT * 2;
+    if (!rafId) rafId = requestAnimationFrame(animate);
+  });
+  visual.addEventListener('mouseleave', () => {
+    targetRx = 0;
+    targetRy = 0;
+    if (!rafId) rafId = requestAnimationFrame(animate);
+  });
+
+  function animate() {
+    curRx += (targetRx - curRx) * 0.12;
+    curRy += (targetRy - curRy) * 0.12;
+    visual.style.setProperty('--rx', curRx.toFixed(2) + 'deg');
+    visual.style.setProperty('--ry', curRy.toFixed(2) + 'deg');
+
+    if (Math.abs(targetRx - curRx) > 0.05 || Math.abs(targetRy - curRy) > 0.05) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+      if (Math.abs(curRx) < 0.1 && Math.abs(curRy) < 0.1) {
+        visual.classList.remove('tilting');
+      }
+    }
+  }
+})();
+
+// ---------- Feature & testimonial card spotlight (mouse position as CSS var) ----------
+(function () {
+  if (prefersReducedMotion) return;
+  const cards = document.querySelectorAll('.feature-card, .testimonial-card, .step-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+    });
+  });
+})();
+
+// ---------- Magnetic effect on primary CTAs ----------
+(function () {
+  if (prefersReducedMotion) return;
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  const magnets = document.querySelectorAll('.btn-hero, .btn-founders, .nav-cta');
+  magnets.forEach(btn => {
+    const STRENGTH = 14;
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      btn.style.transform = `translate3d(${x * STRENGTH}px, ${y * STRENGTH - 2}px, 0)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+})();
+
+// ---------- Count-up numbers on reveal ----------
+(function () {
+  const counters = document.querySelectorAll('[data-count]');
+  if (!counters.length) return;
+
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+  function animateCount(el) {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.countSuffix || '';
+    const duration = 1600;
+    const start = performance.now();
+    const isInt = Number.isInteger(target);
+
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = target * easeOut(progress);
+      el.textContent = (isInt ? Math.round(value) : value.toFixed(1)) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = (isInt ? target : target.toFixed(1)) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.counted) {
+        entry.target.dataset.counted = '1';
+        if (prefersReducedMotion) {
+          const t = parseFloat(entry.target.dataset.count);
+          const s = entry.target.dataset.countSuffix || '';
+          entry.target.textContent = (Number.isInteger(t) ? t : t.toFixed(1)) + s;
+        } else {
+          animateCount(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(el => io.observe(el));
+})();
+
+// ---------- FAQ smooth expand on click (enhances existing toggle) ----------
+(function () {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Ensure one-at-a-time accordion feel (optional polish)
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      // No close-others behavior to preserve current UX — just ripple the chevron
+      if (!wasOpen && !prefersReducedMotion) {
+        btn.animate(
+          [{ transform: 'scale(1)' }, { transform: 'scale(0.98)' }, { transform: 'scale(1)' }],
+          { duration: 220, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+        );
+      }
+    });
+  });
+})();
