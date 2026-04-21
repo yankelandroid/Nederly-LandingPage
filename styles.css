@@ -2247,3 +2247,472 @@ a {
     padding: 0 16px;
   }
 }
+
+/* ============================================
+   v2 — NAVIGATION (single CTA + discreet Founders link)
+   ============================================ */
+.nav-link-founders {
+  color: var(--gold) !important;
+  font-weight: 600 !important;
+  position: relative;
+  padding-left: 14px !important;
+}
+
+.nav-link-founders::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--gold-glow);
+}
+
+.nav-link-founders:hover {
+  color: var(--gold-light) !important;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .nav-links {
+    gap: 22px !important;
+  }
+}
+
+/* ============================================
+   v2 — HERO DOUBLE CTA + TRUST ROW
+   ============================================ */
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+  margin-bottom: 24px;
+}
+
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 28px;
+  background: transparent;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 15px;
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.btn-hero-secondary:hover {
+  background: var(--gold-subtle);
+  transform: translateY(-1px);
+}
+
+.hero-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.hero-trust-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.hero-tagline strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-trust-row {
+    gap: 10px;
+    flex-direction: column;
+  }
+}
+
+/* ============================================
+   v2 — FOUNDERS BANNER (full-width section)
+   ============================================ */
+.founders-banner {
+  position: relative;
+  padding: 72px 0 140px;
+  background: linear-gradient(135deg, #1A1208 0%, #2D1F0A 50%, #1A1208 100%);
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  overflow: hidden;
+}
+
+/* Push bottom-cards back down so they don't overlap founders banner */
+.founders-banner + .hero-bottom-cards {
+  margin-top: -80px;
+  position: relative;
+  z-index: 5;
+}
+
+.founders-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 60%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.founders-banner-inner {
+  position: relative;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.founders-badge {
+  display: inline-block;
+  padding: 8px 18px;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.founders-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: #FFF;
+  margin-bottom: 18px;
+  line-height: 1.1;
+}
+
+.founders-counter {
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.founders-desc {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.founders-desc strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.founders-perks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+  margin-bottom: 32px;
+}
+
+.founders-perk {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px 8px 32px;
+  background: rgba(201, 169, 98, 0.12);
+  border: 1px solid rgba(201, 169, 98, 0.3);
+  border-radius: 999px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.founders-perk::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--gold-glow);
+}
+
+.founders-counter-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.founders-counter-dot {
+  width: 8px;
+  height: 8px;
+  background: #4ADE80;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+.founders-counter-line .founders-counter {
+  font-weight: 700;
+  color: var(--gold);
+  margin-right: 2px;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+.btn-founders {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 36px;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-founders:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 169, 98, 0.45);
+}
+
+@media (max-width: 768px) {
+  .founders-banner {
+    padding: 48px 0;
+  }
+
+  .founders-perks {
+    gap: 8px;
+  }
+
+  .founders-perk {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* ============================================
+   v2 — PARCOURS TOGGLE (How it works)
+   ============================================ */
+.parcours-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 32px auto 48px;
+  background: var(--navy-subtle);
+  padding: 6px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.parcours-tab {
+  padding: 12px 24px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.parcours-tab:hover {
+  color: var(--text-primary);
+}
+
+.parcours-tab-active {
+  background: var(--navy);
+  color: #FFF;
+  box-shadow: var(--shadow-md);
+}
+
+.parcours-content {
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.parcours-hidden {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .parcours-toggle {
+    flex-direction: column;
+    width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .parcours-tab {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   v2 — SYNAGOGUES SECTION DOUBLE CTA
+   ============================================ */
+.synagogues-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold-subtle);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   v2 — PRICING (Founders banner + commission row)
+   ============================================ */
+.pricing-founders-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 720px;
+  margin: 0 auto 32px;
+  padding: 14px 24px;
+  background: linear-gradient(90deg, rgba(201, 169, 98, 0.12), rgba(201, 169, 98, 0.18), rgba(201, 169, 98, 0.12));
+  border: 1px solid rgba(201, 169, 98, 0.4);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.pricing-founders-banner strong {
+  color: var(--navy);
+}
+
+.pricing-founders-link {
+  color: var(--gold-dark);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.pricing-founders-link:hover {
+  text-decoration: underline;
+}
+
+.pricing-commission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 16px 0 20px;
+  padding: 14px 16px;
+  background: var(--gold-subtle);
+  border: 1px dashed rgba(201, 169, 98, 0.45);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.pricing-commission strong {
+  display: block;
+  color: var(--gold-dark);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.pricing-commission-zero {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: var(--text-secondary);
+}
+
+.pricing-commission-zero strong {
+  color: var(--success);
+}
+
+.pricing-no-cb {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ============================================
+   v2 — DOWNLOAD SECTION SYNAGOGUE CTA
+   ============================================ */
+.download-synagogue-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.download-syna-link {
+  color: var(--gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.download-syna-link:hover {
+  text-decoration: underline;
+}

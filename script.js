@@ -89,6 +89,35 @@ function toggleBilling() {
   });
 }
 
+// Parcours toggle (How it works — Fidèles / Gabayim)
+function switchParcours(target) {
+  const tabs = document.querySelectorAll('.parcours-tab');
+  const contents = document.querySelectorAll('.parcours-content');
+
+  tabs.forEach(tab => {
+    tab.classList.toggle('parcours-tab-active', tab.dataset.parcours === target);
+  });
+
+  contents.forEach(content => {
+    const id = content.id.replace('parcours-', '');
+    content.classList.toggle('parcours-hidden', id !== target);
+  });
+}
+
+// Founders counter — fetch real-time count (placeholder, defaults to 100 if API not ready)
+(function () {
+  const counter = document.getElementById('foundersCounter');
+  if (!counter) return;
+
+  // TODO: replace with real API call when backend ready
+  // fetch('https://api.nederly.io/founders/remaining')
+  //   .then(r => r.json())
+  //   .then(data => { counter.textContent = data.remaining; });
+
+  // For now, display 100 (no Founder yet — pre-launch)
+  counter.textContent = '100';
+})();
+
 // Live bid feed — replay animations in loop
 (function () {
   const liveFeed = document.querySelector('.live-feed');
