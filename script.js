@@ -32,7 +32,7 @@ window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => { if (
 
 // Scroll reveal animations
 const revealElements = document.querySelectorAll(
-  '.feature-card, .feature-row, .step, .calc, .synagogues-content, .synagogues-visual, .download-card, .section-header, .bottom-card, .faq-entry'
+  '.feature-card, .feature-row, .step, .calc, .synagogues-content, .synagogues-visual, .download-card, .section-header, .faq-entry'
 );
 
 revealElements.forEach(el => el.classList.add('reveal'));
@@ -530,7 +530,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   const staggerParents = [
     '.steps-line',
     '.calc-plans',
-    '.bottom-cards-grid',
     '.faq-grid'
   ];
   staggerParents.forEach(sel => {

@@ -70,8 +70,7 @@ body {
 
 h1,
 h2,
-h3,
-.bottom-card-number {
+h3 {
   font-family: var(--font-display);
 }
 
@@ -742,126 +741,6 @@ body.menu-open .nav-scrim {
   }
 }
 
-/* Bottom floating cards — overlapping hero & features */
-.hero-bottom-cards {
-  position: relative;
-  z-index: 10;
-  margin-top: -60px;
-  padding-bottom: 0;
-}
-
-.bottom-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.8fr 1.2fr;
-  gap: 20px;
-}
-
-.bottom-card {
-  border-radius: var(--radius-xl);
-  padding: 28px;
-  transition: all 0.3s ease;
-}
-
-.bottom-card:hover {
-  transform: translateY(-4px);
-}
-
-.bottom-card-highlight {
-  background: #fff;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-}
-
-.bottom-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
-  background: var(--gold-subtle);
-  color: var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
-}
-
-.bottom-card-highlight strong {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 6px;
-}
-
-.bottom-card-highlight span {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.bottom-card-stat {
-  background: var(--navy);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 30px rgba(10, 22, 40, 0.2);
-}
-
-.bottom-card-number {
-  font-size: 46px;
-  font-weight: 400;
-  white-space: nowrap;
-  color: var(--gold);
-  line-height: 1;
-  font-style: italic;
-  margin-bottom: 4px;
-}
-
-.bottom-card > span {
-  display: block;
-}
-
-.bottom-card-stat span {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 500;
-}
-
-.bottom-card-text {
-  background: #fff;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.bottom-card-text strong {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.5;
-  letter-spacing: 0.3px;
-}
-
-.bottom-card-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--gold-dark);
-  margin-top: 16px;
-  transition: all 0.2s ease;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.bottom-card-link:hover {
-  color: var(--gold);
-}
-
 /* ============================================
    SECTIONS COMMON
    ============================================ */
@@ -900,7 +779,7 @@ body.menu-open .nav-scrim {
    ============================================ */
 .features {
   padding: 70px 0;
-  padding-top: 120px;
+  padding-top: 110px;
 }
 
 .feature-card {
@@ -1854,7 +1733,7 @@ body.menu-open .nav-scrim {
 .dashboard-screenshot-float {
   position: absolute;
   bottom: -40px;
-  right: -30px;
+  right: -24px; /* jamais plus que la marge du .container, sinon défilement horizontal */
   z-index: 2;
   width: 70%;
   background: var(--surface);
@@ -2322,6 +2201,43 @@ body.menu-open .nav-scrim {
   color: var(--text-muted);
 }
 
+.calc-halakha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.calc-halakha b {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.calc-halakha a {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+.calc-halakha a:hover {
+  color: var(--gold-dark);
+}
+
+@media (max-width: 768px) {
+  .calc-halakha {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
 /* ============================================
    FAQ — tout ouvert, sur deux colonnes
    ============================================ */
@@ -2430,10 +2346,6 @@ body.menu-open .nav-scrim {
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
-  .bottom-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .feature-card-large {
     grid-column: span 2;
   }
@@ -2449,21 +2361,6 @@ body.menu-open .nav-scrim {
 }
 
 @media (max-width: 768px) {
-  .bottom-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .bottom-card-stat {
-    flex-direction: row;
-    gap: 16px;
-    text-align: left;
-  }
-
-  .bottom-card-number {
-    font-size: 32px;
-  }
-
   .section-header h2 {
     font-size: 30px;
   }
@@ -3043,8 +2940,7 @@ body.menu-open .nav-scrim {
 @media (max-width: 1024px) {
   .container { padding: 0 20px; }
 
-  .bottom-cards-grid { grid-template-columns: 1fr; gap: 16px; }
-  .hero-bottom-cards { margin-top: -40px; }
+  .dashboard-screenshot-float { right: -20px; }
 
   .synagogues-cta-group { justify-content: center; }
 }
@@ -3064,7 +2960,7 @@ body.menu-open .nav-scrim {
   .feature-card { padding: 24px 20px; }
   .feature-card-large {
     grid-column: span 1 !important;
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 24px;
   }
   .feature-large-text h3 { font-size: 20px; }
@@ -3092,7 +2988,7 @@ body.menu-open .nav-scrim {
     flex-direction: column;
     align-items: stretch;
   }
-  .synagogues-cta-group .btn { width: 100%; justify-content: center; }
+  .synagogues-cta-group .btn { width: 100%; justify-content: center; padding-inline: 16px; white-space: normal; text-align: center; }
 
   .dashboard-screenshot-float { display: none; }
   .check-list li { font-size: 14px; }
@@ -3111,19 +3007,8 @@ body.menu-open .nav-scrim {
   /* Footer */
   .footer { padding: 40px 0 24px; }
 
-  /* Bottom cards (highlight/stat/text) */
-  .bottom-card { padding: 22px 20px; }
-  .bottom-card-stat {
-    flex-direction: row;
-    justify-content: flex-start;
-    text-align: left;
-    gap: 14px;
-  }
-  .bottom-card-number { font-size: 32px; }
-
   /* Disable heavy hover effects on touch */
-  .feature-card:hover,
-.bottom-card:hover {
+  .feature-card:hover {
     transform: none;
   }
 }
@@ -3137,6 +3022,10 @@ body.menu-open .nav-scrim {
 
   .feature-large-text h3 { font-size: 18px; }
   .feature-card h3 { font-size: 16px; }
+
+  /* Démo d'enchère : place pour « Enchère terminée » */
+  .ad-chips { gap: 4px; }
+  .ad-chip { padding: 8px 6px; }
 
   /* Pricing card compact */
 
