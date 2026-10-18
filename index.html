@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&text=%D7%A9%D7%A0%D7%99&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&text=%D7%90%D7%91%D7%94%D7%95%D7%97%D7%98%D7%99%D7%9B%D7%9C%D7%9E%D7%9F%D7%A0%D7%A2%D7%A4%D7%A8%D7%A9%D7%AA&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -139,120 +139,77 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/logo_new.png" alt="Nederly" class="logo-icon">
+  <!-- Navigation : capsule flottante ; sur mobile, elle s'étire en menu -->
+  <header class="navbar" id="navbar">
+    <div class="nav-bar">
+      <a href="index.html" class="nav-logo" aria-label="Nederly, accueil">
+        <img src="assets/logo_new.png" alt="" class="logo-icon" width="28" height="28">
         <span class="logo-text">NEDERLY</span>
       </a>
-      <div class="nav-links" id="navLinks">
+      <nav class="nav-links" aria-label="Navigation principale">
         <a href="#features">Fonctionnalités</a>
-        <a href="#how-it-works">Comment ça marche</a>
         <a href="#pricing">Tarifs</a>
-        <a href="#founders" class="nav-link-founders">Fondateurs</a>
+        <a href="#founders">Fondateurs</a>
         <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://admin.nederly.io" class="nav-cta">Inscrire ma synagogue<span class="nav-cta-dot" aria-hidden="true"></span></a>
+        <a href="mailto:contact@nederly.io" class="nav-round" aria-label="Écrire à Nederly"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <button type="button" class="nav-burger" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navPanel"><span></span><span></span></button>
       </div>
-      <a href="https://admin.nederly.io" class="nav-cta">Inscrire ma synagogue</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </nav>
+    <div class="nav-panel" id="navPanel"><div><nav class="nav-panel-inner" aria-label="Menu mobile">
+      <a href="#features">Fonctionnalités</a>
+      <a href="#pricing">Tarifs</a>
+      <a href="#founders">Fondateurs</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://admin.nederly.io" class="nav-cta">Inscrire ma synagogue<span class="nav-cta-dot" aria-hidden="true"></span></a>
+    </nav></div></div>
+  </header>
+  <div class="nav-scrim" aria-hidden="true"></div>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-noise" aria-hidden="true"></div>
-
-    <div class="container hero-container">
-      <!-- Texte -->
-      <div class="hero-content">
-        <h1>
-          Vos <span class="text-gold-hero">Aliyot</span><br>
-          méritent mieux.
-        </h1>
-        <div class="hero-tagline">Enchères en temps réel, paiements automatiques, reçus Cerfa instantanés. Vos fidèles enchérissent depuis leur téléphone, vous gérez tout depuis un dashboard.</div>
-        <div class="hero-cta-group">
-          <a href="#download" class="btn btn-hero">
-            Être prévenu du lancement de l'app
-          </a>
-          <a href="https://admin.nederly.io" class="btn btn-hero-secondary">
-            Je suis Gabay : inscrire ma synagogue →
-          </a>
-        </div>
-        <div class="hero-trust-row">
-          <span class="hero-trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            Validé halakhiquement
-          </span>
-          <span class="hero-trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Paiements sécurisés Stripe
-          </span>
-          <span class="hero-trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Fermeture automatique avant Shabbat
-          </span>
-        </div>
+    <div class="container">
+      <h1><span class="sr-only">Qui montera à la Torah ce Shabbat ?</span><span aria-hidden="true" data-split>Qui montera à la Torah ce Shabbat&nbsp;?</span></h1>
+      <p class="hero-sub hero-rise" style="--d: 0.9s">Vos fidèles enchérissent sur les Aliyot depuis leur téléphone jusqu'à vendredi. Nederly clôture avant Shabbat, encaisse et envoie les reçus Cerfa.</p>
+      <div class="hero-pills hero-rise" style="--d: 1.05s">
+        <span class="hero-pill"><span class="hero-pill-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-roll="Enchères de Aliyot|Dons en ligne|Reçus Cerfa">Enchères de Aliyot</span></span>
+        <span class="hero-pill is-raised"><span class="hero-pill-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-roll="Clôture avant Shabbat|Débité seulement si l'on gagne|Versements chaque mois" data-offset="900">Clôture avant Shabbat</span></span>
+        <span class="hero-pill"><span class="hero-pill-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-roll="Gratuit pour les fidèles|Paiement Stripe|Position halakhique publiée" data-offset="1800">Gratuit pour les fidèles</span></span>
       </div>
-
-      <!-- Right: floating screenshots -->
-      <div class="hero-visual">
-        <!-- Main phone: bid detail screen -->
-        <div class="hero-phone hero-phone-main">
-          <div class="phone-frame-img">
-            <img src="assets/screen-mobile-3.png" alt="Ecran d'enchère Nederly - enchères de Aliyot en temps réel" class="phone-screenshot" width="240" height="520">
-          </div>
-        </div>
-
-        <!-- Secondary phone: encheres list -->
-        <div class="hero-phone hero-phone-secondary">
-          <div class="phone-frame-img">
-            <img src="assets/screen-mobile-2.png" alt="Liste des enchères de Aliyot sur l'application Nederly" class="phone-screenshot" width="200" height="433" loading="lazy">
-          </div>
-        </div>
-
-        <!-- Floating notification -->
-        <div class="hero-notif">
-          <div class="hero-notif-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <div class="hero-notif-text">
-            <strong>Félicitations !</strong>
-            <span>Vous avez remporté Maftir</span>
-          </div>
-        </div>
+      <div class="hero-ctas hero-rise" style="--d: 1.2s">
+        <a href="https://admin.nederly.io" class="btn-pill"><span class="btn-pill-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Inscrire ma synagogue</a>
+        <a href="#download" class="btn-pill-ghost">Être prévenu du lancement</a>
+      </div>
+      <a href="#founders" class="hero-count hero-rise" style="--d: 1.35s"><b><span data-founders-remaining>100</span> places</b> Synagogues Fondatrices encore ouvertes</a>
+    </div>
+    <div class="aliyot-marquee hero-rise" style="--d: 1.5s" aria-hidden="true">
+      <div class="aliyot-track">
+        <span class="aliyot-item"><span lang="he" dir="rtl">כהן</span>Cohen</span><span class="aliyot-item"><span lang="he" dir="rtl">לוי</span>Lévi</span><span class="aliyot-item"><span lang="he" dir="rtl">שלישי</span>Shlishi</span><span class="aliyot-item"><span lang="he" dir="rtl">רביעי</span>Revi'i</span><span class="aliyot-item"><span lang="he" dir="rtl">חמישי</span>Hamishi</span><span class="aliyot-item"><span lang="he" dir="rtl">שישי</span>Shishi</span><span class="aliyot-item"><span lang="he" dir="rtl">שביעי</span>Shevi'i</span><span class="aliyot-item"><span lang="he" dir="rtl">מפטיר</span>Maftir</span><span class="aliyot-item"><span lang="he" dir="rtl">חתן תורה</span>Hatan Torah</span><span class="aliyot-item"><span lang="he" dir="rtl">חתן בראשית</span>Hatan Bereshit</span>
+        <span class="aliyot-item"><span lang="he" dir="rtl">כהן</span>Cohen</span><span class="aliyot-item"><span lang="he" dir="rtl">לוי</span>Lévi</span><span class="aliyot-item"><span lang="he" dir="rtl">שלישי</span>Shlishi</span><span class="aliyot-item"><span lang="he" dir="rtl">רביעי</span>Revi'i</span><span class="aliyot-item"><span lang="he" dir="rtl">חמישי</span>Hamishi</span><span class="aliyot-item"><span lang="he" dir="rtl">שישי</span>Shishi</span><span class="aliyot-item"><span lang="he" dir="rtl">שביעי</span>Shevi'i</span><span class="aliyot-item"><span lang="he" dir="rtl">מפטיר</span>Maftir</span><span class="aliyot-item"><span lang="he" dir="rtl">חתן תורה</span>Hatan Torah</span><span class="aliyot-item"><span lang="he" dir="rtl">חתן בראשית</span>Hatan Bereshit</span>
       </div>
     </div>
-
   </section>
 
-  <!-- Founders Banner -->
-  <section class="founders-banner" id="founders">
-    <div class="container">
-      <div class="founders-banner-inner">
-        <div class="founders-badge">Offre Synagogues Fondatrices</div>
-        <h2 class="founders-title">Bloquez votre tarif à vie.</h2>
-        <p class="founders-desc">
-          Les <strong>100 premières synagogues</strong> qui rejoignent Nederly bénéficient d'un tarif fondateur garanti pour toujours :
-          <strong>15€/mois + 0,5% de commission</strong>, sans aucune augmentation, jamais.
-          Plus l'onboarding personnalisé, le badge Synagogue Fondatrice et l'accès direct à notre comité produit.
-        </p>
-        <div class="founders-perks">
-          <span class="founders-perk">Tarif à vie garanti</span>
-          <span class="founders-perk">Commission réduite à 0,5%</span>
-          <span class="founders-perk">Onboarding personnalisé</span>
-          <span class="founders-perk">Badge Synagogue Fondatrice</span>
-          <span class="founders-perk">Accès au comité produit</span>
-        </div>
-        <a href="https://admin.nederly.io?ref=founders" class="btn btn-founders">
-          Réserver ma place de Fondateur
-        </a>
-        <div class="founders-counter-line">
-          <span class="founders-counter-dot"></span>
-          <span class="founders-counter" id="foundersCounter">100</span>
-          places encore disponibles sur 100
-        </div>
+  <!-- Fondateurs : le registre des 100 places -->
+  <section class="founders" id="founders">
+    <div class="container founders-grid">
+      <div>
+        <span class="section-tag">Synagogues Fondatrices</span>
+        <h2>La place n°&nbsp;<span id="foundersNextSeat">001</span> est encore libre.</h2>
+        <p class="founders-lead">Les 100 premières synagogues gardent 15&nbsp;€/mois + 0,5&nbsp;% de commission à vie, même quand nos prix publics augmenteront.</p>
+        <ul class="founders-list">
+          <li>Mise en route faite avec vous</li>
+          <li>Badge Synagogue Fondatrice</li>
+          <li>Accès direct au comité produit</li>
+        </ul>
+        <a href="https://admin.nederly.io?ref=founders" class="btn-pill"><span class="btn-pill-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Réserver ma place</a>
+      </div>
+      <div class="seats-card">
+        <div class="seats-top"><b data-founders-remaining id="foundersCounter">100</b><span>places libres sur 100</span></div>
+        <div class="seats" id="foundersSeats" aria-hidden="true"></div>
+        <div class="seats-legend" aria-hidden="true"><span><i></i>libre</span><span><i class="is-taken"></i>réservée</span></div>
       </div>
     </div>
   </section>

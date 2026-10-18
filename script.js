@@ -2,32 +2,33 @@
 // NEDERLY LANDING PAGE — SCRIPTS
 // ============================================
 
-// Navbar scroll effect
+// Navbar : ombre plus marquée après défilement
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  navbar.classList.toggle('scrolled', window.scrollY > 24);
+}, { passive: true });
+
+// Menu mobile : la capsule s'étire vers le bas, la page derrière se floute
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navPanel = document.getElementById('navPanel');
+
+function setMenu(open) {
+  navbar.classList.toggle('is-open', open);
+  document.body.classList.toggle('menu-open', open);
+  mobileMenuBtn.setAttribute('aria-expanded', String(open));
+  mobileMenuBtn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+}
+
+mobileMenuBtn.addEventListener('click', () => setMenu(!navbar.classList.contains('is-open')));
+navPanel.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+document.querySelector('.nav-scrim').addEventListener('click', () => setMenu(false));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navbar.classList.contains('is-open')) {
+    setMenu(false);
+    mobileMenuBtn.focus();
   }
 });
-
-// Mobile menu toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.getElementById('navLinks');
-
-mobileMenuBtn.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  mobileMenuBtn.classList.toggle('active');
-});
-
-// Close mobile menu on link click
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    mobileMenuBtn.classList.remove('active');
-  });
-});
+window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 
 // Scroll reveal animations
 const revealElements = document.querySelectorAll(
@@ -58,7 +59,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      const offset = 80;
+      const offset = 96;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -108,18 +109,106 @@ function switchParcours(target) {
   update();
 })();
 
-// Founders counter — fetch real-time count (placeholder, defaults to 100 if API not ready)
+// Hero : titre révélé lettre à lettre et pastilles dont le texte roule
 (function () {
-  const counter = document.getElementById('foundersCounter');
-  if (!counter) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // TODO: replace with real API call when backend ready
-  // fetch('https://api.nederly.io/founders/remaining')
-  //   .then(r => r.json())
-  //   .then(data => { counter.textContent = data.remaining; });
+  // Chaque mot reste insécable (les espaces insécables, comme avant « ? », sont gardés)
+  document.querySelectorAll('[data-split]').forEach((el) => {
+    if (reduce) return;
+    let i = 0;
+    const frag = document.createDocumentFragment();
+    el.textContent.split(/([ \t\n]+)/).forEach((part) => {
+      if (!part) return;
+      if (!part.trim()) { frag.appendChild(document.createTextNode(' ')); return; }
+      const word = document.createElement('span');
+      word.className = 'split-word';
+      [...part].forEach((ch) => {
+        const c = document.createElement('span');
+        c.className = 'split-char';
+        c.style.setProperty('--i', i++);
+        c.textContent = ch;
+        word.appendChild(c);
+      });
+      frag.appendChild(word);
+    });
+    el.textContent = '';
+    el.appendChild(frag);
+  });
 
-  // For now, display 100 (no Founder yet — pre-launch)
-  counter.textContent = '100';
+  // data-roll="a|b|c" : le texte suivant monte, l'ancien s'efface en flou
+  document.querySelectorAll('[data-roll]').forEach((el) => {
+    const items = el.dataset.roll.split('|');
+    if (reduce || items.length < 2) return;
+    let idx = 0;
+    el.classList.add('roll');
+    el.innerHTML = '';
+    const first = document.createElement('span');
+    first.textContent = items[0];
+    el.appendChild(first);
+    const swap = () => {
+      if (document.hidden) return;
+      const cur = el.lastElementChild;
+      idx = (idx + 1) % items.length;
+      const next = document.createElement('span');
+      next.textContent = items[idx];
+      next.className = 'is-in';
+      el.style.width = cur.offsetWidth + 'px';
+      el.appendChild(next);
+      const w = next.offsetWidth;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        cur.classList.add('is-out');
+        next.classList.remove('is-in');
+        el.style.width = w + 'px';
+      }));
+      setTimeout(() => { cur.remove(); el.style.width = ''; }, 650);
+    };
+    setTimeout(() => { swap(); setInterval(swap, 3200); }, 1800 + Number(el.dataset.offset || 0));
+  });
+})();
+
+// Synagogues Fondatrices : places restantes, registre des 100 places et compteur à rouleaux
+(function () {
+  const TOTAL = 100;
+  // TODO: remplacer par l'appel API quand le backend sera prêt
+  // fetch('https://api.nederly.io/founders/remaining').then(r => r.json()).then(data => render(data.remaining));
+  // Aujourd'hui : aucune synagogue fondatrice inscrite, les 100 places sont libres.
+  const remaining = 100;
+  const taken = TOTAL - remaining;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pad = (n) => String(n).padStart(3, '0');
+
+  const seats = document.getElementById('foundersSeats');
+  if (seats) {
+    seats.innerHTML = Array.from({ length: TOTAL }, (_, i) => {
+      const state = i < taken ? ' is-taken' : (i === taken ? ' is-next' : '');
+      return '<span class="seat' + state + '">' + pad(i + 1) + '</span>';
+    }).join('');
+  }
+  const nextSeat = document.getElementById('foundersNextSeat');
+  if (nextSeat && taken < TOTAL) nextSeat.textContent = pad(taken + 1);
+
+  // Le nombre reste du texte simple ; quand le compteur entre à l'écran, ses chiffres
+  // défilent depuis 0 puis il redevient du texte.
+  document.querySelectorAll('[data-founders-remaining]').forEach((el) => {
+    const value = String(remaining);
+    el.textContent = value;
+    if (reduce) return;
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      el.innerHTML = [...value].map(() => '<span class="count-col"><span class="count-strip">' +
+        '0123456789'.split('').map((d) => '<span>' + d + '</span>').join('') + '</span></span>').join('');
+      const strips = el.querySelectorAll('.count-strip');
+      void el.offsetWidth;
+      strips.forEach((strip, k) => {
+        strip.style.transitionDelay = (300 + k * 120) + 'ms';
+        strip.style.transform = 'translateY(-' + value[k] + 'em)';
+      });
+      setTimeout(() => { el.textContent = value; }, 2400);
+    });
+    observer.observe(el);
+  });
 })();
 
 // Démo « Enchères en temps réel » : vous enchérissez (+40 €), le prix roule chiffre
@@ -365,8 +454,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     '.steps-line',
     '.calc-plans',
     '.bottom-cards-grid',
-    '.faq-grid',
-    '.founders-perks'
+    '.faq-grid'
   ];
   staggerParents.forEach(sel => {
     document.querySelectorAll(sel).forEach(el => el.classList.add('stagger'));
