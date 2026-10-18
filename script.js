@@ -211,6 +211,83 @@ function switchParcours(target) {
   });
 })();
 
+// Vidéo sous le hero : une seule source chargée (16:9 ou 9:16 selon la largeur),
+// lecture muette quand le bloc est visible, pause hors écran ou onglet caché.
+(function () {
+  const video = document.querySelector('[data-showreel]');
+  if (!video) return;
+  const frame = video.closest('.showreel-frame');
+  const soundBtn = frame.querySelector('.showreel-sound');
+  const soundLabel = soundBtn.querySelector('.showreel-sound-label');
+  const playBtn = frame.querySelector('.showreel-play');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tall = window.matchMedia('(max-width: 767px)');
+  let inView = false;
+  let pausedByUser = reduce;
+
+  const format = () => (tall.matches ? 'Tall' : 'Wide');
+
+  function load() {
+    const f = format();
+    if (video.dataset.loaded === f) return;
+    video.src = video.dataset['src' + f];
+    video.preload = 'auto';
+    video.dataset.loaded = f;
+  }
+
+  function play() {
+    load();
+    const p = video.play();
+    if (p) p.catch(() => { playBtn.hidden = false; });
+  }
+
+  function sync() {
+    if (inView && !pausedByUser && !document.hidden) play();
+    else if (!video.paused) video.pause();
+  }
+
+  video.addEventListener('play', () => { playBtn.hidden = true; });
+  video.addEventListener('pause', () => { if (pausedByUser) playBtn.hidden = false; });
+
+  // Lecture et pause à la demande (bouton central, ou clic sur la vidéo)
+  playBtn.addEventListener('click', () => { pausedByUser = false; play(); });
+  video.addEventListener('click', () => {
+    if (video.paused) { pausedByUser = false; play(); }
+    else { pausedByUser = true; video.pause(); }
+  });
+
+  soundBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    const label = video.muted ? 'Activer le son' : 'Couper le son';
+    soundLabel.textContent = label;
+    soundBtn.setAttribute('aria-label', label);
+    soundBtn.classList.toggle('is-on', !video.muted);
+  });
+
+  // Préchargement à l'approche du bloc, lecture quand il est bien visible
+  if (!reduce) {
+    new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) load();
+    }, { rootMargin: '400px 0px' }).observe(frame);
+  }
+  new IntersectionObserver((entries) => {
+    inView = entries[0].isIntersecting;
+    sync();
+  }, { threshold: 0.4 }).observe(frame);
+
+  document.addEventListener('visibilitychange', sync);
+
+  // Passage bureau ↔ mobile : on change de source seulement si une vidéo était chargée
+  tall.addEventListener('change', () => {
+    if (!video.dataset.loaded) return;
+    video.pause();
+    load();
+    sync();
+  });
+
+  if (reduce) playBtn.hidden = false;
+})();
+
 // Démo « Enchères en temps réel » : vous enchérissez (+40 €), le prix roule chiffre
 // par chiffre et votre rang passe à 1er ; Moshe R. surenchérit, vous passez 2e et la
 // notification arrive ; vous remontez à 320 €, l'enchère se clôture avant Shabbat et
