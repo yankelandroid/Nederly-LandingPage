@@ -31,7 +31,7 @@ navLinks.querySelectorAll('a').forEach(link => {
 
 // Scroll reveal animations
 const revealElements = document.querySelectorAll(
-  '.feature-card, .step-card, .pricing-card, .pricing-free-banner, .synagogues-content, .synagogues-visual, .download-card, .section-header, .bottom-card, .testimonial-card, .faq-item'
+  '.feature-card, .step-card, .pricing-card, .pricing-free-banner, .synagogues-content, .synagogues-visual, .download-card, .section-header, .bottom-card, .faq-item'
 );
 
 revealElements.forEach(el => el.classList.add('reveal'));
@@ -118,156 +118,221 @@ function switchParcours(target) {
   counter.textContent = '100';
 })();
 
-// Live bid feed — cinematic replay (count-up numbers, timer, sync)
+// Démo « Enchères en temps réel » : vous enchérissez (+40 €), le prix roule chiffre
+// par chiffre et votre rang passe à 1er ; Moshe R. surenchérit, vous passez 2e et la
+// notification arrive ; vous remontez à 320 €, l'enchère se clôture avant Shabbat et
+// vous la remportez.
+// Hauteur fixe : tout change sur place. En pause hors écran ;
+// statique si l'utilisateur limite les animations (le HTML porte l'état final).
 (function () {
-  const liveFeed = document.querySelector('.live-feed');
-  if (!liveFeed) return;
+  const root = document.querySelector('[data-auction-demo]');
+  if (!root) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (sel) => root.querySelector(sel);
+  const priceValue = $('.ad-price-value');
+  const lead = $('.ad-lead');
+  const leadText = $('.ad-lead-text');
+  const chips = root.querySelectorAll('.ad-chip');
+  const cta = $('.ad-cta');
+  const ctaLabel = $('.ad-cta-label');
+  const toast = $('.ad-toast');
+  const delta = $('.ad-delta');
+  const rank = $('.ad-rank');
+  const rankLabel = $('.ad-rank-label');
+  const status = $('.ad-status');
+  const statusText = $('.ad-status-text');
+  const bidZone = $('.ad-bid');
+  const footerText = $('.ad-footer-text');
+  const toastTitle = $('.ad-toast-title');
+  const toastBody = $('.ad-toast-body');
 
-  // Animation timings (ms) — MUST match CSS delays
-  const BID_DELAYS = [400, 1700, 3000];
-  const ALERT_DELAY = 3600;
-  const LOOP_DURATION = 7000;
+  const eur = (n) => n + ' €';
 
-  const amountElements = liveFeed.querySelectorAll('[data-bid-target]');
-  const bids = liveFeed.querySelectorAll('.live-bid');
-  const alertEl = liveFeed.querySelector('.live-feed-alert');
-  const crown = liveFeed.querySelector('.live-bid-crown');
-  const sparkles = liveFeed.querySelectorAll('.sparkle');
-  const progressFill = liveFeed.querySelector('.lfp-fill');
-
-  // Format 280 -> "280 €"
-  function fmt(n) { return Math.round(n).toString() + ' €'; }
-
-  // Animate a single number from 0 -> target
-  function countUp(el, target, duration = 700) {
-    const start = performance.now();
-    const ease = t => 1 - Math.pow(1 - t, 3);
-    function tick(now) {
-      const p = Math.min((now - start) / duration, 1);
-      el.textContent = fmt(target * ease(p));
-      if (p < 1) requestAnimationFrame(tick);
-      else el.textContent = fmt(target);
+  // --- Compteur à rouleaux (3 chiffres) ---
+  const strips = [];
+  priceValue.textContent = '';
+  for (let i = 0; i < 3; i++) {
+    const digit = document.createElement('span');
+    digit.className = 'ad-digit';
+    const strip = document.createElement('span');
+    strip.className = 'ad-digit-strip';
+    for (let n = 0; n <= 9; n++) {
+      const s = document.createElement('span');
+      s.textContent = String(n);
+      strip.appendChild(s);
     }
-    requestAnimationFrame(tick);
+    digit.appendChild(strip);
+    priceValue.appendChild(digit);
+    strips.push(strip);
   }
-
-  // Reset all pieces and re-trigger their CSS animations
-  const animatedEls = [...bids, alertEl, crown, ...sparkles, progressFill].filter(Boolean);
-
-  let scheduledTimers = [];
-  function clearTimers() {
-    scheduledTimers.forEach(id => clearTimeout(id));
-    scheduledTimers = [];
-  }
-
-  function replayFeed() {
-    clearTimers();
-
-    // Reset numbers to 0
-    amountElements.forEach(el => { el.textContent = '0 €'; });
-
-    // Reset CSS animations by briefly stripping them
-    animatedEls.forEach(el => {
-      el.style.animation = 'none';
-      // eslint-disable-next-line no-unused-expressions
-      el.offsetHeight; // force reflow
-      el.style.animation = '';
+  function setPrice(value) {
+    String(value).padStart(3, '0').split('').forEach((d, i) => {
+      strips[i].style.transitionDelay = i * 70 + 'ms';
+      strips[i].style.transform = 'translateY(' + -Number(d) * 10 + '%)';
     });
+  }
+  // Avant le premier cycle, le compteur montre le même état final que le HTML.
+  root.classList.add('no-anim');
+  setPrice(320);
+  void root.offsetWidth;
+  root.classList.remove('no-anim');
 
-    if (prefersReduced) {
-      // Static snapshot for reduced-motion users
-      amountElements.forEach(el => {
-        el.textContent = fmt(parseFloat(el.dataset.bidTarget));
-      });
-      return;
-    }
-
-    // Count up each bid in sync with the CSS delay
-    bids.forEach((bid, i) => {
-      const amountEl = bid.querySelector('[data-bid-target]');
-      if (!amountEl) return;
-      const target = parseFloat(amountEl.dataset.bidTarget);
-      scheduledTimers.push(setTimeout(() => {
-        countUp(amountEl, target, 700);
-      }, BID_DELAYS[i] + 150)); // start slightly after the card enters
-    });
-
-    // Alert amount count-up
-    const alertAmount = liveFeed.querySelector('.live-alert-amount');
-    if (alertAmount) {
-      const target = parseFloat(alertAmount.dataset.bidTarget);
-      scheduledTimers.push(setTimeout(() => {
-        countUp(alertAmount, target, 500);
-      }, ALERT_DELAY + 150));
-    }
+  // --- Écart de prix (+40 €, +20 €) qui apparaît puis s'efface ---
+  function showDelta(text, tone) {
+    delta.textContent = text;
+    delta.dataset.tone = tone;
+    delta.classList.remove('is-showing');
+    void delta.offsetWidth;
+    delta.classList.add('is-showing');
   }
 
-  // Live countdown timer HH:MM:SS
-  const timerEl = liveFeed.querySelector('.live-timer-value');
-  if (timerEl && !prefersReduced) {
-    let totalSeconds = 2 * 3600 + 34 * 60 + 12;
-    function updateTimer() {
-      const h = Math.floor(totalSeconds / 3600);
-      const m = Math.floor((totalSeconds % 3600) / 60);
-      const s = totalSeconds % 60;
-      const pad = n => String(n).padStart(2, '0');
-      timerEl.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
-      totalSeconds = totalSeconds > 0 ? totalSeconds - 1 : 2 * 3600 + 34 * 60 + 12;
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
+  // --- Petits états ---
+  function swapText(container, el, text) {
+    container.classList.add('is-swapping');
+    later(() => {
+      el.textContent = text;
+      container.classList.remove('is-swapping');
+    }, 180);
+  }
+  function setLead(state, text) {
+    lead.dataset.state = state;
+    swapText(lead, leadText, text);
+  }
+  function press(el) {
+    el.classList.remove('is-pressed');
+    void el.offsetWidth; // relance l'onde même si la classe était déjà là
+    el.classList.add('is-pressed');
+    later(() => el.classList.remove('is-pressed'), 260);
   }
 
-  // Start once visible; replay continuously
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        replayFeed();
-      }
-    });
-  }, { threshold: 0.3 });
-  io.observe(liveFeed);
+  // --- Boucle ---
+  let timers = [];
+  let running = false;
+  let inView = false;
+  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+  function stop() {
+    timers.forEach(clearTimeout);
+    timers = [];
+    running = false;
+  }
 
-  // Replay on interval
-  setInterval(replayFeed, LOOP_DURATION);
+  function reset() {
+    root.classList.add('no-anim');
+    setPrice(220);
+    lead.dataset.state = 'other';
+    rank.dataset.state = 'none';
+    rankLabel.textContent = 'Votre rang';
+    status.dataset.state = 'open';
+    statusText.textContent = 'En cours';
+    bidZone.classList.remove('is-ended');
+    footerText.textContent = 'Clôture automatique vendredi à 17\u00a0h\u00a042, avant Shabbat';
+    toastTitle.textContent = 'Vous avez été surenchéri';
+    toastBody.textContent = 'Aliyah Shéni : nouvelle offre de ' + eur(280);
+    leadText.textContent = 'Yossef M. est en tête';
+    ctaLabel.textContent = 'Enchérir ' + eur(260);
+    cta.classList.remove('is-sent', 'is-swapping');
+    chips.forEach((c, i) => c.classList.toggle('is-selected', i === 1));
+    toast.classList.remove('is-visible');
+    delta.classList.remove('is-showing');
+    void root.offsetWidth;
+    root.classList.remove('no-anim');
+  }
+
+  function cycle() {
+    running = true;
+    root.classList.add('is-resetting');
+    later(() => {
+      reset();
+      root.classList.remove('is-resetting');
+    }, 300);
+
+    // Vous choisissez +40 € puis enchérissez 260 €.
+    later(() => press(chips[1]), 1500);
+    later(() => press(cta), 2300);
+    later(() => {
+      cta.classList.add('is-sent');
+      swapText(cta, ctaLabel, 'Offre envoyée');
+      setPrice(260);
+      showDelta('+40\u00a0€', 'you');
+      setLead('you', 'Vous êtes en tête');
+      rank.dataset.state = 'you';
+    }, 2450);
+    later(() => {
+      cta.classList.remove('is-sent');
+      swapText(cta, ctaLabel, 'Enchérir ' + eur(300));
+    }, 3700);
+
+    // Moshe R. surenchérit : statut et prix, puis la notification.
+    later(() => {
+      setPrice(280);
+      showDelta('+20\u00a0€', 'other');
+      setLead('outbid', 'Moshe R. vous a dépassé');
+      rank.dataset.state = 'outbid';
+      swapText(cta, ctaLabel, 'Enchérir ' + eur(320));
+    }, 5600);
+    later(() => toast.classList.add('is-visible'), 6100);
+    later(() => toast.classList.remove('is-visible'), 8400);
+
+    // Vous remontez à 320 € et repassez en tête.
+    later(() => press(cta), 8900);
+    later(() => {
+      cta.classList.add('is-sent');
+      swapText(cta, ctaLabel, 'Offre envoyée');
+      setPrice(320);
+      showDelta('+40\u00a0€', 'you');
+      setLead('you', 'Vous êtes en tête');
+      rank.dataset.state = 'you';
+    }, 9050);
+
+    // Vendredi 17 h 42 : clôture automatique, vous remportez l'Aliyah.
+    later(() => {
+      cta.classList.remove('is-sent');
+      bidZone.classList.add('is-ended');
+      swapText(cta, ctaLabel, 'Enchère terminée');
+      status.dataset.state = 'closed';
+      swapText(status, statusText, 'Clôturée');
+      swapText(footerText.parentElement, footerText, 'Clôturée vendredi à 17\u00a0h\u00a042, avant Shabbat');
+    }, 10600);
+    later(() => {
+      setLead('won', "Vous avez remporté l'Aliyah");
+      rank.dataset.state = 'won';
+      swapText(rank, rankLabel, 'Remportée');
+    }, 11000);
+    later(() => {
+      toastTitle.textContent = 'Aliyah Shéni remportée';
+      toastBody.textContent = eur(320) + ' débités · reçu Cerfa envoyé par email';
+      toast.classList.add('is-visible');
+    }, 11500);
+    later(() => toast.classList.remove('is-visible'), 14300);
+    later(cycle, 15200);
+  }
+
+  new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      inView = entry.isIntersecting;
+      if (inView && !running && !document.hidden) cycle();
+      else if (!inView && running) stop();
+    });
+  }, { threshold: 0.35 }).observe(root);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else if (inView && !running) cycle();
+  });
 })();
 
 // ============================================================
-// v3 — MODERN UI ENHANCEMENTS
+// Utilitaires
 // ============================================================
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// ---------- Scroll progress bar ----------
-(function () {
-  const bar = document.createElement('div');
-  bar.className = 'scroll-progress';
-  document.body.appendChild(bar);
-
-  let ticking = false;
-  function update() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width = progress + '%';
-    ticking = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-  update();
-})();
 
 // ---------- Back-to-top button ----------
 (function () {
   const btn = document.createElement('button');
   btn.className = 'back-to-top';
   btn.setAttribute('aria-label', 'Retour en haut');
-  btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
   document.body.appendChild(btn);
 
   btn.addEventListener('click', () => {
@@ -287,53 +352,12 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   }, { passive: true });
 })();
 
-// ---------- Hero H1 word-split for staggered reveal ----------
-(function () {
-  const h1 = document.querySelector('.hero h1');
-  if (!h1 || prefersReducedMotion) return;
-
-  // Split text nodes into <span class="word"> tokens while preserving <br> and existing spans
-  const tokenize = (node) => {
-    if (node.nodeType === Node.TEXT_NODE) {
-      const frag = document.createDocumentFragment();
-      const parts = node.textContent.split(/(\s+)/);
-      parts.forEach(part => {
-        if (part.trim() === '') {
-          frag.appendChild(document.createTextNode(part));
-        } else {
-          const span = document.createElement('span');
-          span.className = 'word';
-          span.textContent = part;
-          frag.appendChild(span);
-        }
-      });
-      node.parentNode.replaceChild(frag, node);
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      if (node.tagName === 'BR') return;
-      if (node.classList && node.classList.contains('text-gold-hero')) {
-        // wrap the whole gold phrase as one animated word
-        node.classList.add('word');
-        return;
-      }
-      Array.from(node.childNodes).forEach(tokenize);
-    }
-  };
-  Array.from(h1.childNodes).forEach(tokenize);
-
-  // Re-index nth-child delays (all .word siblings of h1 should animate)
-  const words = h1.querySelectorAll('.word');
-  words.forEach((w, i) => {
-    w.style.animationDelay = (0.1 + i * 0.12) + 's';
-  });
-})();
-
 // ---------- Enhanced staggered reveal observer (override with direction detection) ----------
 (function () {
   // Add stagger class to grid parents whose direct children are reveal items
   const staggerParents = [
     '.features-grid',
     '.steps-grid',
-    '.testimonials-grid',
     '.pricing-grid',
     '.bottom-cards-grid',
     '.faq-list',
@@ -341,288 +365,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   ];
   staggerParents.forEach(sel => {
     document.querySelectorAll(sel).forEach(el => el.classList.add('stagger'));
-  });
-})();
-
-// ---------- Hero mouse-follow glow + subtle parallax ----------
-(function () {
-  const hero = document.querySelector('.hero');
-  if (!hero || prefersReducedMotion) return;
-
-  const glow1 = hero.querySelector('.hero-glow-1');
-  const glow2 = hero.querySelector('.hero-glow-2');
-
-  let rafId = null;
-  let targetX = 50, targetY = 30;
-  let currentX = 50, currentY = 30;
-
-  hero.addEventListener('mousemove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    targetX = ((e.clientX - rect.left) / rect.width) * 100;
-    targetY = ((e.clientY - rect.top) / rect.height) * 100;
-    if (!rafId) rafId = requestAnimationFrame(animate);
-  });
-
-  hero.addEventListener('mouseleave', () => {
-    targetX = 50;
-    targetY = 30;
-  });
-
-  function animate() {
-    currentX += (targetX - currentX) * 0.08;
-    currentY += (targetY - currentY) * 0.08;
-    hero.style.setProperty('--mx', currentX + '%');
-    hero.style.setProperty('--my', currentY + '%');
-
-    if (glow1) {
-      const dx = (currentX - 50) * 0.3;
-      const dy = (currentY - 50) * 0.3;
-      glow1.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
-    }
-    if (glow2) {
-      const dx = (currentX - 50) * -0.2;
-      const dy = (currentY - 50) * -0.2;
-      glow2.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
-    }
-
-    if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
-      rafId = requestAnimationFrame(animate);
-    } else {
-      rafId = null;
-    }
-  }
-})();
-
-// ---------- 3D tilt on hero phones ----------
-(function () {
-  const visual = document.querySelector('.hero-visual');
-  if (!visual || prefersReducedMotion) return;
-  // Skip tilt on touch-primary devices
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-
-  const MAX_TILT = 8;
-  let rafId = null;
-  let targetRx = 0, targetRy = 0;
-  let curRx = 0, curRy = 0;
-
-  visual.addEventListener('mouseenter', () => visual.classList.add('tilting'));
-  visual.addEventListener('mousemove', (e) => {
-    const rect = visual.getBoundingClientRect();
-    const nx = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 .. 0.5
-    const ny = (e.clientY - rect.top) / rect.height - 0.5;
-    targetRy = nx * MAX_TILT * 2;
-    targetRx = -ny * MAX_TILT * 2;
-    if (!rafId) rafId = requestAnimationFrame(animate);
-  });
-  visual.addEventListener('mouseleave', () => {
-    targetRx = 0;
-    targetRy = 0;
-    if (!rafId) rafId = requestAnimationFrame(animate);
-  });
-
-  function animate() {
-    curRx += (targetRx - curRx) * 0.12;
-    curRy += (targetRy - curRy) * 0.12;
-    visual.style.setProperty('--rx', curRx.toFixed(2) + 'deg');
-    visual.style.setProperty('--ry', curRy.toFixed(2) + 'deg');
-
-    if (Math.abs(targetRx - curRx) > 0.05 || Math.abs(targetRy - curRy) > 0.05) {
-      rafId = requestAnimationFrame(animate);
-    } else {
-      rafId = null;
-      if (Math.abs(curRx) < 0.1 && Math.abs(curRy) < 0.1) {
-        visual.classList.remove('tilting');
-      }
-    }
-  }
-})();
-
-// ---------- Feature & testimonial card spotlight (mouse position as CSS var) ----------
-(function () {
-  if (prefersReducedMotion) return;
-  const cards = document.querySelectorAll('.feature-card, .testimonial-card, .step-card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty('--mx', x + '%');
-      card.style.setProperty('--my', y + '%');
-    });
-  });
-})();
-
-// ---------- Magnetic effect on primary CTAs ----------
-(function () {
-  if (prefersReducedMotion) return;
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  const magnets = document.querySelectorAll('.btn-hero, .btn-founders, .nav-cta');
-  magnets.forEach(btn => {
-    const STRENGTH = 14;
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-      btn.style.transform = `translate3d(${x * STRENGTH}px, ${y * STRENGTH - 2}px, 0)`;
-    });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-    });
-  });
-})();
-
-// ---------- Count-up numbers on reveal ----------
-(function () {
-  const counters = document.querySelectorAll('[data-count]');
-  if (!counters.length) return;
-
-  const easeOut = t => 1 - Math.pow(1 - t, 3);
-
-  function animateCount(el) {
-    const target = parseFloat(el.dataset.count);
-    const suffix = el.dataset.countSuffix || '';
-    const duration = 1600;
-    const start = performance.now();
-    const isInt = Number.isInteger(target);
-
-    function tick(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = target * easeOut(progress);
-      el.textContent = (isInt ? Math.round(value) : value.toFixed(1)) + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = (isInt ? target : target.toFixed(1)) + suffix;
-    }
-    requestAnimationFrame(tick);
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.dataset.counted) {
-        entry.target.dataset.counted = '1';
-        if (prefersReducedMotion) {
-          const t = parseFloat(entry.target.dataset.count);
-          const s = entry.target.dataset.countSuffix || '';
-          entry.target.textContent = (Number.isInteger(t) ? t : t.toFixed(1)) + s;
-        } else {
-          animateCount(entry.target);
-        }
-      }
-    });
-  }, { threshold: 0.4 });
-
-  counters.forEach(el => io.observe(el));
-})();
-
-// ---------- Hero: subtle animated starfield (gold dust particles) ----------
-(function () {
-  const canvas = document.getElementById('heroStars');
-  if (!canvas || prefersReducedMotion) return;
-
-  const ctx = canvas.getContext('2d');
-  let width = 0, height = 0, stars = [];
-  const STAR_COUNT = 70;
-  let rafId = null;
-
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = rect.width;
-    height = rect.height;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    ctx.scale(dpr, dpr);
-  }
-
-  function makeStars() {
-    stars = [];
-    for (let i = 0; i < STAR_COUNT; i++) {
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 1.3 + 0.3,
-        a: Math.random() * 0.6 + 0.2,
-        vx: (Math.random() - 0.5) * 0.08,
-        vy: (Math.random() - 0.5) * 0.08,
-        twinkle: Math.random() * Math.PI * 2,
-      });
-    }
-  }
-
-  function draw(t) {
-    ctx.clearRect(0, 0, width, height);
-    for (const s of stars) {
-      s.x += s.vx;
-      s.y += s.vy;
-      s.twinkle += 0.03;
-      if (s.x < 0) s.x = width;
-      if (s.x > width) s.x = 0;
-      if (s.y < 0) s.y = height;
-      if (s.y > height) s.y = 0;
-      const alpha = s.a * (0.55 + 0.45 * Math.sin(s.twinkle));
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(201, 169, 98, ${alpha.toFixed(3)})`;
-      ctx.fill();
-    }
-    rafId = requestAnimationFrame(draw);
-  }
-
-  function start() {
-    resize();
-    makeStars();
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(draw);
-  }
-
-  start();
-  window.addEventListener('resize', () => {
-    // Debounce reflow
-    cancelAnimationFrame(rafId);
-    setTimeout(start, 100);
-  }, { passive: true });
-
-  // Pause when hero leaves viewport for perf
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (!rafId) rafId = requestAnimationFrame(draw);
-      } else {
-        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-      }
-    });
-  }, { threshold: 0 });
-  io.observe(canvas);
-})();
-
-// ---------- Testimonials: duplicate marquee content for seamless loop ----------
-(function () {
-  document.querySelectorAll('.marquee-track').forEach(track => {
-    // Clone children once so translateY(-50%) loops seamlessly
-    const originals = Array.from(track.children);
-    originals.forEach(node => {
-      const clone = node.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      track.appendChild(clone);
-    });
-  });
-})();
-
-// ---------- FAQ smooth expand on click (enhances existing toggle) ----------
-(function () {
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Ensure one-at-a-time accordion feel (optional polish)
-      const item = btn.parentElement;
-      const wasOpen = item.classList.contains('open');
-      // No close-others behavior to preserve current UX — just ripple the chevron
-      if (!wasOpen && !prefersReducedMotion) {
-        btn.animate(
-          [{ transform: 'scale(1)' }, { transform: 'scale(0.98)' }, { transform: 'scale(1)' }],
-          { duration: 220, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
-        );
-      }
-    });
   });
 })();
 
@@ -680,7 +422,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
       }
 
       form.style.display = 'none';
-      setFeedback('C\'est noté — vous serez prévenu dès la mise en ligne.', 'is-success');
+      setFeedback('C\'est noté : vous serez prévenu dès la mise en ligne.', 'is-success');
     } catch (error) {
       setFeedback(
         "Impossible d'enregistrer votre email pour le moment. Écrivez-nous à contact@nederly.io.",

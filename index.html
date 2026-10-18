@@ -34,7 +34,10 @@
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&text=%D7%A9%D7%A0%D7%99&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Schema.org structured data -->
@@ -159,42 +162,14 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
-
-    <!-- Aurora beams + noise texture backdrop -->
-    <div class="hero-aurora" aria-hidden="true">
-      <span class="aurora-beam aurora-beam-1"></span>
-      <span class="aurora-beam aurora-beam-2"></span>
-      <span class="aurora-beam aurora-beam-3"></span>
-    </div>
     <div class="hero-noise" aria-hidden="true"></div>
 
-    <!-- Animated star field -->
-    <canvas class="hero-stars" id="heroStars" aria-hidden="true"></canvas>
-
-    <!-- Scroll indicator -->
-    <div class="hero-scroll-indicator" aria-hidden="true">
-      <span class="scroll-line"></span>
-      <span class="scroll-label">SCROLL</span>
-    </div>
-
-    <!-- Side label (editorial vibe) -->
-    <div class="hero-side-label" aria-hidden="true">
-      <span>NEDERLY</span>
-      <span class="hero-side-dot"></span>
-      <span>EST. 2025</span>
-    </div>
-
     <div class="container hero-container">
-      <!-- Left: massive editorial text -->
+      <!-- Texte -->
       <div class="hero-content">
         <h1>
-          VOS<br>
-          <span class="text-gold-hero">ALIYOT</span><br>
-          MÉRITENT MIEUX
+          Vos <span class="text-gold-hero">Aliyot</span><br>
+          méritent mieux.
         </h1>
         <div class="hero-tagline">Enchères en temps réel, paiements automatiques, reçus Cerfa instantanés. Vos fidèles enchérissent depuis leur téléphone, vous gérez tout depuis un dashboard.</div>
         <div class="hero-cta-group">
@@ -207,15 +182,15 @@
         </div>
         <div class="hero-trust-row">
           <span class="hero-trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
             Validé halakhiquement
           </span>
           <span class="hero-trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             Paiements sécurisés Stripe
           </span>
           <span class="hero-trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             Fermeture automatique avant Shabbat
           </span>
         </div>
@@ -240,7 +215,7 @@
         <!-- Floating notification -->
         <div class="hero-notif">
           <div class="hero-notif-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div class="hero-notif-text">
             <strong>Félicitations !</strong>
@@ -256,7 +231,7 @@
   <section class="founders-banner" id="founders">
     <div class="container">
       <div class="founders-banner-inner">
-        <div class="founders-badge">OFFRE SYNAGOGUES FONDATRICES</div>
+        <div class="founders-badge">Offre Synagogues Fondatrices</div>
         <h2 class="founders-title">Bloquez votre tarif à vie.</h2>
         <p class="founders-desc">
           Les <strong>100 premières synagogues</strong> qui rejoignent Nederly bénéficient d'un tarif fondateur garanti pour toujours :
@@ -288,13 +263,13 @@
       <div class="bottom-cards-grid">
         <div class="bottom-card bottom-card-highlight">
           <div class="bottom-card-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <strong>Validé halakhiquement</strong>
           <span>Le modèle économique a été validé par un Rav de référence.</span>
           <a href="halakha.html" class="bottom-card-link">
             Lire la position halakhique
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
         <div class="bottom-card bottom-card-stat">
@@ -306,7 +281,7 @@
           <span style="opacity: 0.7; font-size: 0.85em; display: block; margin-top: 4px;">Les fonds collectés arrivent sur le compte bancaire de la synagogue.</span>
           <a href="#pricing" class="bottom-card-link">
             Voir les tarifs
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
       </div>
@@ -315,7 +290,6 @@
 
   <!-- Features Section -->
   <section class="features" id="features">
-    <div class="features-bg" aria-hidden="true"></div>
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Fonctionnalités</span>
@@ -329,7 +303,7 @@
         <div class="feature-card feature-card-large">
           <div class="feature-large-text">
             <div class="feature-icon-wrapper">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
             </div>
             <h3 class="feature-title" style="color: var(--gold);" >Enchères en temps réel</h3>
             <p style="color: var(--white);">
@@ -339,97 +313,59 @@
             </p>
           </div>
           <div class="feature-visual">
-            <div class="live-feed">
-              <!-- Ambient glow -->
-              <div class="live-feed-glow" aria-hidden="true"></div>
-
-              <!-- Header with radar sweep -->
-              <div class="live-feed-header">
-                <div class="live-indicator">
-                  <span class="live-dot">
-                    <span class="live-dot-ring"></span>
-                    <span class="live-dot-ring live-dot-ring-delay"></span>
-                  </span>
-                  LIVE
-                </div>
-                <div class="live-feed-info">
-                  <strong>Aliyah Rishon</strong>
-                  <span>Parashat Tetzaveh</span>
-                </div>
-                <div class="live-timer" data-live-timer>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  <span class="live-timer-value">02:34:12</span>
-                </div>
-              </div>
-
-              <!-- Viewers bar -->
-              <div class="live-viewers">
-                <div class="live-viewers-avatars">
-                  <span class="lva" style="background:#6366F1">D</span>
-                  <span class="lva" style="background:#10B981">M</span>
-                  <span class="lva" style="background:#EC4899">S</span>
-                  <span class="lva" style="background:#F97316">A</span>
-                  <span class="lva lva-more">+12</span>
-                </div>
-                <span class="live-viewers-label">
-                  <span class="live-viewers-dot"></span>
-                  16 fidèles regardent
+            <!-- Démo : écran d'enchère de l'app, piloté par script.js (auctionDemo).
+                 Hauteur fixe : tout change sur place (chiffres, rang, statut, bouton). -->
+            <div class="auction-demo" data-auction-demo>
+              <p class="sr-only">Exemple : vous enchérissez 260&nbsp;€ sur la Aliyah Shéni, Moshe&nbsp;R. propose 280&nbsp;€ et vous recevez une notification de surenchère ; vous remontez à 320&nbsp;€ et remportez l'Aliyah à la clôture, avant Shabbat.</p>
+              <div class="ad-toast" aria-hidden="true">
+                <img class="ad-toast-icon" src="assets/logo_new.png" alt="" width="32" height="32">
+                <span class="ad-toast-text">
+                  <strong class="ad-toast-title">Aliyah Shéni remportée</strong>
+                  <span class="ad-toast-body">320&nbsp;€ débités · reçu Cerfa envoyé par email</span>
                 </span>
+                <span class="ad-toast-time">maintenant</span>
               </div>
-
-              <!-- Bid items -->
-              <div class="live-feed-bids">
-                <div class="live-bid live-bid-1">
-                  <div class="live-bid-avatar" style="background: #6366F1;">D</div>
-                  <div class="live-bid-info">
-                    <span class="live-bid-name">David L.</span>
-                    <span class="live-bid-time">il y a 5 min</span>
+              <div class="ad-panel" aria-hidden="true">
+                <div class="ad-head">
+                  <div class="ad-item">
+                    <span class="ad-aliyah"><span class="ad-aliyah-he" lang="he" dir="rtl">שני</span></span>
+                    <div>
+                      <span class="ad-eyebrow">Parashat Tetzaveh · 2<sup>e</sup> montée</span>
+                      <span class="ad-title">Aliyah Shéni</span>
+                    </div>
                   </div>
-                  <span class="live-bid-amount" data-bid-target="180">180 €</span>
+                  <span class="ad-status" data-state="closed"><span class="ad-status-dot"></span><span class="ad-status-text">Clôturée</span></span>
                 </div>
-                <div class="live-bid live-bid-2">
-                  <div class="live-bid-avatar" style="background: var(--gold); color: var(--navy);">Y</div>
-                  <div class="live-bid-info">
-                    <span class="live-bid-name">Yossef M.</span>
-                    <span class="live-bid-time">il y a 2 min</span>
+                <div class="ad-price-row">
+                  <div>
+                    <span class="ad-price-label">Offre la plus haute</span>
+                    <div class="ad-price"><span class="ad-price-value">320</span><span class="ad-price-unit">&nbsp;€</span><span class="ad-delta"></span></div>
                   </div>
-                  <span class="live-bid-amount live-bid-amount-gold" data-bid-target="220">220 €</span>
-                </div>
-                <div class="live-bid live-bid-3 live-bid-latest">
-                  <div class="live-bid-avatar" style="background: #10B981;">M</div>
-                  <div class="live-bid-info">
-                    <span class="live-bid-name">Moshe R.</span>
-                    <span class="live-bid-time">à l'instant</span>
-                  </div>
-                  <span class="live-bid-amount live-bid-amount-gold live-bid-amount-winner" data-bid-target="280">280 €</span>
-                  <div class="live-bid-crown">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 19h19v2h-19zM22.5 7l-5 5-5-7-5 7-5-5 2.5 12h15z"/></svg>
-                    <span class="sparkle sparkle-1"></span>
-                    <span class="sparkle sparkle-2"></span>
-                    <span class="sparkle sparkle-3"></span>
-                    <span class="sparkle sparkle-4"></span>
+                  <div class="ad-rank" data-state="won">
+                    <span class="ad-rank-window"><span class="ad-rank-strip"><span>–</span><span>1<sup>er</sup></span><span>2<sup>e</sup></span></span></span>
+                    <span class="ad-rank-label">Remportée</span>
                   </div>
                 </div>
-              </div>
-
-              <!-- Progress bar -->
-              <div class="live-feed-progress" aria-hidden="true">
-                <span class="lfp-fill"></span>
-              </div>
-
-              <!-- Bottom alert -->
-              <div class="live-feed-alert">
-                <div class="alert-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <div class="ad-lead" data-state="won"><span class="ad-lead-dot"></span><span class="ad-lead-text">Vous avez remporté l'Aliyah</span></div>
+                <div class="ad-bid is-ended">
+                  <div class="ad-chips">
+                    <span class="ad-chip">+20&nbsp;€</span>
+                    <span class="ad-chip is-selected">+40&nbsp;€</span>
+                    <span class="ad-chip">+60&nbsp;€</span>
+                  </div>
+                  <span class="ad-cta"><span class="ad-cta-label">Enchère terminée</span></span>
                 </div>
-                <span>Surenchère ! Prix actuel : <strong class="live-alert-amount" data-bid-target="280">280 €</strong></span>
+                <div class="ad-footer">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span class="ad-footer-text">Clôturée vendredi à 17&nbsp;h&nbsp;42, avant Shabbat</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="feature-card">
           <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           </div>
           <h3>Jamais de mauvaise surprise</h3>
           <p>
@@ -440,7 +376,7 @@
         </div>
         <div class="feature-card feature-card-payment">
           <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
           </div>
           <h3>Fini les chèques et les relances</h3>
           <p>
@@ -454,7 +390,7 @@
               <div class="pcard-chip"></div>
               <div class="pcard-number">•••• •••• •••• 4242</div>
               <div class="pcard-stripe-logo">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
             </div>
             <div class="payment-flow">
@@ -463,13 +399,13 @@
               <div class="payment-dot payment-dot-3"></div>
             </div>
             <div class="payment-check">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
           </div>
         </div>
         <div class="feature-card">
           <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3>Votre synagogue, dans votre poche</h3>
           <p>
@@ -480,7 +416,7 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <h3>Un compte, toutes vos synagogues</h3>
           <p>
@@ -491,7 +427,7 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
           </div>
           <h3>Reçus Cerfa automatiques</h3>
           <p>
@@ -502,7 +438,7 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.39 7.36H22l-6.19 4.5 2.39 7.36L12 16.72l-6.19 4.5 2.39-7.36L2 9.36h7.61z"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2l2.39 7.36H22l-6.19 4.5 2.39 7.36L12 16.72l-6.19 4.5 2.39-7.36L2 9.36h7.61z"/></svg>
           </div>
           <h3>Compatible Shabbat nativement</h3>
           <p>
@@ -537,7 +473,7 @@
         <div class="step-card">
           <div class="step-number">01</div>
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
           </div>
           <h3>Créez votre compte</h3>
           <p>
@@ -546,12 +482,12 @@
           </p>
         </div>
         <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="2" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="2" fill="none"/></svg>
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
         </div>
         <div class="step-card">
           <div class="step-number">02</div>
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <h3>Trouvez votre synagogue</h3>
           <p>
@@ -560,12 +496,12 @@
           </p>
         </div>
         <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="2" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="2" fill="none"/></svg>
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
         </div>
         <div class="step-card">
           <div class="step-number">03</div>
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
           <h3>Enchérissez</h3>
           <p>
@@ -580,7 +516,7 @@
         <div class="step-card">
           <div class="step-number">01</div>
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
           <h3>Inscrivez votre synagogue</h3>
           <p>
@@ -589,12 +525,12 @@
           </p>
         </div>
         <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="2" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="2" fill="none"/></svg>
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
         </div>
         <div class="step-card">
           <div class="step-number">02</div>
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
           <h3>Configurez vos enchères</h3>
           <p>
@@ -603,12 +539,12 @@
           </p>
         </div>
         <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="2" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="2" fill="none"/></svg>
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
         </div>
         <div class="step-card">
           <div class="step-number">03</div>
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
           <h3>Vos fidèles enchérissent</h3>
           <p>
@@ -664,21 +600,21 @@
           </div>
           <div class="pricing-commission"><strong>+ 2%</strong> de commission Nederly sur les enchères</div>
           <ul class="pricing-features">
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Enchères illimitées</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Paiements automatiques Stripe</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Notifications push fidèles</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Page synagogue publique</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>1 Gabay</li>
-            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Annonces communautaires</li>
-            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Reçus Cerfa automatiques</li>
-            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Support prioritaire</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Enchères illimitées</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Paiements automatiques Stripe</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Notifications push fidèles</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Page synagogue publique</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>1 Gabay</li>
+            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Annonces communautaires</li>
+            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Reçus Cerfa automatiques</li>
+            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Support prioritaire</li>
           </ul>
           <a href="https://admin.nederly.io" class="btn btn-outline pricing-btn">Démarrer gratuitement</a>
         </div>
 
         <!-- Communauté -->
         <div class="pricing-card pricing-card-featured">
-          <div class="pricing-popular-badge">⭐ Le plus populaire</div>
+          <div class="pricing-popular-badge">Recommandé</div>
           <div class="pricing-card-header">
             <span class="plan-name">Communauté</span>
             <p class="plan-desc">Pour les synagogues qui font vivre leur communauté chaque semaine</p>
@@ -692,13 +628,13 @@
           </div>
           <div class="pricing-commission"><strong>+ 1%</strong> de commission Nederly sur les enchères</div>
           <ul class="pricing-features">
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><strong>Tout Découverte, plus :</strong></li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Annonces communautaires</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Reçus Cerfa automatiques</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Duplication d'enchères auto</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Support email prioritaire &lt;24h</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Tableau de bord avec stats</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Calendrier hébraïque intégré</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg><strong>Tout Découverte, plus :</strong></li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Annonces communautaires</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Reçus Cerfa automatiques</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Duplication d'enchères auto</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Support email prioritaire &lt;24h</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Tableau de bord avec stats</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Calendrier hébraïque intégré</li>
           </ul>
           <a href="https://admin.nederly.io" class="btn btn-primary pricing-btn">Essayer 14 jours gratuit</a>
           <span class="pricing-no-cb">Sans carte bancaire</span>
@@ -719,12 +655,12 @@
           </div>
           <div class="pricing-commission pricing-commission-zero"><strong>+ 0%</strong> de commission Nederly</div>
           <ul class="pricing-features">
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><strong>Tout Communauté, plus :</strong></li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Multi-Gabayim</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Analytics avancés (par fidèle, par parasha)</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Onboarding personnalisé</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Support dédié WhatsApp + téléphone</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Accès anticipé aux nouveautés</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg><strong>Tout Communauté, plus :</strong></li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Multi-Gabayim</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Analytics avancés (par fidèle, par parasha)</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Onboarding personnalisé</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Support dédié WhatsApp + téléphone</li>
+            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Accès anticipé aux nouveautés</li>
           </ul>
           <a href="https://admin.nederly.io" class="btn btn-secondary pricing-btn">Essayer 14 jours gratuit</a>
         </div>
@@ -733,7 +669,7 @@
       <!-- Pricing guarantee + fees -->
       <div class="pricing-footer-info">
         <div class="pricing-guarantee">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>Satisfait ou remboursé 30 jours sur les plans annuels.</span>
         </div>
         <div class="pricing-fees">
@@ -758,43 +694,43 @@
           <ul class="check-list">
             <li>
               <div class="check-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               Créez une enchère en moins d'une minute
             </li>
             <li>
               <div class="check-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               Dupliquez la semaine précédente en un clic
             </li>
             <li>
               <div class="check-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               Fermeture automatique avant Shabbat
             </li>
             <li>
               <div class="check-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               Envoyez des annonces à toute la communauté
             </li>
             <li>
               <div class="check-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               Recevez vos paiements sans courir après personne
             </li>
             <li>
               <div class="check-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               <strong>Reçus Cerfa générés automatiquement</strong>
             </li>
             <li>
               <div class="check-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               <strong>Multi-Gabayim en plan Tsédaka+</strong>
             </li>
@@ -802,7 +738,7 @@
           <div class="synagogues-cta-group">
             <a href="https://admin.nederly.io" class="btn btn-secondary btn-lg">
               Inscrire ma synagogue gratuitement
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
             <a href="#founders" class="btn btn-outline-gold btn-lg">
               Voir l'offre Fondateurs
@@ -810,11 +746,6 @@
           </div>
         </div>
         <div class="synagogues-visual">
-          <!-- Corner brackets (editorial frame) -->
-          <span class="corner-bracket corner-bracket-tl" aria-hidden="true"></span>
-          <span class="corner-bracket corner-bracket-tr" aria-hidden="true"></span>
-          <span class="corner-bracket corner-bracket-bl" aria-hidden="true"></span>
-          <span class="corner-bracket corner-bracket-br" aria-hidden="true"></span>
           <div class="dashboard-screenshot-wrapper">
             <div class="dash-browser-bar">
               <div class="dash-dots">
@@ -846,7 +777,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Est-ce que Nederly est gratuit pour les fidèles ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Oui, 100% gratuit. Les fidèles ne paient jamais rien à Nederly : ni abonnement, ni commission, ni frais cachés. Ce sont les synagogues qui souscrivent un abonnement (avec un plan gratuit disponible) et nous reversent une commission sur les enchères traitées via la plateforme.</p>
@@ -855,7 +786,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Le modèle est-il validé halakhiquement ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Oui. Notre modèle économique a été validé par un Rav de référence. La Tsédaka du donateur est intégralement comptabilisée pour la synagogue ; les frais Nederly (abonnement et commission) sont une dépense de fonctionnement de la synagogue, distincte de la Tsédaka, au même titre que l'électricité ou les fournitures. La position halakhique complète est disponible <a href="halakha.html" style="color: var(--gold); font-weight: 600;">ici</a>.</p>
@@ -864,7 +795,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Comment fonctionnent les paiements ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Les paiements passent par Stripe. Quand vous enchérissez, le montant est réservé sur votre carte (empreinte bancaire) : il n'est débité que si vous remportez l'enchère, sinon la réservation est levée. Les données de votre carte sont gérées par Stripe et ne sont jamais stockées par Nederly.</p>
@@ -873,7 +804,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Combien Nederly coûte-t-il vraiment pour ma synagogue ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Cela dépend du plan choisi et de votre volume d'enchères. À titre d'exemple, une synagogue qui fait 700€ d'enchères par Shabbat paie environ 124€/mois en plan Fondateur, tout compris (Stripe inclus). Pour le détail, voir <a href="#pricing" style="color: var(--gold); font-weight: 600;">nos tarifs</a>.</p>
@@ -882,7 +813,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Ma synagogue n'est pas encore sur Nederly, comment faire ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Demandez à votre Gabay ou Président de s'inscrire sur <a href="https://admin.nederly.io" style="color: var(--gold); font-weight: 600;">admin.nederly.io</a>. La mise en place prend moins de 10 minutes. Si vous êtes vous-même Gabay, vous pouvez démarrer en 14 jours d'essai gratuit, sans carte bancaire.</p>
@@ -891,7 +822,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Est-ce compatible avec Shabbat et les fêtes ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Absolument. Les enchères se font avant Shabbat et se ferment automatiquement avant l'entrée de Shabbat ou de la fête. Aucune action n'est nécessaire pendant ces moments. Notre calendrier hébraïque (Hebcal) est intégré nativement.</p>
@@ -900,7 +831,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Qu'est-ce que l'offre Synagogue Fondatrice ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Une offre limitée aux 100 premières synagogues qui rejoignent Nederly. Vous bloquez 15€/mois + 0,5% de commission à vie, même quand nos prix publics augmenteront. Vous bénéficiez aussi d'un onboarding personnalisé, du badge "Synagogue Fondatrice" et d'un accès direct à notre comité produit. <a href="#founders" style="color: var(--gold); font-weight: 600;">Réserver ma place →</a></p>
@@ -909,7 +840,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Puis-je changer de plan ou annuler à tout moment ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <p>Oui. Changement de plan en un clic depuis le dashboard, avec facturation au prorata. Annulation à tout moment sans pénalité. Et garantie satisfait ou remboursé 30 jours sur tous les plans annuels, sans conditions.</p>
@@ -1009,13 +940,13 @@
              livrer trois icônes qui ne mènent nulle part.
         <div class="footer-socials">
           <a href="#" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
           <a href="#" aria-label="Twitter">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
           </a>
           <a href="#" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
         -->
