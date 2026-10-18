@@ -167,50 +167,6 @@ function switchParcours(target) {
   });
 })();
 
-// Synagogues Fondatrices : places restantes, registre des 100 places et compteur à rouleaux
-(function () {
-  const TOTAL = 100;
-  // TODO: remplacer par l'appel API quand le backend sera prêt
-  // fetch('https://api.nederly.io/founders/remaining').then(r => r.json()).then(data => render(data.remaining));
-  // Aujourd'hui : aucune synagogue fondatrice inscrite, les 100 places sont libres.
-  const remaining = 100;
-  const taken = TOTAL - remaining;
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const pad = (n) => String(n).padStart(3, '0');
-
-  const seats = document.getElementById('foundersSeats');
-  if (seats) {
-    seats.innerHTML = Array.from({ length: TOTAL }, (_, i) => {
-      const state = i < taken ? ' is-taken' : (i === taken ? ' is-next' : '');
-      return '<span class="seat' + state + '">' + pad(i + 1) + '</span>';
-    }).join('');
-  }
-  const nextSeat = document.getElementById('foundersNextSeat');
-  if (nextSeat && taken < TOTAL) nextSeat.textContent = pad(taken + 1);
-
-  // Le nombre reste du texte simple ; quand le compteur entre à l'écran, ses chiffres
-  // défilent depuis 0 puis il redevient du texte.
-  document.querySelectorAll('[data-founders-remaining]').forEach((el) => {
-    const value = String(remaining);
-    el.textContent = value;
-    if (reduce) return;
-    const observer = new IntersectionObserver((entries) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      observer.disconnect();
-      el.innerHTML = [...value].map(() => '<span class="count-col"><span class="count-strip">' +
-        '0123456789'.split('').map((d) => '<span>' + d + '</span>').join('') + '</span></span>').join('');
-      const strips = el.querySelectorAll('.count-strip');
-      void el.offsetWidth;
-      strips.forEach((strip, k) => {
-        strip.style.transitionDelay = (300 + k * 120) + 'ms';
-        strip.style.transform = 'translateY(-' + value[k] + 'em)';
-      });
-      setTimeout(() => { el.textContent = value; }, 2400);
-    });
-    observer.observe(el);
-  });
-})();
-
 // Vidéos (sous le hero, dans « Comment ça marche ») : une seule source chargée par vidéo
 // (16:9 ou 9:16 selon la largeur), lecture muette quand le bloc est visible, pause hors
 // écran ou onglet caché.

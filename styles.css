@@ -677,26 +677,6 @@ body.menu-open .nav-scrim {
   filter: blur(6px);
 }
 
-/* Compteur à rouleaux (places Fondatrices) */
-.count-col {
-  display: inline-block;
-  height: 1em;
-  line-height: 1;
-  overflow: hidden;
-  vertical-align: -0.12em;
-}
-
-.count-strip {
-  display: flex;
-  flex-direction: column;
-  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.count-strip > span {
-  height: 1em;
-  line-height: 1;
-}
-
 @media (max-width: 768px) {
   .hero {
     padding-top: 124px;
@@ -2590,7 +2570,7 @@ body.menu-open .nav-scrim {
 }
 
 /* ============================================
-   FONDATEURS — le registre des 100 places
+   FONDATEURS — les premières semaines, étape par étape
    ============================================ */
 .founders {
   padding: 110px 0;
@@ -2598,11 +2578,10 @@ body.menu-open .nav-scrim {
   border-top: 1px solid var(--border-light);
 }
 
-.founders-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
+.founders-head {
+  max-width: 760px;
+  margin: 0 auto 48px;
+  text-align: center;
 }
 
 .founders h2 {
@@ -2615,122 +2594,54 @@ body.menu-open .nav-scrim {
 
 .founders-lead {
   max-width: 30em;
-  margin-top: 18px;
+  margin: 18px auto 0;
   font-size: 17px;
   color: var(--text-secondary);
 }
 
-.founders-list {
+.founders-steps {
   list-style: none;
   display: grid;
-  gap: 10px;
-  margin-top: 22px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
-.founders-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-}
-
-.founders-list li::before {
-  content: "";
-  width: 18px;
-  height: 1.5px;
-  background: var(--gold-dark);
-}
-
-.founders .btn-pill {
-  margin-top: 32px;
-}
-
-.seats-card {
+.founders-steps li {
+  padding: 24px;
+  border-radius: 24px;
   background: var(--bg);
   border: 1px solid var(--border-light);
-  border-radius: 28px;
-  padding: 28px;
 }
 
-.seats-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 18px;
+.founders-step-when {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold-dark);
 }
 
-.seats-top b {
-  font-family: var(--font-display);
-  font-size: 40px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.seats-top > span {
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.seats {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 6px;
-}
-
-.seat {
-  aspect-ratio: 1;
-  border-radius: 8px;
-  border: 1px solid var(--border-light);
-  background: var(--surface);
-  display: grid;
-  place-items: center;
-  font-size: 10px;
-  color: #A49D90;
-  font-variant-numeric: tabular-nums;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.seat:hover {
-  background: var(--ivory);
+.founders-steps h3 {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--navy);
 }
 
-.seat.is-taken {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: rgba(244, 239, 230, 0.6);
+.founders-steps p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
 }
 
-.seat.is-next {
-  border-color: var(--gold);
-  color: var(--gold-dark);
-  font-weight: 700;
-  box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.18);
-}
-
-.seats-legend {
+.founders-foot {
   display: flex;
-  gap: 18px;
-  margin-top: 16px;
-  font-size: 13px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px 22px;
+  margin-top: 40px;
+  font-size: 14px;
   color: var(--text-muted);
-}
-
-.seats-legend i {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 6px;
-  border-radius: 4px;
-  border: 1px solid var(--border-medium);
-  background: var(--surface);
-  vertical-align: -2px;
-}
-
-.seats-legend i.is-taken {
-  background: var(--navy);
-  border-color: var(--navy);
 }
 
 @media (max-width: 900px) {
@@ -2738,25 +2649,23 @@ body.menu-open .nav-scrim {
     padding: 72px 0;
   }
 
-  .founders-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .founders-steps {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 480px) {
-  .seats-card {
-    padding: 18px;
-    border-radius: 22px;
+@media (max-width: 560px) {
+  .founders-head {
+    margin-bottom: 32px;
   }
 
-  .seats {
-    gap: 4px;
+  .founders-steps {
+    grid-template-columns: 1fr;
   }
 
-  .seat {
-    font-size: 8px;
-    border-radius: 6px;
+  .founders-foot {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
