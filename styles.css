@@ -2440,17 +2440,13 @@ body.menu-open .nav-scrim {
    ============================================ */
 
 /* ============================================
-   VIDÉOS — grandes cartes façon showreel (sous le hero, dans « Comment ça marche »)
+   VIDÉO — grande carte façon showreel sous le hero
    L'aperçu est le fond de la vidéo (--poster-wide / --poster-tall sur la balise) :
    une seule image chargée selon la largeur.
    ============================================ */
 .showreel {
   padding: 8px 0 104px;
   background: var(--bg);
-}
-
-.how-teaser {
-  margin-top: 64px;
 }
 
 .showreel-frame {
@@ -2473,11 +2469,11 @@ body.menu-open .nav-scrim {
   background: var(--navy) var(--poster-wide) center / cover no-repeat;
 }
 
+/* En bas à gauche : les titres de la vidéo sont en haut de l'image */
 .showreel-sound {
   position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 16px;
+  left: 16px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2496,14 +2492,6 @@ body.menu-open .nav-scrim {
 
 .showreel-sound:hover {
   background: rgba(10, 22, 40, 0.9);
-}
-
-/* Teaser : titres en haut de l'image, bouton son en bas à gauche */
-.how-teaser .showreel-sound {
-  top: auto;
-  bottom: 16px;
-  left: 16px;
-  transform: none;
 }
 
 .showreel-ico-on,
@@ -2555,15 +2543,6 @@ body.menu-open .nav-scrim {
   }
 
   .showreel-sound {
-    top: 12px;
-  }
-
-  .how-teaser {
-    margin-top: 48px;
-  }
-
-  .how-teaser .showreel-sound {
-    top: auto;
     bottom: 12px;
     left: 12px;
   }

@@ -167,9 +167,8 @@ function switchParcours(target) {
   });
 })();
 
-// Vidéos (sous le hero, dans « Comment ça marche ») : une seule source chargée par vidéo
-// (16:9 ou 9:16 selon la largeur), lecture muette quand le bloc est visible, pause hors
-// écran ou onglet caché.
+// Vidéo sous le hero : une seule source chargée (16:9 ou 9:16 selon la largeur),
+// lecture muette quand le bloc est visible, pause hors écran ou onglet caché.
 (function () {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const tall = window.matchMedia('(max-width: 767px)');
