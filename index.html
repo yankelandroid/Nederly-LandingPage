@@ -299,157 +299,107 @@
           pour que vous puissiez vous concentrer sur votre communauté.
         </p>
       </div>
-      <div class="features-grid">
-        <div class="feature-card feature-card-large">
-          <div class="feature-large-text">
-            <div class="feature-icon-wrapper">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+      <div class="feature-card feature-card-large">
+        <div class="feature-large-text">
+          <h3 class="feature-title">Enchères en temps réel</h3>
+          <p>
+            Vos fidèles placent leurs enchères avant Shabbat.
+            Vous suivez tout en direct. Chaque surenchère
+            déclenche une notification : personne ne rate son Aliyah.
+          </p>
+        </div>
+        <div class="feature-visual">
+          <!-- Démo : écran d'enchère de l'app, piloté par script.js (auctionDemo).
+               Hauteur fixe : tout change sur place (chiffres, rang, statut, bouton). -->
+          <div class="auction-demo" data-auction-demo data-phase="won">
+            <p class="sr-only">Exemple : vous enchérissez 260&nbsp;€ sur la Aliyah Shéni, Moshe&nbsp;R. propose 280&nbsp;€ et vous recevez une notification de surenchère ; vous remontez à 320&nbsp;€ et remportez l'Aliyah à la clôture, avant Shabbat.</p>
+            <div class="ad-toast" aria-hidden="true">
+              <img class="ad-toast-icon" src="assets/logo_new.png" alt="" width="32" height="32">
+              <span class="ad-toast-text">
+                <strong class="ad-toast-title">Mazal tov ! Aliyah Shéni remportée</strong>
+                <span class="ad-toast-body">320&nbsp;€ débités · reçu Cerfa envoyé par email</span>
+              </span>
+              <span class="ad-toast-time">maintenant</span>
             </div>
-            <h3 class="feature-title" style="color: var(--gold);" >Enchères en temps réel</h3>
-            <p style="color: var(--white);">
-              Vos fidèles placent leurs enchères avant Shabbat.
-              Vous suivez tout en direct. Chaque surenchère
-              déclenche une notification : personne ne rate son Aliyah.
-            </p>
-          </div>
-          <div class="feature-visual">
-            <!-- Démo : écran d'enchère de l'app, piloté par script.js (auctionDemo).
-                 Hauteur fixe : tout change sur place (chiffres, rang, statut, bouton). -->
-            <div class="auction-demo" data-auction-demo data-phase="won">
-              <p class="sr-only">Exemple : vous enchérissez 260&nbsp;€ sur la Aliyah Shéni, Moshe&nbsp;R. propose 280&nbsp;€ et vous recevez une notification de surenchère ; vous remontez à 320&nbsp;€ et remportez l'Aliyah à la clôture, avant Shabbat.</p>
-              <div class="ad-toast" aria-hidden="true">
-                <img class="ad-toast-icon" src="assets/logo_new.png" alt="" width="32" height="32">
-                <span class="ad-toast-text">
-                  <strong class="ad-toast-title">Mazal tov ! Aliyah Shéni remportée</strong>
-                  <span class="ad-toast-body">320&nbsp;€ débités · reçu Cerfa envoyé par email</span>
-                </span>
-                <span class="ad-toast-time">maintenant</span>
-              </div>
-              <div class="ad-panel" aria-hidden="true">
-                <div class="ad-head">
-                  <div class="ad-item">
-                    <span class="ad-aliyah"><span class="ad-aliyah-he" lang="he" dir="rtl">שני</span></span>
-                    <div>
-                      <span class="ad-eyebrow">Parashat Tetzaveh · 2<sup>e</sup> montée</span>
-                      <span class="ad-title">Aliyah Shéni</span>
-                    </div>
-                  </div>
-                  <span class="ad-status" data-state="closed"><span class="ad-status-dot"></span><span class="ad-status-text">Clôturée</span></span>
-                </div>
-                <div class="ad-price-row">
+            <div class="ad-panel" aria-hidden="true">
+              <div class="ad-head">
+                <div class="ad-item">
+                  <span class="ad-aliyah"><span class="ad-aliyah-he" lang="he" dir="rtl">שני</span></span>
                   <div>
-                    <span class="ad-price-label">Offre la plus haute</span>
-                    <div class="ad-price"><span class="ad-price-value">320</span><span class="ad-price-unit">&nbsp;€</span><span class="ad-delta"></span><span class="ad-win-check"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle class="ad-check-ring" cx="12" cy="12" r="10.5"/><path class="ad-check-mark" d="M7.2 12.4l3.1 3.1 6.5-6.6"/></svg></span></div>
-                  </div>
-                  <div class="ad-rank" data-state="won">
-                    <span class="ad-rank-window"><span class="ad-rank-strip"><span>–</span><span>1<sup>er</sup></span><span>2<sup>e</sup></span></span></span>
-                    <span class="ad-rank-label">Remportée</span>
+                    <span class="ad-eyebrow">Parashat Tetzaveh · 2<sup>e</sup> montée</span>
+                    <span class="ad-title">Aliyah Shéni</span>
                   </div>
                 </div>
-                <div class="ad-lead" data-state="won"><span class="ad-lead-dot"></span><span class="ad-lead-text">Vous avez remporté l'Aliyah</span></div>
-                <div class="ad-bid is-ended">
-                  <div class="ad-chips">
-                    <span class="ad-chip">+20&nbsp;€</span>
-                    <span class="ad-chip is-selected">+40&nbsp;€</span>
-                    <span class="ad-chip">+60&nbsp;€</span>
-                  </div>
-                  <span class="ad-cta"><span class="ad-cta-label">Enchère terminée</span></span>
-                  <div class="ad-win-banner">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                    Vous montez à la Torah ce Shabbat
-                  </div>
+                <span class="ad-status" data-state="closed"><span class="ad-status-dot"></span><span class="ad-status-text">Clôturée</span></span>
+              </div>
+              <div class="ad-price-row">
+                <div>
+                  <span class="ad-price-label">Offre la plus haute</span>
+                  <div class="ad-price"><span class="ad-price-value">320</span><span class="ad-price-unit">&nbsp;€</span><span class="ad-delta"></span><span class="ad-win-check"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle class="ad-check-ring" cx="12" cy="12" r="10.5"/><path class="ad-check-mark" d="M7.2 12.4l3.1 3.1 6.5-6.6"/></svg></span></div>
                 </div>
-                <div class="ad-footer">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  <span class="ad-footer-text">Clôturée vendredi à 17&nbsp;h&nbsp;42, avant Shabbat</span>
+                <div class="ad-rank" data-state="won">
+                  <span class="ad-rank-window"><span class="ad-rank-strip"><span>–</span><span>1<sup>er</sup></span><span>2<sup>e</sup></span></span></span>
+                  <span class="ad-rank-label">Remportée</span>
                 </div>
+              </div>
+              <div class="ad-lead" data-state="won"><span class="ad-lead-dot"></span><span class="ad-lead-text">Vous avez remporté l'Aliyah</span></div>
+              <div class="ad-bid is-ended">
+                <div class="ad-chips">
+                  <span class="ad-chip">+20&nbsp;€</span>
+                  <span class="ad-chip is-selected">+40&nbsp;€</span>
+                  <span class="ad-chip">+60&nbsp;€</span>
+                </div>
+                <span class="ad-cta"><span class="ad-cta-label">Enchère terminée</span></span>
+                <div class="ad-win-banner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  Vous montez à la Torah ce Shabbat
+                </div>
+              </div>
+              <div class="ad-footer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span class="ad-footer-text">Clôturée vendredi à 17&nbsp;h&nbsp;42, avant Shabbat</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </div>
+
+      <div class="feature-rows">
+        <div class="feature-row">
+          <div class="feature-row-text">
+            <span class="section-tag">Paiements et fiscalité</span>
+            <h3>Fini les chèques. Les reçus partent seuls.</h3>
+            <p>Le montant est réservé sur la carte au moment de l'offre et débité seulement si l'on gagne. Chaque don ou enchère gagnée génère son reçu Cerfa, envoyé par email au fidèle.</p>
+            <ul class="feature-row-points">
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Paiement sécurisé par Stripe, sans chèque ni relance</li>
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Reçus Cerfa automatiques, conformes à l'administration</li>
+            </ul>
           </div>
-          <h3>Jamais de mauvaise surprise</h3>
-          <p>
-            Surenchéri ? Vous le savez en 2 secondes.
-            Enchère remportée ? Notification instantanée.
-            Annonce de votre synagogue ? Vous êtes au courant.
-          </p>
+          <div class="feature-row-phone"><img src="assets/screen-mobile-2.png" alt="Écran « Mes enchères » de l'application Nederly" width="230" height="498" loading="lazy"></div>
         </div>
-        <div class="feature-card feature-card-payment">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <div class="feature-row is-flip">
+          <div class="feature-row-text">
+            <span class="section-tag">Votre communauté</span>
+            <h3>Votre synagogue dans votre poche</h3>
+            <p>Trouvez votre synagogue par nom ou par localisation, rejoignez-la en un tap et recevez ses annonces. Vous en fréquentez plusieurs ? Un seul compte suffit.</p>
+            <ul class="feature-row-points">
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Annonces et événements de la communauté</li>
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Toutes vos synagogues dans un seul compte</li>
+            </ul>
           </div>
-          <h3>Fini les chèques et les relances</h3>
-          <p>
-            Le paiement se fait automatiquement via Stripe.
-            Votre carte est protégée, et vous recevez
-            un reçu à chaque transaction.
-          </p>
-          <!-- Payment animation -->
-          <div class="payment-anim">
-            <div class="payment-card-mock">
-              <div class="pcard-chip"></div>
-              <div class="pcard-number">•••• •••• •••• 4242</div>
-              <div class="pcard-stripe-logo">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-            </div>
-            <div class="payment-flow">
-              <div class="payment-dot payment-dot-1"></div>
-              <div class="payment-dot payment-dot-2"></div>
-              <div class="payment-dot payment-dot-3"></div>
-            </div>
-            <div class="payment-check">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-          </div>
+          <div class="feature-row-phone"><img src="assets/screen-mobile-1.png" alt="Recherche de synagogues dans l'application Nederly" width="230" height="498" loading="lazy"></div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="feature-row">
+          <div class="feature-row-text">
+            <span class="section-tag">Shabbat et fêtes</span>
+            <h3>Pensé pour le calendrier juif</h3>
+            <p>Les enchères se ferment automatiquement avant Shabbat et les fêtes : rien à faire pendant. Allumage des bougies, Havdalah et parasha de la semaine sont intégrés.</p>
+            <ul class="feature-row-points">
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fermeture automatique avant l'allumage des bougies</li>
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Calendrier hébraïque intégré</li>
+            </ul>
           </div>
-          <h3>Votre synagogue, dans votre poche</h3>
-          <p>
-            Trouvez votre synagogue, rejoignez-la en un tap
-            et recevez toutes les annonces et événements
-            directement sur votre téléphone.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3>Un compte, toutes vos synagogues</h3>
-          <p>
-            Vous fréquentez plusieurs synagogues ?
-            Ajoutez-les toutes et enchérissez partout
-            depuis un seul compte.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-          </div>
-          <h3>Reçus Cerfa automatiques</h3>
-          <p>
-            Chaque don ou enchère gagnée génère un reçu Cerfa fiscal
-            envoyé automatiquement par email. Conforme à l'administration.
-            Vos fidèles n'ont rien à demander.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2l2.39 7.36H22l-6.19 4.5 2.39 7.36L12 16.72l-6.19 4.5 2.39-7.36L2 9.36h7.61z"/></svg>
-          </div>
-          <h3>Compatible Shabbat nativement</h3>
-          <p>
-            Les enchères se ferment automatiquement avant Shabbat.
-            Aucune action requise pendant Shabbat ou les fêtes.
-            Calendrier hébraïque intégré nativement.
-          </p>
+          <div class="feature-row-phone"><img src="assets/screen-mobile-4.png" alt="Fiche synagogue avec les horaires de Shabbat" width="230" height="498" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -461,102 +411,22 @@
       <div class="section-header">
         <span class="section-tag">Comment ça marche</span>
         <h2>30 secondes pour un fidèle.<br>Moins de 10 minutes pour une synagogue.</h2>
-        <p class="section-desc">
-          Choisissez votre parcours selon votre rôle dans la communauté.
-        </p>
       </div>
 
-      <!-- Parcours toggle -->
       <div class="parcours-toggle">
         <button class="parcours-tab parcours-tab-active" data-parcours="fideles" onclick="switchParcours('fideles')">Pour les fidèles</button>
-        <button class="parcours-tab" data-parcours="gabayim" onclick="switchParcours('gabayim')">Pour les Gabayim</button>
+        <button class="parcours-tab" data-parcours="gabayim" onclick="switchParcours('gabayim')">Pour les gabayim</button>
       </div>
-
-      <!-- Parcours Fidèles -->
-      <div class="steps-grid parcours-content" id="parcours-fideles">
-        <div class="step-card">
-          <div class="step-number">01</div>
-          <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-          </div>
-          <h3>Créez votre compte</h3>
-          <p>
-            30 secondes avec votre email. Pas de paperasse,
-            pas de validation. Vous êtes prêt.
-          </p>
-        </div>
-        <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
-        </div>
-        <div class="step-card">
-          <div class="step-number">02</div>
-          <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
-          <h3>Trouvez votre synagogue</h3>
-          <p>
-            Cherchez par nom ou par localisation.
-            Votre synagogue apparaît, vous la rejoignez.
-          </p>
-        </div>
-        <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
-        </div>
-        <div class="step-card">
-          <div class="step-number">03</div>
-          <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3>Enchérissez</h3>
-          <p>
-            Choisissez votre Aliyah, placez votre offre.
-            Vous êtes notifié à chaque surenchère.
-          </p>
-        </div>
-      </div>
-
-      <!-- Parcours Gabayim -->
-      <div class="steps-grid parcours-content parcours-hidden" id="parcours-gabayim">
-        <div class="step-card">
-          <div class="step-number">01</div>
-          <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <h3>Inscrivez votre synagogue</h3>
-          <p>
-            5 minutes pour créer le compte de votre synagogue
-            sur admin.nederly.io. Sans engagement, sans CB.
-          </p>
-        </div>
-        <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
-        </div>
-        <div class="step-card">
-          <div class="step-number">02</div>
-          <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
-          <h3>Configurez vos enchères</h3>
-          <p>
-            Choisissez les Aliyot de la semaine, fixez les prix.
-            Templates pré-faits pour Roch Hachana, Yom Kippour, Souccot.
-          </p>
-        </div>
-        <div class="step-connector">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36" stroke="#C9A962" stroke-width="1.75" stroke-dasharray="4 4"/><path d="M32 6l6 6-6 6" stroke="#C9A962" stroke-width="1.75" fill="none"/></svg>
-        </div>
-        <div class="step-card">
-          <div class="step-number">03</div>
-          <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <h3>Vos fidèles enchérissent</h3>
-          <p>
-            Vos fidèles téléchargent l'app et enchérissent.
-            Vous suivez tout en live, les paiements arrivent automatiquement.
-          </p>
-        </div>
-      </div>
+      <ol class="steps-line parcours-content" id="parcours-fideles">
+        <li class="step"><span class="step-dot">1</span><h3>Créez votre compte</h3><p>30 secondes avec votre email. Pas de paperasse, pas de validation.</p></li>
+        <li class="step"><span class="step-dot">2</span><h3>Trouvez votre synagogue</h3><p>Par nom ou par localisation. Vous la rejoignez en un tap.</p></li>
+        <li class="step"><span class="step-dot">3</span><h3>Enchérissez</h3><p>Choisissez votre Aliyah, placez votre offre. Vous êtes notifié à chaque surenchère.</p></li>
+      </ol>
+      <ol class="steps-line parcours-content parcours-hidden" id="parcours-gabayim">
+        <li class="step"><span class="step-dot">1</span><h3>Inscrivez votre synagogue</h3><p>Quelques minutes sur admin.nederly.io. Sans engagement, sans carte bancaire.</p></li>
+        <li class="step"><span class="step-dot">2</span><h3>Configurez vos enchères</h3><p>Choisissez les Aliyot de la semaine et fixez les prix. Modèles prêts pour Roch Hachana, Yom Kippour, Souccot.</p></li>
+        <li class="step"><span class="step-dot">3</span><h3>Vos fidèles enchérissent</h3><p>Ils téléchargent l'app et enchérissent. Vous suivez tout en direct, les paiements arrivent automatiquement.</p></li>
+      </ol>
     </div>
   </section>
 
@@ -565,120 +435,50 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Tarifs</span>
-        <h2>Un tarif pour chaque communauté.<br>Aucun pour vos fidèles.</h2>
+        <h2>Combien vous coûterait Nederly ?</h2>
         <p class="section-desc">
-          Vos fidèles ne paient rien à Nederly. Jamais.
-          Les synagogues choisissent un plan adapté à leur activité :
-          démarrage gratuit, sans CB.
+          Gratuit pour les fidèles, toujours. Pour la synagogue : un abonnement
+          et une commission sur les enchères. Indiquez votre activité.
         </p>
       </div>
 
-      <!-- Founders mini banner above pricing -->
-      <div class="pricing-founders-banner">
-        <strong>Synagogue Fondatrice ?</strong> Bloquez 15€/mois + 0,5% à vie en rejoignant les 100 premières.
-        <a href="#founders" class="pricing-founders-link">Voir l'offre →</a>
-      </div>
-
-      <!-- Billing toggle -->
-      <div class="pricing-toggle">
-        <span class="toggle-label toggle-label-active" id="toggleMonthly">Mensuel</span>
-        <button class="toggle-switch" id="billingToggle" onclick="toggleBilling()" aria-label="Basculer entre mensuel et annuel">
-          <span class="toggle-knob"></span>
-        </button>
-        <span class="toggle-label" id="toggleAnnual">Annuel <span class="toggle-badge">-20%</span></span>
-      </div>
-
-      <div class="pricing-grid">
-        <!-- Découverte -->
-        <div class="pricing-card">
-          <div class="pricing-card-header">
-            <span class="plan-name">Découverte</span>
-            <p class="plan-desc">Idéal pour démarrer ou tester</p>
-          </div>
-          <div class="pricing-card-price">
-            <span class="price-amount" data-monthly="0" data-annual="0">0</span>
-            <div class="price-details">
-              <span class="price-currency">EUR</span>
-              <span class="price-period">/ mois</span>
-            </div>
-          </div>
-          <div class="pricing-commission"><strong>+ 2%</strong> de commission Nederly sur les enchères</div>
-          <ul class="pricing-features">
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Enchères illimitées</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Paiements automatiques Stripe</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Notifications push fidèles</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Page synagogue publique</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>1 Gabay</li>
-            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Annonces communautaires</li>
-            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Reçus Cerfa automatiques</li>
-            <li class="feature-excluded"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Support prioritaire</li>
-          </ul>
-          <a href="https://admin.nederly.io" class="btn btn-outline pricing-btn">Démarrer gratuitement</a>
+      <div class="calc">
+        <div class="calc-input">
+          <label for="calcRange">Enchères par Shabbat dans votre synagogue</label>
+          <input id="calcRange" type="range" min="100" max="3000" step="50" value="700">
+          <output id="calcOut" for="calcRange">700&nbsp;€</output>
         </div>
-
-        <!-- Communauté -->
-        <div class="pricing-card pricing-card-featured">
-          <div class="pricing-popular-badge">Recommandé</div>
-          <div class="pricing-card-header">
-            <span class="plan-name">Communauté</span>
-            <p class="plan-desc">Pour les synagogues qui font vivre leur communauté chaque semaine</p>
+        <div class="calc-plans">
+          <div class="calc-plan" data-fee="0" data-rate="0.02">
+            <h3>Découverte</h3>
+            <p class="calc-terms">0&nbsp;€/mois + 2&nbsp;% de commission</p>
+            <div class="calc-cost"><span>61</span>&nbsp;€ <small>/ mois</small></div>
+            <span class="calc-best">Le moins cher pour vous</span>
+            <p class="calc-includes">Enchères illimitées, paiements Stripe, notifications aux fidèles, page synagogue.</p>
+            <a href="https://admin.nederly.io" class="btn btn-outline calc-btn">Démarrer gratuitement</a>
           </div>
-          <div class="pricing-card-price">
-            <span class="price-amount" data-monthly="29" data-annual="23">29</span>
-            <div class="price-details">
-              <span class="price-currency">EUR</span>
-              <span class="price-period">/ mois</span>
-            </div>
+          <div class="calc-plan is-best" data-fee="29" data-rate="0.01">
+            <h3>Communauté</h3>
+            <p class="calc-terms">29&nbsp;€/mois + 1&nbsp;% de commission</p>
+            <div class="calc-cost"><span>59</span>&nbsp;€ <small>/ mois</small></div>
+            <span class="calc-best">Le moins cher pour vous</span>
+            <p class="calc-includes">Tout Découverte, plus reçus Cerfa automatiques, annonces, duplication d'enchères et tableau de bord.</p>
+            <a href="https://admin.nederly.io" class="btn btn-primary calc-btn">Essayer 14 jours gratuitement</a>
           </div>
-          <div class="pricing-commission"><strong>+ 1%</strong> de commission Nederly sur les enchères</div>
-          <ul class="pricing-features">
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg><strong>Tout Découverte, plus :</strong></li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Annonces communautaires</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Reçus Cerfa automatiques</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Duplication d'enchères auto</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Support email prioritaire &lt;24h</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Tableau de bord avec stats</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Calendrier hébraïque intégré</li>
-          </ul>
-          <a href="https://admin.nederly.io" class="btn btn-primary pricing-btn">Essayer 14 jours gratuit</a>
-          <span class="pricing-no-cb">Sans carte bancaire</span>
-        </div>
-
-        <!-- Tsédaka+ -->
-        <div class="pricing-card">
-          <div class="pricing-card-header">
-            <span class="plan-name">Tsédaka+</span>
-            <p class="plan-desc">Pour les synagogues les plus actives</p>
+          <div class="calc-plan" data-fee="79" data-rate="0">
+            <h3>Tsédaka+</h3>
+            <p class="calc-terms">79&nbsp;€/mois, 0&nbsp;% de commission</p>
+            <div class="calc-cost"><span>79</span>&nbsp;€ <small>/ mois</small></div>
+            <span class="calc-best">Le moins cher pour vous</span>
+            <p class="calc-includes">Tout Communauté, plus plusieurs gabayim, analytics avancés, support WhatsApp et téléphone.</p>
+            <a href="https://admin.nederly.io" class="btn btn-outline calc-btn">Essayer 14 jours gratuitement</a>
           </div>
-          <div class="pricing-card-price">
-            <span class="price-amount" data-monthly="79" data-annual="63">79</span>
-            <div class="price-details">
-              <span class="price-currency">EUR</span>
-              <span class="price-period">/ mois</span>
-            </div>
-          </div>
-          <div class="pricing-commission pricing-commission-zero"><strong>+ 0%</strong> de commission Nederly</div>
-          <ul class="pricing-features">
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg><strong>Tout Communauté, plus :</strong></li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Multi-Gabayim</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Analytics avancés (par fidèle, par parasha)</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Onboarding personnalisé</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Support dédié WhatsApp + téléphone</li>
-            <li class="feature-included"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>Accès anticipé aux nouveautés</li>
-          </ul>
-          <a href="https://admin.nederly.io" class="btn btn-secondary pricing-btn">Essayer 14 jours gratuit</a>
         </div>
-      </div>
-
-      <!-- Pricing guarantee + fees -->
-      <div class="pricing-footer-info">
-        <div class="pricing-guarantee">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>Satisfait ou remboursé 30 jours sur les plans annuels.</span>
-        </div>
-        <div class="pricing-fees">
-          <span><strong>Frais bancaires Stripe</strong> : 2,9% + 0,25€ par transaction. Reversés intégralement à Stripe pour la sécurité PCI-DSS. Ce n'est pas une marge Nederly.</span>
-        </div>
+        <a class="calc-founder" href="https://admin.nederly.io?ref=founders" data-fee="15" data-rate="0.005">
+          <span class="calc-founder-text"><strong>Synagogue Fondatrice</strong><small>15&nbsp;€/mois + 0,5&nbsp;%, bloqué à vie · 100 places</small></span>
+          <span class="calc-cost"><span>30</span>&nbsp;€ <small>/ mois</small></span>
+        </a>
+        <p class="calc-note">Montants Nederly (abonnement + commission), sur 4,33 Shabbatot par mois. Paiement annuel : -20&nbsp;% sur l'abonnement, satisfait ou remboursé 30 jours. Frais bancaires Stripe en plus : 2,9&nbsp;% + 0,25&nbsp;€ par transaction, reversés intégralement à Stripe, ce n'est pas une marge Nederly.</p>
       </div>
     </div>
   </section>
@@ -777,78 +577,38 @@
         <span class="section-tag">Questions fréquentes</span>
         <h2>Des questions avant<br>de commencer ?</h2>
       </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Est-ce que Nederly est gratuit pour les fidèles ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Oui, 100% gratuit. Les fidèles ne paient jamais rien à Nederly : ni abonnement, ni commission, ni frais cachés. Ce sont les synagogues qui souscrivent un abonnement (avec un plan gratuit disponible) et nous reversent une commission sur les enchères traitées via la plateforme.</p>
-          </div>
+      <div class="faq-grid">
+        <div class="faq-entry">
+          <h3>Est-ce que Nederly est gratuit pour les fidèles ?</h3>
+          <p>Oui, 100% gratuit. Les fidèles ne paient jamais rien à Nederly : ni abonnement, ni commission, ni frais cachés. Ce sont les synagogues qui souscrivent un abonnement (avec un plan gratuit disponible) et nous reversent une commission sur les enchères traitées via la plateforme.</p>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Le modèle est-il validé halakhiquement ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Oui. Notre modèle économique a été validé par un Rav de référence. La Tsédaka du donateur est intégralement comptabilisée pour la synagogue ; les frais Nederly (abonnement et commission) sont une dépense de fonctionnement de la synagogue, distincte de la Tsédaka, au même titre que l'électricité ou les fournitures. La position halakhique complète est disponible <a href="halakha.html" style="color: var(--gold); font-weight: 600;">ici</a>.</p>
-          </div>
+        <div class="faq-entry">
+          <h3>Le modèle est-il validé halakhiquement ?</h3>
+          <p>Oui. Notre modèle économique a été validé par un Rav de référence. La Tsédaka du donateur est intégralement comptabilisée pour la synagogue ; les frais Nederly (abonnement et commission) sont une dépense de fonctionnement de la synagogue, distincte de la Tsédaka, au même titre que l'électricité ou les fournitures. La position halakhique complète est disponible <a href="halakha.html">ici</a>.</p>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Comment fonctionnent les paiements ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Les paiements passent par Stripe. Quand vous enchérissez, le montant est réservé sur votre carte (empreinte bancaire) : il n'est débité que si vous remportez l'enchère, sinon la réservation est levée. Les données de votre carte sont gérées par Stripe et ne sont jamais stockées par Nederly.</p>
-          </div>
+        <div class="faq-entry">
+          <h3>Comment fonctionnent les paiements ?</h3>
+          <p>Les paiements passent par Stripe. Quand vous enchérissez, le montant est réservé sur votre carte (empreinte bancaire) : il n'est débité que si vous remportez l'enchère, sinon la réservation est levée. Les données de votre carte sont gérées par Stripe et ne sont jamais stockées par Nederly.</p>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Combien Nederly coûte-t-il vraiment pour ma synagogue ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Cela dépend du plan choisi et de votre volume d'enchères. À titre d'exemple, une synagogue qui fait 700€ d'enchères par Shabbat paie environ 124€/mois en plan Fondateur, tout compris (Stripe inclus). Pour le détail, voir <a href="#pricing" style="color: var(--gold); font-weight: 600;">nos tarifs</a>.</p>
-          </div>
+        <div class="faq-entry">
+          <h3>Combien Nederly coûte-t-il vraiment pour ma synagogue ?</h3>
+          <p>Cela dépend du plan choisi et de votre volume d'enchères. À titre d'exemple, une synagogue qui fait 700€ d'enchères par Shabbat paie environ 124€/mois en plan Fondateur, tout compris (Stripe inclus). Pour le détail, voir <a href="#pricing">nos tarifs</a>.</p>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Ma synagogue n'est pas encore sur Nederly, comment faire ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Demandez à votre Gabay ou Président de s'inscrire sur <a href="https://admin.nederly.io" style="color: var(--gold); font-weight: 600;">admin.nederly.io</a>. La mise en place prend moins de 10 minutes. Si vous êtes vous-même Gabay, vous pouvez démarrer en 14 jours d'essai gratuit, sans carte bancaire.</p>
-          </div>
+        <div class="faq-entry">
+          <h3>Ma synagogue n'est pas encore sur Nederly, comment faire ?</h3>
+          <p>Demandez à votre Gabay ou Président de s'inscrire sur <a href="https://admin.nederly.io">admin.nederly.io</a>. La mise en place prend moins de 10 minutes. Si vous êtes vous-même Gabay, vous pouvez démarrer en 14 jours d'essai gratuit, sans carte bancaire.</p>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Est-ce compatible avec Shabbat et les fêtes ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Absolument. Les enchères se font avant Shabbat et se ferment automatiquement avant l'entrée de Shabbat ou de la fête. Aucune action n'est nécessaire pendant ces moments. Notre calendrier hébraïque (Hebcal) est intégré nativement.</p>
-          </div>
+        <div class="faq-entry">
+          <h3>Est-ce compatible avec Shabbat et les fêtes ?</h3>
+          <p>Absolument. Les enchères se font avant Shabbat et se ferment automatiquement avant l'entrée de Shabbat ou de la fête. Aucune action n'est nécessaire pendant ces moments. Notre calendrier hébraïque (Hebcal) est intégré nativement.</p>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Qu'est-ce que l'offre Synagogue Fondatrice ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Une offre limitée aux 100 premières synagogues qui rejoignent Nederly. Vous bloquez 15€/mois + 0,5% de commission à vie, même quand nos prix publics augmenteront. Vous bénéficiez aussi d'un onboarding personnalisé, du badge "Synagogue Fondatrice" et d'un accès direct à notre comité produit. <a href="#founders" style="color: var(--gold); font-weight: 600;">Réserver ma place →</a></p>
-          </div>
+        <div class="faq-entry">
+          <h3>Qu'est-ce que l'offre Synagogue Fondatrice ?</h3>
+          <p>Une offre limitée aux 100 premières synagogues qui rejoignent Nederly. Vous bloquez 15€/mois + 0,5% de commission à vie, même quand nos prix publics augmenteront. Vous bénéficiez aussi d'un onboarding personnalisé, du badge "Synagogue Fondatrice" et d'un accès direct à notre comité produit. <a href="#founders">Réserver ma place →</a></p>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>Puis-je changer de plan ou annuler à tout moment ?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Oui. Changement de plan en un clic depuis le dashboard, avec facturation au prorata. Annulation à tout moment sans pénalité. Et garantie satisfait ou remboursé 30 jours sur tous les plans annuels, sans conditions.</p>
-          </div>
+        <div class="faq-entry">
+          <h3>Puis-je changer de plan ou annuler à tout moment ?</h3>
+          <p>Oui. Changement de plan en un clic depuis le dashboard, avec facturation au prorata. Annulation à tout moment sans pénalité. Et garantie satisfait ou remboursé 30 jours sur tous les plans annuels, sans conditions.</p>
         </div>
       </div>
     </div>
@@ -858,7 +618,6 @@
   <section class="download-section" id="download">
     <div class="container">
       <div class="download-card">
-        <div class="download-bg-glow"></div>
         <div class="download-content">
           <h2>L'application arrive bientôt.<br>Votre synagogue peut déjà s'inscrire.</h2>
           <p>
@@ -905,40 +664,19 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="assets/logo_new.png" alt="Nederly" class="logo-icon">
-            <span class="logo-text">NEDERLY</span>
-          </div>
-          <p class="footer-desc">
-            Enchères de Aliyot, dons et reçus Cerfa pour les synagogues.
-          </p>
-        </div>
-        <div class="footer-links-group">
-          <h4>Produit</h4>
-          <a href="#features">Fonctionnalités</a>
-          <a href="#synagogues">Pour les synagogues</a>
+      <p class="footer-statement">Les enchères de Aliyot, simplement, pour votre synagogue.</p>
+      <a class="footer-mail" href="mailto:contact@nederly.io">contact@nederly.io</a>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Nederly</span>
+        <nav class="footer-nav" aria-label="Liens utiles">
           <a href="#pricing">Tarifs</a>
-          <a href="#founders">Synagogues Fondatrices</a>
-          <a href="#download">Télécharger l'app</a>
-        </div>
-        <div class="footer-links-group">
-          <h4>Support</h4>
+          <a href="support.html">Aide</a>
           <a href="contact.html">Contact</a>
-          <a href="#faq">FAQ</a>
-          <a href="support.html">Centre d'aide</a>
-        </div>
-        <div class="footer-links-group">
-          <h4>Légal</h4>
-          <a href="privacy.html">Politique de confidentialité</a>
+          <a href="privacy.html">Confidentialité</a>
           <a href="mentions-legales.html">Mentions légales</a>
           <a href="cgu.html">CGU</a>
           <a href="halakha.html">Position halakhique</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Nederly. Tous droits réservés.</span>
+        </nav>
         <!-- Réseaux sociaux : réactiver ce bloc en remplaçant les href="#"
              par les vraies URLs de comptes. Laissé masqué plutôt que de
              livrer trois icônes qui ne mènent nulle part.

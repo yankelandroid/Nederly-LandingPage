@@ -31,7 +31,7 @@ navLinks.querySelectorAll('a').forEach(link => {
 
 // Scroll reveal animations
 const revealElements = document.querySelectorAll(
-  '.feature-card, .step-card, .pricing-card, .pricing-free-banner, .synagogues-content, .synagogues-visual, .download-card, .section-header, .bottom-card, .faq-item'
+  '.feature-card, .feature-row, .step, .calc, .synagogues-content, .synagogues-visual, .download-card, .section-header, .bottom-card, .faq-entry'
 );
 
 revealElements.forEach(el => el.classList.add('reveal'));
@@ -65,30 +65,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Pricing billing toggle
-let isAnnual = false;
-
-function toggleBilling() {
-  isAnnual = !isAnnual;
-  const toggle = document.getElementById('billingToggle');
-  const monthlyLabel = document.getElementById('toggleMonthly');
-  const annualLabel = document.getElementById('toggleAnnual');
-  const prices = document.querySelectorAll('.price-amount[data-monthly]');
-
-  toggle.classList.toggle('active', isAnnual);
-  monthlyLabel.classList.toggle('toggle-label-active', !isAnnual);
-  annualLabel.classList.toggle('toggle-label-active', isAnnual);
-
-  prices.forEach(el => {
-    el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
-  });
-
-  // Update period labels
-  document.querySelectorAll('.price-period').forEach(el => {
-    el.textContent = isAnnual ? '/ mois (facturé annuellement)' : '/ mois';
-  });
-}
-
 // Parcours toggle (How it works — Fidèles / Gabayim)
 function switchParcours(target) {
   const tabs = document.querySelectorAll('.parcours-tab');
@@ -103,6 +79,34 @@ function switchParcours(target) {
     content.classList.toggle('parcours-hidden', id !== target);
   });
 }
+
+// Calculateur de tarifs : coût mensuel Nederly (abonnement + commission) selon les
+// enchères par Shabbat, sur 4,33 Shabbatot par mois ; la formule la moins chère ressort.
+(function () {
+  const range = document.getElementById('calcRange');
+  if (!range) return;
+  const out = document.getElementById('calcOut');
+  const plans = [...document.querySelectorAll('.calc-plan')];
+  const founder = document.querySelector('.calc-founder');
+  const fmt = (n) => Math.round(n).toLocaleString('fr-FR');
+  const cost = (el, perShabbat) => Number(el.dataset.fee) + Number(el.dataset.rate) * perShabbat * 4.33;
+
+  function update() {
+    const perShabbat = Number(range.value);
+    out.textContent = fmt(perShabbat) + '\u00a0€';
+    let best = null;
+    plans.forEach((plan) => {
+      const c = cost(plan, perShabbat);
+      plan.querySelector('.calc-cost span').textContent = fmt(c);
+      if (!best || c < best.c) best = { plan, c };
+    });
+    plans.forEach((plan) => plan.classList.toggle('is-best', plan === best.plan));
+    founder.querySelector('.calc-cost span').textContent = fmt(cost(founder, perShabbat));
+  }
+
+  range.addEventListener('input', update);
+  update();
+})();
 
 // Founders counter — fetch real-time count (placeholder, defaults to 100 if API not ready)
 (function () {
@@ -358,11 +362,10 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 (function () {
   // Add stagger class to grid parents whose direct children are reveal items
   const staggerParents = [
-    '.features-grid',
-    '.steps-grid',
-    '.pricing-grid',
+    '.steps-line',
+    '.calc-plans',
     '.bottom-cards-grid',
-    '.faq-list',
+    '.faq-grid',
     '.founders-perks'
   ];
   staggerParents.forEach(sel => {
