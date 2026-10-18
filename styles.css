@@ -4586,3 +4586,111 @@ a {
   .magnetic-offset { transform: none !important; }
 }
 
+
+/* ============================================
+   LAUNCH WAITLIST (download section)
+   Replaces the dead App Store / Google Play links until the apps ship.
+   ============================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.waitlist-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.waitlist-input {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 14px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.waitlist-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.waitlist-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-glow);
+}
+
+.waitlist-submit {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.waitlist-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.waitlist-feedback {
+  min-height: 22px;
+  margin: 14px 0 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.waitlist-feedback.is-error {
+  color: #FCA5A5;
+}
+
+.waitlist-feedback.is-success {
+  color: var(--gold-light);
+}
+
+.store-badges-soon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.store-badge-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.store-badge-soon .store-icon-img {
+  opacity: 0.55;
+}
+
+@media (max-width: 520px) {
+  .waitlist-form {
+    flex-direction: column;
+  }
+
+  .waitlist-submit {
+    width: 100%;
+  }
+}

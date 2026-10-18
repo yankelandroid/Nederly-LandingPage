@@ -916,3 +916,22 @@
     transform: none !important;
   }
 }
+
+
+/* Contact form error — shown when the API call fails so a visitor is never
+   told their message went through when it did not. */
+.form-error {
+  display: none;
+  margin: 0 0 16px 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  color: #b91c1c;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-error.visible {
+  display: block;
+}

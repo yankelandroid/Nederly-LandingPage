@@ -625,3 +625,72 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     });
   });
 })();
+
+
+// Launch waitlist — the store buttons used to be dead links; the section now
+// captures an email through the same contact API the contact page uses.
+(function () {
+  const WAITLIST_ENDPOINT = 'https://api.nederly.io/api/contact';
+
+  const form = document.getElementById('waitlistForm');
+  const feedback = document.getElementById('waitlistFeedback');
+  if (!form || !feedback) return;
+
+  const input = document.getElementById('waitlistEmail');
+  const button = form.querySelector('[type="submit"]');
+  const buttonLabel = button ? button.textContent : '';
+
+  function setFeedback(message, state) {
+    feedback.textContent = message;
+    feedback.classList.remove('is-error', 'is-success');
+    if (state) feedback.classList.add(state);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setFeedback('', null);
+
+    const email = (input.value || '').trim();
+    if (!email || !input.checkValidity()) {
+      setFeedback('Merci de saisir une adresse email valide.', 'is-error');
+      input.focus();
+      return;
+    }
+
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Envoi…';
+    }
+
+    try {
+      const response = await fetch(WAITLIST_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: 'Liste',
+          lastName: 'attente',
+          email: email,
+          subject: 'autre',
+          message: "Inscription à la liste d'attente du lancement des applications mobiles.",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      form.style.display = 'none';
+      setFeedback('C\'est noté — vous serez prévenu dès la mise en ligne.', 'is-success');
+    } catch (error) {
+      setFeedback(
+        "Impossible d'enregistrer votre email pour le moment. Écrivez-nous à contact@nederly.io.",
+        'is-error'
+      );
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = buttonLabel;
+      }
+    }
+  });
+})();

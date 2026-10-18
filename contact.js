@@ -19,22 +19,69 @@ if (subjectSelect) {
 }
 
 // Form submission
+const CONTACT_ENDPOINT = 'https://api.nederly.io/api/contact';
+
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
+const formError = document.getElementById('formError');
+const submitButton = contactForm ? contactForm.querySelector('[type="submit"]') : null;
+const submitButtonLabel = submitButton ? submitButton.innerHTML : '';
+
+function showFormError(message) {
+  if (!formError) return;
+  formError.textContent = message;
+  formError.classList.add('visible');
+}
+
+function hideFormError() {
+  if (!formError) return;
+  formError.classList.remove('visible');
+}
 
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    hideFormError();
 
-    // Collect form data
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData.entries());
-    console.log('Form submitted:', data);
 
-    // TODO: Replace with actual API call (e.g., fetch to backend or email service)
-    // For now, simulate a successful submission
-    contactForm.style.display = 'none';
-    formSuccess.classList.add('visible');
+    // The synagogue name field is hidden for most subjects; sending an empty
+    // string would fail the API's optional-string validation.
+    if (!data.synagogueName) {
+      delete data.synagogueName;
+    }
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Envoi en cours…';
+    }
+
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      contactForm.style.display = 'none';
+      formSuccess.classList.add('visible');
+    } catch (error) {
+      // Never pretend the message went through: the visitor must know to use
+      // the email address in the sidebar instead.
+      showFormError(
+        "Votre message n'a pas pu être envoyé. Réessayez dans un instant ou écrivez-nous directement à contact@nederly.io."
+      );
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = submitButtonLabel;
+      }
+    }
   });
 }
 
@@ -44,6 +91,7 @@ function resetForm() {
   contactForm.style.display = 'block';
   formSuccess.classList.remove('visible');
   synagogueFields.style.display = 'none';
+  hideFormError();
 }
 
 // Spotlight tracking on info cards

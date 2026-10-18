@@ -139,7 +139,7 @@
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="#" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <img src="assets/logo_new.png" alt="Nederly" class="logo-icon">
         <span class="logo-text">NEDERLY</span>
       </a>
@@ -1079,7 +1079,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
-            <p>Oui. Notre modèle économique a été validé par un Rav de référence. La Tsédaka du donateur est intégralement comptabilisée pour la synagogue ; les frais Nederly (abonnement et commission) sont une dépense de fonctionnement de la synagogue, distincte de la Tsédaka — comme l'électricité ou les fournitures. La position halakhique complète est disponible <a href="#" style="color: var(--gold); font-weight: 600;">ici</a>.</p>
+            <p>Oui. Notre modèle économique a été validé par un Rav de référence. La Tsédaka du donateur est intégralement comptabilisée pour la synagogue ; les frais Nederly (abonnement et commission) sont une dépense de fonctionnement de la synagogue, distincte de la Tsédaka — comme l'électricité ou les fournitures. La position halakhique complète est disponible <a href="halakha.html" style="color: var(--gold); font-weight: 600;">ici</a>.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -1148,25 +1148,36 @@
         <div class="download-content">
           <h2>Votre communauté mérite mieux.<br>Démarrez aujourd'hui.</h2>
           <p>
-            Téléchargez Nederly gratuitement et enchérissez dès ce Shabbat.
-            Si vous êtes Gabay ou Président, inscrivez votre synagogue en 5 minutes —
-            14 jours d'essai gratuit, sans carte bancaire.
+            Les applications iOS et Android arrivent. Laissez votre email et vous serez
+            prévenu le jour de leur mise en ligne — rien d'autre, pas de newsletter.
+            Si vous êtes Gabay ou Président, vous pouvez déjà inscrire votre synagogue
+            en 5 minutes : 14 jours d'essai gratuit, sans carte bancaire.
           </p>
-          <div class="store-buttons">
-            <a href="#" class="store-btn">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              <div class="store-text">
-                <span class="store-small">Télécharger sur</span>
-                <span class="store-name">App Store</span>
-              </div>
-            </a>
-            <a href="#" class="store-btn">
-              <img src="assets/google-play.png" alt="Google Play" class="store-icon-img" width="24" height="24" loading="lazy">
-              <div class="store-text">
-                <span class="store-small">Disponible sur</span>
-                <span class="store-name">Google Play</span>
-              </div>
-            </a>
+          <form class="waitlist-form" id="waitlistForm" novalidate>
+            <label class="sr-only" for="waitlistEmail">Votre email</label>
+            <input
+              type="email"
+              id="waitlistEmail"
+              name="email"
+              class="waitlist-input"
+              placeholder="votre@email.com"
+              autocomplete="email"
+              required
+            >
+            <button type="submit" class="btn btn-primary waitlist-submit">
+              Prévenez-moi au lancement
+            </button>
+          </form>
+          <p class="waitlist-feedback" id="waitlistFeedback" role="status" aria-live="polite"></p>
+          <div class="store-badges-soon" aria-hidden="true">
+            <span class="store-badge-soon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              App Store — bientôt
+            </span>
+            <span class="store-badge-soon">
+              <img src="assets/google-play.png" alt="" class="store-icon-img" width="18" height="18" loading="lazy">
+              Google Play — bientôt
+            </span>
           </div>
           <div class="download-synagogue-cta">
             <span>Vous représentez une synagogue ?</span>
@@ -1210,11 +1221,14 @@
           <a href="privacy.html">Politique de confidentialité</a>
           <a href="privacy.html">Mentions légales</a>
           <a href="privacy.html">CGU</a>
-          <a href="#">Position halakhique</a>
+          <a href="halakha.html">Position halakhique</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Nederly. Tous droits réservés.</span>
+        <!-- Réseaux sociaux : réactiver ce bloc en remplaçant les href="#"
+             par les vraies URLs de comptes. Laissé masqué plutôt que de
+             livrer trois icônes qui ne mènent nulle part.
         <div class="footer-socials">
           <a href="#" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1226,6 +1240,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
+        -->
       </div>
     </div>
   </footer>
