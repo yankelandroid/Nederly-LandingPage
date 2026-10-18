@@ -2460,12 +2460,17 @@ body.menu-open .nav-scrim {
    ============================================ */
 
 /* ============================================
-   VIDÉO — grande carte sous le hero, façon showreel
-   L'aperçu est le fond de la vidéo : une seule image chargée selon la largeur.
+   VIDÉOS — grandes cartes façon showreel (sous le hero, dans « Comment ça marche »)
+   L'aperçu est le fond de la vidéo (--poster-wide / --poster-tall sur la balise) :
+   une seule image chargée selon la largeur.
    ============================================ */
 .showreel {
   padding: 8px 0 104px;
   background: var(--bg);
+}
+
+.how-teaser {
+  margin-top: 64px;
 }
 
 .showreel-frame {
@@ -2485,7 +2490,7 @@ body.menu-open .nav-scrim {
   height: 100%;
   object-fit: cover;
   cursor: pointer;
-  background: var(--navy) url("assets/video/nederly-enchere-16x9.jpg") center / cover no-repeat;
+  background: var(--navy) var(--poster-wide) center / cover no-repeat;
 }
 
 .showreel-sound {
@@ -2511,6 +2516,14 @@ body.menu-open .nav-scrim {
 
 .showreel-sound:hover {
   background: rgba(10, 22, 40, 0.9);
+}
+
+/* Teaser : titres en haut de l'image, bouton son en bas à gauche */
+.how-teaser .showreel-sound {
+  top: auto;
+  bottom: 16px;
+  left: 16px;
+  transform: none;
 }
 
 .showreel-ico-on,
@@ -2558,11 +2571,21 @@ body.menu-open .nav-scrim {
   }
 
   .showreel-video {
-    background-image: url("assets/video/nederly-enchere-9x16.jpg");
+    background-image: var(--poster-tall);
   }
 
   .showreel-sound {
     top: 12px;
+  }
+
+  .how-teaser {
+    margin-top: 48px;
+  }
+
+  .how-teaser .showreel-sound {
+    top: auto;
+    bottom: 12px;
+    left: 12px;
   }
 }
 
