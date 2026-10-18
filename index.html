@@ -315,12 +315,12 @@
           <div class="feature-visual">
             <!-- Démo : écran d'enchère de l'app, piloté par script.js (auctionDemo).
                  Hauteur fixe : tout change sur place (chiffres, rang, statut, bouton). -->
-            <div class="auction-demo" data-auction-demo>
+            <div class="auction-demo" data-auction-demo data-phase="won">
               <p class="sr-only">Exemple : vous enchérissez 260&nbsp;€ sur la Aliyah Shéni, Moshe&nbsp;R. propose 280&nbsp;€ et vous recevez une notification de surenchère ; vous remontez à 320&nbsp;€ et remportez l'Aliyah à la clôture, avant Shabbat.</p>
               <div class="ad-toast" aria-hidden="true">
                 <img class="ad-toast-icon" src="assets/logo_new.png" alt="" width="32" height="32">
                 <span class="ad-toast-text">
-                  <strong class="ad-toast-title">Aliyah Shéni remportée</strong>
+                  <strong class="ad-toast-title">Mazal tov ! Aliyah Shéni remportée</strong>
                   <span class="ad-toast-body">320&nbsp;€ débités · reçu Cerfa envoyé par email</span>
                 </span>
                 <span class="ad-toast-time">maintenant</span>
@@ -339,7 +339,7 @@
                 <div class="ad-price-row">
                   <div>
                     <span class="ad-price-label">Offre la plus haute</span>
-                    <div class="ad-price"><span class="ad-price-value">320</span><span class="ad-price-unit">&nbsp;€</span><span class="ad-delta"></span></div>
+                    <div class="ad-price"><span class="ad-price-value">320</span><span class="ad-price-unit">&nbsp;€</span><span class="ad-delta"></span><span class="ad-win-check"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle class="ad-check-ring" cx="12" cy="12" r="10.5"/><path class="ad-check-mark" d="M7.2 12.4l3.1 3.1 6.5-6.6"/></svg></span></div>
                   </div>
                   <div class="ad-rank" data-state="won">
                     <span class="ad-rank-window"><span class="ad-rank-strip"><span>–</span><span>1<sup>er</sup></span><span>2<sup>e</sup></span></span></span>
@@ -354,6 +354,10 @@
                     <span class="ad-chip">+60&nbsp;€</span>
                   </div>
                   <span class="ad-cta"><span class="ad-cta-label">Enchère terminée</span></span>
+                  <div class="ad-win-banner">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    Vous montez à la Torah ce Shabbat
+                  </div>
                 </div>
                 <div class="ad-footer">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>

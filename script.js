@@ -222,6 +222,7 @@ function switchParcours(target) {
     setPrice(220);
     lead.dataset.state = 'other';
     rank.dataset.state = 'none';
+    delete root.dataset.phase;
     rankLabel.textContent = 'Votre rang';
     status.dataset.state = 'open';
     statusText.textContent = 'En cours';
@@ -295,17 +296,18 @@ function switchParcours(target) {
       swapText(footerText.parentElement, footerText, 'Clôturée vendredi à 17\u00a0h\u00a042, avant Shabbat');
     }, 10600);
     later(() => {
+      root.dataset.phase = 'won';
       setLead('won', "Vous avez remporté l'Aliyah");
       rank.dataset.state = 'won';
       swapText(rank, rankLabel, 'Remportée');
     }, 11000);
     later(() => {
-      toastTitle.textContent = 'Aliyah Shéni remportée';
+      toastTitle.textContent = 'Mazal tov ! Aliyah Shéni remportée';
       toastBody.textContent = eur(320) + ' débités · reçu Cerfa envoyé par email';
       toast.classList.add('is-visible');
-    }, 11500);
-    later(() => toast.classList.remove('is-visible'), 14300);
-    later(cycle, 15200);
+    }, 11800);
+    later(() => toast.classList.remove('is-visible'), 14800);
+    later(cycle, 16400);
   }
 
   new IntersectionObserver((entries) => {
