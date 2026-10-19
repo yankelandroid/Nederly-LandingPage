@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supprimer votre compte - Nederly</title>
+  <meta name="description" content="Comment supprimer votre compte Nederly, depuis l'application ou par email, et quelles données sont effacées ou conservées.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A1628">
+  <link rel="canonical" href="https://nederly.io/suppression-compte.html">
+  <link rel="alternate" hreflang="fr" href="https://nederly.io/suppression-compte.html">
+  <link rel="icon" href="assets/logo_new.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo_new.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nederly.io/suppression-compte.html">
+  <meta property="og:title" content="Supprimer votre compte - Nederly">
+  <meta property="og:description" content="Supprimer votre compte Nederly : la marche à suivre et le sort de vos données.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Nederly">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-hero {
+      padding: 160px 0 60px;
+      background: var(--bg);
+      position: relative;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: -200px;
+      background: radial-gradient(circle at 50% 0%, var(--gold-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .legal-hero h1 {
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--navy);
+      position: relative;
+    }
+    .legal-hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      position: relative;
+    }
+    .legal-content {
+      padding: 0 0 100px;
+      position: relative;
+    }
+    .legal-card {
+      background: var(--surface);
+      border-radius: var(--radius-2xl);
+      padding: 48px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-lg);
+      max-width: 800px;
+    }
+    .legal-card section {
+      margin-bottom: 36px;
+    }
+    .legal-card section:last-child {
+      margin-bottom: 0;
+    }
+    .legal-card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .legal-card p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .legal-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .legal-card ul li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .legal-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .legal-card a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .legal-card a:hover {
+      text-decoration: underline;
+    }
+    .legal-card strong {
+      color: var(--navy);
+    }
+    @media (max-width: 768px) {
+      .legal-hero h1 { font-size: 32px; }
+      .legal-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation : capsule flottante ; sur mobile, elle s'étire en menu -->
+  <header class="navbar" id="navbar">
+    <div class="nav-bar">
+      <a href="index.html" class="nav-logo" aria-label="Nederly, accueil">
+        <img src="assets/logo_new.png" alt="" class="logo-icon" width="28" height="28">
+        <span class="logo-text">NEDERLY</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html#features">Fonctionnalités</a>
+        <a href="index.html#pricing">Tarifs</a>
+        <a href="index.html#founders">Fondateurs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://admin.nederly.io" class="nav-cta">Inscrire ma synagogue<span class="nav-cta-dot" aria-hidden="true"></span></a>
+        <a href="mailto:contact@nederly.io" class="nav-round" aria-label="Écrire à Nederly"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <button type="button" class="nav-burger" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navPanel"><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="nav-panel" id="navPanel"><div><nav class="nav-panel-inner" aria-label="Menu mobile">
+      <a href="index.html#features">Fonctionnalités</a>
+      <a href="index.html#pricing">Tarifs</a>
+      <a href="index.html#founders">Fondateurs</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://admin.nederly.io" class="nav-cta">Inscrire ma synagogue<span class="nav-cta-dot" aria-hidden="true"></span></a>
+    </nav></div></div>
+  </header>
+  <div class="nav-scrim" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="legal-hero">
+    <div class="container">
+      <h1>Supprimer votre compte</h1>
+      <p>Application Nederly · Dernière mise à jour : 19 octobre 2026</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="legal-content">
+    <div class="container">
+      <div class="legal-card">
+
+        <section>
+          <h2>1. Depuis l'application</h2>
+          <ul>
+            <li>Ouvrez Nederly et allez dans l'onglet <strong>Profil</strong>.</li>
+            <li>En bas de l'écran, appuyez sur <strong>Supprimer mon compte</strong>.</li>
+            <li>Confirmez. La suppression est immédiate et vous êtes déconnecté.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2. Sans l'application</h2>
+          <p>Écrivez à <a href="mailto:contact@nederly.io?subject=Suppression%20de%20compte">contact@nederly.io</a> depuis l'adresse email de votre compte, avec l'objet « Suppression de compte ». Nous supprimons le compte dans un délai d'un mois au plus et vous le confirmons par email.</p>
+        </section>
+
+        <section>
+          <h2>3. Données supprimées</h2>
+          <ul>
+            <li>Vos nom, prénom, adresse email, téléphone et adresse postale</li>
+            <li>Votre photo de profil et la pièce d'identité éventuellement transmise</li>
+            <li>Vos synagogues favorites, votre position Minyan Flash et vos notifications</li>
+            <li>Vos appareils enregistrés pour les notifications et votre identifiant de connexion</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Données conservées</h2>
+          <ul>
+            <li>Vos dons et vos Aliyot (montant, date, synagogue) restent dans la comptabilité des synagogues, sans lien avec votre identité.</li>
+            <li>Pour les reçus fiscaux déjà émis, le nom et l'adresse qui y figurent sont conservés, car la synagogue doit pouvoir en présenter le duplicata pendant la durée légale (six ans en France).</li>
+            <li>Les messages que vous avez envoyés restent visibles par leurs destinataires, sans votre nom.</li>
+            <li>Les données de paiement sont détenues par Stripe, qui les conserve selon ses propres obligations légales.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. Cas particuliers</h2>
+          <p>Si vous gérez une synagogue sur Nederly, écrivez-nous d'abord à <a href="mailto:contact@nederly.io">contact@nederly.io</a> pour en transmettre la gestion. Si vous êtes en tête d'une enchère en cours, la suppression sera possible après sa clôture.</p>
+        </section>
+
+        <section>
+          <h2>6. Contact</h2>
+          <p>Pour toute question : <a href="mailto:contact@nederly.io">contact@nederly.io</a>. Le traitement de vos données est décrit dans notre <a href="privacy.html">politique de confidentialité</a>.</p>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 13px;">
+    <div class="container">
+      <p>© 2026 Nederly. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
