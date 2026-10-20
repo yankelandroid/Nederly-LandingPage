@@ -21,6 +21,9 @@ if (subjectSelect) {
 // Form submission
 const CONTACT_ENDPOINT = 'https://api.nederly.io/api/contact';
 
+// Messages de l'envoi : en hébreu sur he/contact.html
+const contactIsHebrew = document.documentElement.lang === 'he';
+
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 const formError = document.getElementById('formError');
@@ -54,7 +57,7 @@ if (contactForm) {
 
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.textContent = 'Envoi en cours…';
+      submitButton.textContent = contactIsHebrew ? 'שולחים…' : 'Envoi en cours…';
     }
 
     try {
@@ -73,8 +76,9 @@ if (contactForm) {
     } catch (error) {
       // Never pretend the message went through: the visitor must know to use
       // the email address in the sidebar instead.
-      showFormError(
-        "Votre message n'a pas pu être envoyé. Réessayez dans un instant ou écrivez-nous directement à contact@nederly.io."
+      showFormError(contactIsHebrew
+        ? 'לא הצלחנו לשלוח את ההודעה. נסו שוב בעוד רגע או כתבו לנו ישירות ל־contact@nederly.io.'
+        : "Votre message n'a pas pu être envoyé. Réessayez dans un instant ou écrivez-nous directement à contact@nederly.io."
       );
     } finally {
       if (submitButton) {

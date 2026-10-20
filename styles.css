@@ -206,7 +206,7 @@ a {
   align-items: center;
   gap: 28px;
   height: 64px;
-  padding: 0 10px 0 22px;
+  padding-inline: 22px 10px;
 }
 
 .nav-logo {
@@ -231,7 +231,7 @@ a {
 .nav-links {
   display: flex;
   gap: 26px;
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .nav-links a {
@@ -278,7 +278,7 @@ a {
 .nav-cta-dot {
   position: absolute;
   top: -1px;
-  right: 4px;
+  inset-inline-end: 4px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -357,11 +357,11 @@ body.menu-open .nav-scrim {
   .nav-bar {
     height: 58px;
     gap: 8px;
-    padding: 0 7px 0 18px;
+    padding-inline: 18px 7px;
   }
 
   .nav-actions {
-    margin-left: auto;
+    margin-inline-start: auto;
     gap: 4px;
   }
 
@@ -473,7 +473,7 @@ body.menu-open .nav-scrim {
   align-items: center;
   gap: 9px;
   height: 40px;
-  padding: 0 16px 0 12px;
+  padding-inline: 12px 16px;
   border-radius: 999px;
   background: #EFEAE0;
   color: #4C4A45;
@@ -515,7 +515,7 @@ body.menu-open .nav-scrim {
   align-items: center;
   gap: 12px;
   height: 54px;
-  padding: 0 26px 0 6px;
+  padding-inline: 6px 26px;
   border-radius: 999px;
   background: var(--navy);
   color: var(--ivory);
@@ -664,7 +664,7 @@ body.menu-open .nav-scrim {
 
 .roll > span.is-out {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0;
   transform: translateY(-100%);
   opacity: 0;
@@ -942,9 +942,9 @@ body.menu-open .nav-scrim {
 /* Écart affiché à chaque nouvelle offre (+40 €, +20 €), puis effacé */
 .ad-delta {
   position: absolute;
-  left: 100%;
+  inset-inline-start: 100%;
   top: -2px;
-  margin-left: 8px;
+  margin-inline-start: 8px;
   padding: 3px 7px;
   border-radius: 6px;
   font-family: var(--font-body);
@@ -1324,9 +1324,10 @@ body.menu-open .nav-scrim {
 /* Coche verte qui se dessine à côté du prix */
 .ad-win-check {
   position: absolute;
-  left: 100%;
+  inset-inline-start: 100%;
   top: 50%;
-  margin: -12px 0 0 10px;
+  margin: -12px 0 0;
+  margin-inline-start: 10px;
   width: 24px;
   height: 24px;
   opacity: 0;
@@ -1480,7 +1481,7 @@ body.menu-open .nav-scrim {
 
 .ad-toast-time {
   align-self: flex-start;
-  margin-left: auto;
+  margin-inline-start: auto;
   font-size: 11px;
   color: var(--text-muted);
 }
@@ -1713,7 +1714,7 @@ body.menu-open .nav-scrim {
 .dashboard-screenshot-float {
   position: absolute;
   bottom: -40px;
-  right: -24px; /* jamais plus que la marge du .container, sinon défilement horizontal */
+  inset-inline-end: -24px; /* jamais plus que la marge du .container, sinon défilement horizontal */
   z-index: 2;
   width: 70%;
   background: var(--surface);
@@ -1807,7 +1808,7 @@ body.menu-open .nav-scrim {
 .store-text {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: start;
 }
 
 .store-small {
@@ -1873,8 +1874,8 @@ body.menu-open .nav-scrim {
   border-top: 1px solid rgba(244, 239, 230, 0.12);
   gap: 16px;
   flex-wrap: wrap;
-  /* place pour le bouton « retour en haut », fixé en bas à droite */
-  padding-right: 64px;
+  /* place pour le bouton « retour en haut », fixé en bas à droite (à gauche en hébreu) */
+  padding-inline-end: 64px;
 }
 
 .footer-nav {
@@ -2053,7 +2054,7 @@ body.menu-open .nav-scrim {
 
 .calc-input output {
   min-width: 120px;
-  text-align: right;
+  text-align: end;
   font-family: var(--font-display);
   font-size: 30px;
   font-weight: 800;
@@ -2281,8 +2282,8 @@ body.menu-open .nav-scrim {
   }
 
   .steps-line::before {
-    left: 23px;
-    right: auto;
+    inset-inline-start: 23px;
+    inset-inline-end: auto;
     top: 24px;
     bottom: 24px;
     width: 2px;
@@ -2290,12 +2291,12 @@ body.menu-open .nav-scrim {
   }
 
   .step {
-    padding-left: 68px;
+    padding-inline-start: 68px;
   }
 
   .step-dot {
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     top: 0;
   }
 
@@ -2377,7 +2378,7 @@ body.menu-open .nav-scrim {
   .dashboard-screenshot-float {
     position: relative;
     bottom: auto;
-    right: auto;
+    inset-inline-end: auto;
     width: 100%;
     margin-top: 16px;
   }
@@ -2469,16 +2470,16 @@ body.menu-open .nav-scrim {
   background: var(--navy) var(--poster-wide) center / cover no-repeat;
 }
 
-/* En bas à gauche : les titres de la vidéo sont en haut de l'image */
+/* En bas, côté début de ligne (à gauche en français) : les titres de la vidéo sont en haut de l'image */
 .showreel-sound {
   position: absolute;
   bottom: 16px;
-  left: 16px;
+  inset-inline-start: 16px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   height: 36px;
-  padding: 0 14px 0 12px;
+  padding-inline: 12px 14px;
   border: 0;
   border-radius: 999px;
   background: rgba(10, 22, 40, 0.72);
@@ -2544,7 +2545,7 @@ body.menu-open .nav-scrim {
 
   .showreel-sound {
     bottom: 12px;
-    left: 12px;
+    inset-inline-start: 12px;
   }
 }
 
@@ -2784,7 +2785,7 @@ body.menu-open .nav-scrim {
 /* Retour en haut */
 .back-to-top {
   position: fixed;
-  right: 24px;
+  inset-inline-end: 24px;
   bottom: 24px;
   width: 44px;
   height: 44px;
@@ -2829,7 +2830,7 @@ body.menu-open .nav-scrim {
 
 @media (max-width: 768px) {
   .back-to-top {
-    right: 16px;
+    inset-inline-end: 16px;
     bottom: 16px;
   }
 }
@@ -2851,7 +2852,7 @@ body.menu-open .nav-scrim {
 @media (max-width: 1024px) {
   .container { padding: 0 20px; }
 
-  .dashboard-screenshot-float { right: -20px; }
+  .dashboard-screenshot-float { inset-inline-end: -20px; }
 
   .synagogues-cta-group { justify-content: center; }
 }
@@ -2941,7 +2942,7 @@ body.menu-open .nav-scrim {
   /* Pricing card compact */
 
   /* Back-to-top smaller */
-  .back-to-top { width: 40px; height: 40px; right: 14px; bottom: 14px; }
+  .back-to-top { width: 40px; height: 40px; inset-inline-end: 14px; bottom: 14px; }
 
   /* Ticker, if added again in future, would need adjustments */
 }
@@ -3058,4 +3059,117 @@ body.menu-open .nav-scrim {
   .waitlist-submit {
     width: 100%;
   }
+}
+
+/* ============================================
+   LANGUES — sélecteur FR / עברית et pages hébraïques (/he/, dir="rtl")
+   Les décalages gauche/droite de cette feuille sont écrits en propriétés
+   logiques (inset-inline, padding-inline…) et se retournent seuls en RTL ;
+   restent ici les cas qui ne se retournent pas d'eux-mêmes.
+   ============================================ */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  height: 36px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--ivory);
+  border: 1px solid var(--border-light);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  /* FR toujours à gauche, עברית toujours à droite, quelle que soit la page */
+  direction: ltr;
+}
+
+.lang-switch > * {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--text-muted);
+}
+
+.lang-switch a:hover {
+  color: var(--navy);
+}
+
+.lang-switch [aria-current] {
+  background: var(--surface);
+  color: var(--navy);
+  box-shadow: 0 1px 2px rgba(10, 22, 40, 0.12);
+}
+
+.footer .lang-switch {
+  background: rgba(244, 239, 230, 0.06);
+  border-color: rgba(244, 239, 230, 0.14);
+}
+
+.footer .lang-switch > * {
+  color: rgba(244, 239, 230, 0.6);
+}
+
+.footer .lang-switch a:hover {
+  color: var(--ivory);
+}
+
+.footer .lang-switch [aria-current] {
+  background: var(--ivory);
+  color: var(--navy);
+}
+
+/* Pied de page court des pages légales */
+footer > .container > .lang-switch {
+  margin-top: 14px;
+}
+
+/* Petits téléphones : l'en-tête ne garde que l'autre langue (le sélecteur
+   complet reste dans le pied de page), puis cède la place du bouton mail */
+@media (max-width: 370px) {
+  .nav-actions .lang-switch [aria-current] {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) {
+  .nav-actions .nav-round {
+    display: none;
+  }
+}
+
+/* Hébreu : Heebo pour le texte et les titres (Instrument Sans et Cabinet
+   Grotesk n'ont pas l'hébreu) ; le logo garde Cabinet Grotesk */
+html[lang="he"] {
+  --font-display: 'Heebo', system-ui, sans-serif;
+  --font-body: 'Heebo', system-ui, -apple-system, sans-serif;
+}
+
+html[lang="he"] .logo-text {
+  font-family: 'Cabinet Grotesk', 'Heebo', sans-serif;
+}
+
+/* Le bandeau des Aliyot défile vers la droite */
+[dir="rtl"] .aliyot-track {
+  animation-name: aliyotScrollRtl;
+}
+
+@keyframes aliyotScrollRtl {
+  to { transform: translateX(50%); }
+}
+
+/* La flèche du bouton pilule pointe à gauche et se relève vers le haut à gauche */
+[dir="rtl"] .btn-pill:hover .btn-pill-ico {
+  transform: rotate(45deg);
+}
+
+/* Les chiffres du compteur de la démo restent dans l'ordre */
+[dir="rtl"] .ad-price-value {
+  direction: ltr;
+}
+
+/* Email et téléphone : saisis de gauche à droite, alignés à droite */
+[dir="rtl"] input[dir="ltr"] {
+  text-align: right;
 }

@@ -1,38 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nederly.io/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/"/>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://nederly.io/he/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/"/>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://nederly.io/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/contact.html"/>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://nederly.io/he/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/contact.html"/>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://nederly.io/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/privacy.html"/>
     <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://nederly.io/he/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/privacy.html"/>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://nederly.io/support.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/support.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/support.html"/>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://nederly.io/he/support.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/support.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/support.html"/>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://nederly.io/suppression-compte.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/suppression-compte.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/suppression-compte.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/suppression-compte.html"/>
     <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://nederly.io/he/suppression-compte.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/suppression-compte.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/suppression-compte.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/suppression-compte.html"/>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://nederly.io/halakha.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/halakha.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/halakha.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/halakha.html"/>
     <lastmod>2026-08-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nederly.io/he/halakha.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nederly.io/halakha.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://nederly.io/he/halakha.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nederly.io/halakha.html"/>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

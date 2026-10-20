@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nederly | מכירת עליות לבתי כנסת</title>
+  <meta name="description" content="Nederly: מכירת עליות לתורה מהטלפון, תשלום מאובטח וסגירה אוטומטית לפני שבת. חינם למתפללים.">
+  <meta name="keywords" content="מכירת עליות, בית כנסת, אפליקציה לבית כנסת, עליות לתורה, תרומות לבית כנסת, ניהול בית כנסת, גבאי, צדקה">
+  <meta name="author" content="Nederly">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A1628">
+  <link rel="canonical" href="https://nederly.io/he/">
+  <link rel="alternate" hreflang="fr" href="https://nederly.io/">
+  <link rel="alternate" hreflang="he" href="https://nederly.io/he/">
+  <link rel="alternate" hreflang="x-default" href="https://nederly.io/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nederly.io/he/">
+  <meta property="og:title" content="Nederly | מכירת עליות לבתי כנסת">
+  <meta property="og:description" content="מכירת עליות מהטלפון, תשלום מאובטח וסגירה אוטומטית לפני שבת. חינם למתפללים.">
+  <meta property="og:image" content="https://nederly.io/assets/og-image.png">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:site_name" content="Nederly">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nederly | מכירת עליות לבתי כנסת">
+  <meta name="twitter:description" content="מכירת עליות מהטלפון, תשלום מאובטח וסגירה אוטומטית לפני שבת. חינם למתפללים.">
+  <meta name="twitter:image" content="https://nederly.io/assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/logo_new.png" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/logo_new.png">
+
+  <!-- Fonts & Styles : Heebo (hébreu), Frank Ruhl Libre (noms des Aliyot), Cabinet Grotesk (logo seul) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&text=%D7%90%D7%91%D7%92%D7%94%D7%95%D7%97%D7%98%D7%99%D7%9B%D7%9C%D7%9E%D7%9F%D7%A0%D7%A2%D7%A4%D7%A8%D7%A9%D7%AA&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Nederly",
+    "description": "אפליקציה למכירת עליות לתורה בבתי כנסת: הצעות בזמן אמת, תרומות וקשר עם הקהילה.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "iOS, Android",
+    "inLanguage": "he",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "ILS",
+      "description": "חינם למתפללים"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Nederly",
+      "url": "https://nederly.io"
+    }
+  }
+  </script>
+
+  <!-- FAQ structured data (mêmes questions que la section FAQ de la page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "האם Nederly בחינם למתפללים?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כן, לגמרי. המתפללים לא משלמים ל־Nederly דבר: לא מנוי, לא עמלה ולא עלויות נסתרות. בתי הכנסת הם שמשלמים על השירות."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "האם העלויות של Nederly יורדות מהצדקה?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "לא. הצדקה של התורם נזקפת במלואה לזכות בית הכנסת. העלויות של Nederly (מנוי ועמלה) הן הוצאה תפעולית של בית הכנסת, נפרדת מהצדקה, בדיוק כמו חשמל או ציוד."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "איך עובדים התשלומים?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "התשלומים עוברים דרך Stripe. כשמציעים מחיר, הסכום נתפס במסגרת האשראי ומחויב בפועל רק אם זוכים במכירה; אחרת, המסגרת משתחררת. פרטי הכרטיס מנוהלים על ידי Stripe ולעולם לא נשמרים אצל Nederly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "כמה עולה Nederly לבית כנסת?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "זה תלוי בהיקף הפעילות של בית הכנסת. לבתי כנסת בישראל אנחנו מכינים הצעה מותאמת: צרו קשר ונחזור אליכם."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "בית הכנסת שלכם עוד לא ב־Nederly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "בקשו מהגבאי או מוועד בית הכנסת להירשם ב־admin.nederly.io. ההקמה לוקחת פחות מ־10 דקות. אם אתם הגבאים, אפשר להירשם ישירות או לפנות אלינו ונלווה אתכם."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "זה מתאים לשבת ולחגים?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "בהחלט. המכירות מתקיימות לפני שבת ונסגרות אוטומטית לפני כניסת שבת או החג, ואין צורך לעשות שום דבר במהלכם. לוח השנה העברי (Hebcal) מובנה במערכת."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "אפשר להפסיק בכל רגע?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כן. אין התחייבות: אפשר להפסיק בכל עת, בלי קנס."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation : capsule flottante ; sur mobile, elle s'étire en menu -->
+  <header class="navbar" id="navbar">
+    <div class="nav-bar">
+      <a href="index.html" class="nav-logo" aria-label="Nederly, דף הבית">
+        <img src="../assets/logo_new.png" alt="" class="logo-icon" width="28" height="28">
+        <span class="logo-text">NEDERLY</span>
+      </a>
+      <nav class="nav-links" aria-label="ניווט ראשי">
+        <a href="#features">יכולות</a>
+        <a href="#founders">ליווי</a>
+        <a href="#pricing">מחיר</a>
+        <a href="contact.html">צרו קשר</a>
+      </nav>
+      <div class="nav-actions">
+        <nav class="lang-switch" aria-label="שפה"><a href="../index.html" lang="fr" hreflang="fr">FR</a><span aria-current="true" lang="he">עברית</span></nav>
+        <a href="https://admin.nederly.io" class="nav-cta">רישום בית כנסת<span class="nav-cta-dot" aria-hidden="true"></span></a>
+        <a href="mailto:contact@nederly.io" class="nav-round" aria-label="כתבו ל־Nederly"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <button type="button" class="nav-burger" id="mobileMenuBtn" aria-label="פתיחת התפריט" aria-expanded="false" aria-controls="navPanel"><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="nav-panel" id="navPanel"><div><nav class="nav-panel-inner" aria-label="תפריט">
+      <a href="#features">יכולות</a>
+      <a href="#founders">ליווי</a>
+      <a href="#pricing">מחיר</a>
+      <a href="contact.html">צרו קשר</a>
+      <a href="https://admin.nederly.io" class="nav-cta">רישום בית כנסת<span class="nav-cta-dot" aria-hidden="true"></span></a>
+    </nav></div></div>
+  </header>
+  <div class="nav-scrim" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1><span class="sr-only">מי יעלה לתורה השבת?</span><span aria-hidden="true" data-split>מי יעלה לתורה השבת?</span></h1>
+      <p class="hero-sub hero-rise" style="--d: 0.9s">המתפללים שלכם מציעים מחיר על העליות מהטלפון, עד יום שישי. Nederly סוגרת את המכירה לפני שבת וגובה את התשלומים.</p>
+      <div class="hero-pills hero-rise" style="--d: 1.05s">
+        <span class="hero-pill"><span class="hero-pill-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-roll="מכירת עליות|תרומות באפליקציה|הודעות לקהילה">מכירת עליות</span></span>
+        <span class="hero-pill is-raised"><span class="hero-pill-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-roll="סגירה לפני שבת|חיוב רק אם זוכים|התראות בזמן אמת" data-offset="900">סגירה לפני שבת</span></span>
+        <span class="hero-pill"><span class="hero-pill-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-roll="חינם למתפללים|תשלום דרך Stripe|בלי התחייבות" data-offset="1800">חינם למתפללים</span></span>
+      </div>
+      <div class="hero-ctas hero-rise" style="--d: 1.2s">
+        <a href="https://admin.nederly.io" class="btn-pill"><span class="btn-pill-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>רשמו את בית הכנסת</a>
+        <a href="#download" class="btn-pill-ghost">עדכנו אותי בהשקה</a>
+      </div>
+      <a href="#founders" class="hero-count hero-rise" style="--d: 1.35s"><b>בתי הכנסת הראשונים</b> מקבלים ליווי אישי בהקמה&nbsp;←</a>
+    </div>
+    <div class="aliyot-marquee hero-rise" style="--d: 1.5s" aria-hidden="true">
+      <div class="aliyot-track">
+        <span class="aliyot-item"><span lang="he">כהן</span></span><span class="aliyot-item"><span lang="he">לוי</span></span><span class="aliyot-item"><span lang="he">שלישי</span></span><span class="aliyot-item"><span lang="he">רביעי</span></span><span class="aliyot-item"><span lang="he">חמישי</span></span><span class="aliyot-item"><span lang="he">שישי</span></span><span class="aliyot-item"><span lang="he">שביעי</span></span><span class="aliyot-item"><span lang="he">מפטיר</span></span><span class="aliyot-item"><span lang="he">פתיחת ההיכל</span></span><span class="aliyot-item"><span lang="he">הגבהה</span></span><span class="aliyot-item"><span lang="he">גלילה</span></span><span class="aliyot-item"><span lang="he">חתן תורה</span></span><span class="aliyot-item"><span lang="he">חתן בראשית</span></span>
+        <span class="aliyot-item"><span lang="he">כהן</span></span><span class="aliyot-item"><span lang="he">לוי</span></span><span class="aliyot-item"><span lang="he">שלישי</span></span><span class="aliyot-item"><span lang="he">רביעי</span></span><span class="aliyot-item"><span lang="he">חמישי</span></span><span class="aliyot-item"><span lang="he">שישי</span></span><span class="aliyot-item"><span lang="he">שביעי</span></span><span class="aliyot-item"><span lang="he">מפטיר</span></span><span class="aliyot-item"><span lang="he">פתיחת ההיכל</span></span><span class="aliyot-item"><span lang="he">הגבהה</span></span><span class="aliyot-item"><span lang="he">גלילה</span></span><span class="aliyot-item"><span lang="he">חתן תורה</span></span><span class="aliyot-item"><span lang="he">חתן בראשית</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vidéo : le teaser hébreu (captures hébraïques, musique seule), muet ici, sans bouton son -->
+  <section class="showreel">
+    <div class="container">
+      <div class="showreel-frame">
+        <video class="showreel-video" data-showreel muted playsinline loop preload="none"
+          style="--poster-wide: url('../assets/video/nederly-teaser-he-16x9.jpg'); --poster-tall: url('../assets/video/nederly-teaser-he-9x16.jpg')"
+          data-src-wide="../assets/video/nederly-teaser-he-16x9.mp4"
+          data-src-tall="../assets/video/nederly-teaser-he-9x16.mp4"
+          aria-label="סרטון: מכירת עלייה מצד המתפלל ומצד הגבאי"></video>
+        <button type="button" class="showreel-play" aria-label="הפעלת הסרטון" hidden>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accompagnement des premières synagogues (sans prix : pas d'offre tarifaire affichée en Israël) -->
+  <section class="founders" id="founders">
+    <div class="container">
+      <div class="founders-head">
+        <span class="section-tag">בתי הכנסת הראשונים</span>
+        <h2>בתי הכנסת הראשונים לא מתחילים לבד.</h2>
+        <p class="founders-lead">בשבועות הראשונים צוות Nederly עובד איתכם, מההגדרות ועד המכירה הראשונה שנסגרת לפני שבת.</p>
+      </div>
+      <ol class="founders-steps">
+        <li><span class="founders-step-when">שבוע ראשון</span><h3>שיחת הקמה</h3><p>יחד עם צוות Nederly: דף בית הכנסת, העליות של השבוע והחשבון לקבלת הכספים.</p></li>
+        <li><span class="founders-step-when">שבוע שני</span><h3>המכירות הראשונות</h3><p>המתפללים מקבלים את העליות בטלפון ומציעים מחיר עד יום שישי.</p></li>
+        <li><span class="founders-step-when">יום שישי</span><h3>סגירה לפני שבת</h3><p>המכירה נסגרת אוטומטית והזוכים מחויבים.</p></li>
+        <li><span class="founders-step-when">ובהמשך</span><h3>הדעה שלכם חשובה</h3><p>קשר ישיר עם הצוות שבונה את Nederly.</p></li>
+      </ol>
+      <div class="founders-foot">
+        <a href="https://admin.nederly.io" class="btn-pill"><span class="btn-pill-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>רשמו את בית הכנסת</a>
+        <span>בלי התחייבות</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">יכולות</span>
+        <h2>פחות ניהול.<br>יותר צדקה.</h2>
+        <p class="section-desc">
+          Nederly מנהלת את המכירות, התשלומים וההתראות,
+          כדי שתוכלו להתמקד בקהילה.
+        </p>
+      </div>
+      <div class="feature-card feature-card-large">
+        <div class="feature-large-text">
+          <h3 class="feature-title">מכירה בזמן אמת</h3>
+          <p>
+            המתפללים מציעים מחיר לפני שבת, ואתם רואים הכול בזמן אמת.
+            כל הצעה גבוהה יותר שולחת התראה, כך שאף אחד לא מפספס את העלייה שלו.
+          </p>
+        </div>
+        <div class="feature-visual">
+          <!-- Démo : écran d'enchère de l'app, piloté par script.js (textes hébreux dans TEXTS.he).
+               Hauteur fixe : tout change sur place (chiffres, rang, statut, bouton). -->
+          <div class="auction-demo" data-auction-demo data-phase="won">
+            <p class="sr-only">דוגמה: אתם מציעים 260&nbsp;₪ על עליית שני, משה ר. מציע 280&nbsp;₪ ואתם מקבלים התראה שעקפו אתכם; אתם מעלים ל־320&nbsp;₪ וזוכים בעלייה כשהמכירה נסגרת, לפני שבת.</p>
+            <div class="ad-toast" aria-hidden="true">
+              <img class="ad-toast-icon" src="../assets/logo_new.png" alt="" width="32" height="32">
+              <span class="ad-toast-text">
+                <strong class="ad-toast-title">מזל טוב! זכיתם בעליית שני</strong>
+                <span class="ad-toast-body">חויבתם ב־320&nbsp;₪</span>
+              </span>
+              <span class="ad-toast-time">עכשיו</span>
+            </div>
+            <div class="ad-panel" aria-hidden="true">
+              <div class="ad-head">
+                <div class="ad-item">
+                  <span class="ad-aliyah"><span class="ad-aliyah-he">שני</span></span>
+                  <div>
+                    <span class="ad-eyebrow">פרשת תצוה · העלייה השנייה</span>
+                    <span class="ad-title">עליית שני</span>
+                  </div>
+                </div>
+                <span class="ad-status" data-state="closed"><span class="ad-status-dot"></span><span class="ad-status-text">נסגרה</span></span>
+              </div>
+              <div class="ad-price-row">
+                <div>
+                  <span class="ad-price-label">ההצעה הגבוהה ביותר</span>
+                  <div class="ad-price"><span class="ad-price-value">320</span><span class="ad-price-unit">&nbsp;₪</span><span class="ad-delta"></span><span class="ad-win-check"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle class="ad-check-ring" cx="12" cy="12" r="10.5"/><path class="ad-check-mark" d="M7.2 12.4l3.1 3.1 6.5-6.6"/></svg></span></div>
+                </div>
+                <div class="ad-rank" data-state="won">
+                  <span class="ad-rank-window"><span class="ad-rank-strip"><span>–</span><span>1</span><span>2</span></span></span>
+                  <span class="ad-rank-label">זכייה</span>
+                </div>
+              </div>
+              <div class="ad-lead" data-state="won"><span class="ad-lead-dot"></span><span class="ad-lead-text">זכיתם בעלייה</span></div>
+              <div class="ad-bid is-ended">
+                <div class="ad-chips">
+                  <span class="ad-chip"><span dir="ltr">+20</span>&nbsp;₪</span>
+                  <span class="ad-chip is-selected"><span dir="ltr">+40</span>&nbsp;₪</span>
+                  <span class="ad-chip"><span dir="ltr">+60</span>&nbsp;₪</span>
+                </div>
+                <span class="ad-cta"><span class="ad-cta-label">המכירה הסתיימה</span></span>
+                <div class="ad-win-banner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  אתם עולים לתורה השבת
+                </div>
+              </div>
+              <div class="ad-footer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span class="ad-footer-text">נסגרה ביום שישי ב־17:42, לפני שבת</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-rows">
+        <div class="feature-row">
+          <div class="feature-row-text">
+            <span class="section-tag">תשלומים</span>
+            <h3>בלי צ'קים. בלי תזכורות.</h3>
+            <p>הסכום נתפס במסגרת האשראי ברגע ההצעה, ומחויב רק אם זוכים. הגבאי לא צריך לגבות אף שקל בעצמו.</p>
+            <ul class="feature-row-points">
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>תשלום מאובטח דרך Stripe</li>
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>הזוכים מחויבים אוטומטית כשהמכירה נסגרת</li>
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>הכסף מועבר לחשבון הבנק של בית הכנסת</li>
+            </ul>
+          </div>
+          <div class="feature-row-phone"><img src="../assets/screen-mobile-2.png" alt="מסך המכירות שלי באפליקציית Nederly" width="230" height="498" loading="lazy"></div>
+        </div>
+        <div class="feature-row is-flip">
+          <div class="feature-row-text">
+            <span class="section-tag">הקהילה שלכם</span>
+            <h3>בית הכנסת בכיס</h3>
+            <p>מוצאים את בית הכנסת לפי שם או לפי מיקום, מצטרפים בלחיצה ומקבלים את ההודעות שלו. מתפללים בכמה בתי כנסת? מספיק חשבון אחד.</p>
+            <ul class="feature-row-points">
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>הודעות ואירועים של הקהילה</li>
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>כל בתי הכנסת שלכם בחשבון אחד</li>
+            </ul>
+          </div>
+          <div class="feature-row-phone"><img src="../assets/screen-mobile-1.png" alt="חיפוש בתי כנסת באפליקציית Nederly" width="230" height="498" loading="lazy"></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-row-text">
+            <span class="section-tag">שבת וחגים</span>
+            <h3>בנוי לפי הלוח העברי</h3>
+            <p>המכירות נסגרות אוטומטית לפני שבת וחג, ואין מה לעשות במהלכם. זמני הדלקת נרות, הבדלה ופרשת השבוע מובנים באפליקציה.</p>
+            <ul class="feature-row-points">
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>סגירה אוטומטית לפני הדלקת נרות</li>
+              <li><svg class="feature-row-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>לוח שנה עברי מובנה</li>
+            </ul>
+          </div>
+          <div class="feature-row-phone"><img src="../assets/screen-mobile-4.png" alt="דף בית כנסת עם זמני השבת" width="230" height="498" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">איך זה עובד</span>
+        <h2>30 שניות למתפלל.<br>פחות מ־10 דקות לבית כנסת.</h2>
+      </div>
+
+      <div class="parcours-toggle">
+        <button class="parcours-tab parcours-tab-active" data-parcours="fideles" onclick="switchParcours('fideles')">למתפללים</button>
+        <button class="parcours-tab" data-parcours="gabayim" onclick="switchParcours('gabayim')">לגבאים</button>
+      </div>
+      <ol class="steps-line parcours-content" id="parcours-fideles">
+        <li class="step"><span class="step-dot">1</span><h3>פותחים חשבון</h3><p>30 שניות עם כתובת האימייל. בלי טפסים ובלי המתנה לאישור.</p></li>
+        <li class="step"><span class="step-dot">2</span><h3>מוצאים את בית הכנסת</h3><p>לפי שם או לפי מיקום, ומצטרפים בלחיצה אחת.</p></li>
+        <li class="step"><span class="step-dot">3</span><h3>מציעים מחיר</h3><p>בוחרים עלייה ומגישים הצעה. בכל פעם שמישהו עוקף אתכם, מגיעה התראה.</p></li>
+      </ol>
+      <ol class="steps-line parcours-content parcours-hidden" id="parcours-gabayim">
+        <li class="step"><span class="step-dot">1</span><h3>רושמים את בית הכנסת</h3><p>כמה דקות ב־admin.nederly.io. בלי התחייבות ובלי כרטיס אשראי.</p></li>
+        <li class="step"><span class="step-dot">2</span><h3>מגדירים את המכירות</h3><p>בוחרים את העליות של השבוע וקובעים מחירים. תבניות מוכנות לראש השנה, יום כיפור וסוכות.</p></li>
+        <li class="step"><span class="step-dot">3</span><h3>המתפללים מציעים</h3><p>הם מורידים את האפליקציה ומציעים מחיר. אתם עוקבים בזמן אמת, והתשלומים נגבים אוטומטית.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Prix : pas de grille tarifaire en Israël pour l'instant, on invite à nous contacter -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">מחיר</span>
+        <h2>כמה זה יעלה לבית הכנסת שלכם?</h2>
+        <p class="section-desc">
+          למתפללים, Nederly בחינם תמיד. לבתי כנסת בישראל, ספרו לנו על הקהילה
+          ועל היקף המכירות, ונחזור אליכם עם הצעה מתאימה.
+        </p>
+      </div>
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn-pill"><span class="btn-pill-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>צרו קשר</a>
+        <a href="https://wa.me/972587572466" class="btn-pill-ghost">כתבו לנו בוואטסאפ</a>
+      </div>
+      <div class="calc">
+        <p class="calc-halakha"><span><b>ומה עם הצדקה?</b> היא נשארת שלמה: העלויות של Nederly הן הוצאה תפעולית של בית הכנסת, נפרדת מהצדקה של המתפלל.</span><a href="halakha.html">לעמדה ההלכתית&nbsp;←</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- For Synagogues Section -->
+  <section class="synagogues-section" id="synagogues">
+    <div class="container">
+      <div class="synagogues-grid">
+        <div class="synagogues-content">
+          <span class="section-tag">לבתי כנסת</span>
+          <h2>מנהלים בית כנסת?<br>את השאר עלינו.</h2>
+          <p>
+            יוצרים מכירה בשתי לחיצות, מקבלים את התשלומים אוטומטית ומעדכנים את המתפללים,
+            הכול מלוח בקרה פשוט שנבנה במיוחד בשבילכם.
+          </p>
+          <ul class="check-list">
+            <li>
+              <div class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              יצירת מכירה בפחות מדקה
+            </li>
+            <li>
+              <div class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              שכפול השבוע הקודם בלחיצה
+            </li>
+            <li>
+              <div class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              סגירה אוטומטית לפני שבת
+            </li>
+            <li>
+              <div class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              הודעות לכל הקהילה
+            </li>
+            <li>
+              <div class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              התשלומים מגיעים בלי לרדוף אחרי אף אחד
+            </li>
+          </ul>
+          <div class="synagogues-cta-group">
+            <a href="https://admin.nederly.io" class="btn btn-secondary btn-lg">
+              רשמו את בית הכנסת
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+            </a>
+            <a href="contact.html" class="btn btn-outline-gold btn-lg">
+              דברו איתנו
+            </a>
+          </div>
+        </div>
+        <div class="synagogues-visual">
+          <!-- Captures du back-office (interface de gauche à droite) : on garde leur sens -->
+          <div class="dashboard-screenshot-wrapper" dir="ltr">
+            <div class="dash-browser-bar">
+              <div class="dash-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="dash-url">admin.nederly.io/dashboard</span>
+            </div>
+            <img src="../assets/screen-admin-1.png" alt="לוח הבקרה של Nederly לניהול מכירות העליות" class="dashboard-screenshot" width="600" height="400" loading="lazy">
+          </div>
+          <!-- Second admin screen floating -->
+          <div class="dashboard-screenshot-float">
+            <img src="../assets/screen-admin-2.png" alt="גלריית המכירות בממשק הניהול של Nederly" class="dashboard-screenshot-sm" width="420" height="280" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">שאלות נפוצות</span>
+        <h2>שאלות לפני<br>שמתחילים?</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-entry">
+          <h3>האם Nederly בחינם למתפללים?</h3>
+          <p>כן, לגמרי. המתפללים לא משלמים ל־Nederly דבר: לא מנוי, לא עמלה ולא עלויות נסתרות. בתי הכנסת הם שמשלמים על השירות.</p>
+        </div>
+        <div class="faq-entry">
+          <h3>האם העלויות של Nederly יורדות מהצדקה?</h3>
+          <p>לא. הצדקה של התורם נזקפת במלואה לזכות בית הכנסת. העלויות של Nederly (מנוי ועמלה) הן הוצאה תפעולית של בית הכנסת, נפרדת מהצדקה, בדיוק כמו חשמל או ציוד. העמדה ההלכתית שלנו מפורטת <a href="halakha.html">כאן</a>.</p>
+        </div>
+        <div class="faq-entry">
+          <h3>איך עובדים התשלומים?</h3>
+          <p>התשלומים עוברים דרך Stripe. כשמציעים מחיר, הסכום נתפס במסגרת האשראי ומחויב בפועל רק אם זוכים במכירה; אחרת, המסגרת משתחררת. פרטי הכרטיס מנוהלים על ידי Stripe ולעולם לא נשמרים אצל Nederly.</p>
+        </div>
+        <div class="faq-entry">
+          <h3>כמה עולה Nederly לבית כנסת?</h3>
+          <p>זה תלוי בהיקף הפעילות של בית הכנסת. לבתי כנסת בישראל אנחנו מכינים הצעה מותאמת: <a href="contact.html">צרו קשר</a> ונחזור אליכם.</p>
+        </div>
+        <div class="faq-entry">
+          <h3>בית הכנסת שלכם עוד לא ב־Nederly?</h3>
+          <p>בקשו מהגבאי או מוועד בית הכנסת להירשם ב־<a href="https://admin.nederly.io">admin.nederly.io</a>. ההקמה לוקחת פחות מ־10 דקות. אם אתם הגבאים, אפשר להירשם ישירות או לפנות אלינו ונלווה אתכם.</p>
+        </div>
+        <div class="faq-entry">
+          <h3>זה מתאים לשבת ולחגים?</h3>
+          <p>בהחלט. המכירות מתקיימות לפני שבת ונסגרות אוטומטית לפני כניסת שבת או החג, ואין צורך לעשות שום דבר במהלכם. לוח השנה העברי (Hebcal) מובנה במערכת.</p>
+        </div>
+        <div class="faq-entry">
+          <h3>אפשר להפסיק בכל רגע?</h3>
+          <p>כן. אין התחייבות: אפשר להפסיק בכל עת, בלי קנס.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA Section -->
+  <section class="download-section" id="download">
+    <div class="container">
+      <div class="download-card">
+        <div class="download-content">
+          <h2>האפליקציה תצא בקרוב.<br>בית הכנסת שלכם כבר יכול להירשם.</h2>
+          <p>
+            השאירו כתובת אימייל ונעדכן אתכם ביום שהאפליקציות ל־iOS ול־Android
+            יעלו לאוויר, ותו לא (בלי ניוזלטר). גבאים יכולים כבר עכשיו לרשום
+            את בית הכנסת: ההקמה לוקחת פחות מ־10 דקות.
+          </p>
+          <form class="waitlist-form" id="waitlistForm" novalidate>
+            <label class="sr-only" for="waitlistEmail">כתובת האימייל שלכם</label>
+            <input
+              type="email"
+              id="waitlistEmail"
+              name="email"
+              class="waitlist-input"
+              placeholder="name@example.com"
+              autocomplete="email"
+              dir="ltr"
+              required
+            >
+            <button type="submit" class="btn btn-primary waitlist-submit">
+              עדכנו אותי בהשקה
+            </button>
+          </form>
+          <p class="waitlist-feedback" id="waitlistFeedback" role="status" aria-live="polite"></p>
+          <div class="store-badges-soon" aria-hidden="true">
+            <span class="store-badge-soon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              בקרוב ב־App Store
+            </span>
+            <span class="store-badge-soon">
+              <img src="../assets/google-play.png" alt="" class="store-icon-img" width="18" height="18" loading="lazy">
+              בקרוב ב־Google Play
+            </span>
+          </div>
+          <div class="download-synagogue-cta">
+            <span>מייצגים בית כנסת?</span>
+            <a href="https://admin.nederly.io" class="download-syna-link">רשמו את בית הכנסת ←</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-statement">מכירת עליות בקלות, לבית&nbsp;הכנסת&nbsp;שלכם.</p>
+      <a class="footer-mail" href="mailto:contact@nederly.io">contact@nederly.io</a>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Nederly</span>
+        <nav class="footer-nav" aria-label="קישורים שימושיים">
+          <a href="#pricing">מחיר</a>
+          <a href="support.html">עזרה</a>
+          <a href="contact.html">צרו קשר</a>
+          <a href="privacy.html">פרטיות</a>
+          <a href="mentions-legales.html">מידע משפטי</a>
+          <a href="cgu.html">תנאי שימוש</a>
+          <a href="halakha.html">עמדה הלכתית</a>
+        </nav>
+        <nav class="lang-switch" aria-label="שפה"><a href="../index.html" lang="fr" hreflang="fr">FR</a><span aria-current="true" lang="he">עברית</span></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

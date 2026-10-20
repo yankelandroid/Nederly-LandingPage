@@ -2,6 +2,83 @@
 // NEDERLY LANDING PAGE — SCRIPTS
 // ============================================
 
+// Textes écrits par ce script : français par défaut, hébreu sur les pages /he/ (<html lang="he">)
+const TEXTS = {
+  fr: {
+    menuOpen: 'Ouvrir le menu',
+    menuClose: 'Fermer le menu',
+    soundOn: 'Activer le son',
+    soundOff: 'Couper le son',
+    backToTop: 'Retour en haut',
+    money: (n) => n + '\u00a0€',
+    delta: (n) => '+' + n + '\u00a0€',
+    demo: {
+      rank: 'Votre rang',
+      open: 'En cours',
+      closed: 'Clôturée',
+      closesAt: 'Clôture automatique vendredi à 17\u00a0h\u00a042, avant Shabbat',
+      closedAt: 'Clôturée vendredi à 17\u00a0h\u00a042, avant Shabbat',
+      outbidTitle: 'Vous avez été surenchéri',
+      outbidBody: (price) => 'Aliyah Shéni : nouvelle offre de ' + price,
+      otherLeads: 'Yossef M. est en tête',
+      bid: (price) => 'Enchérir ' + price,
+      sent: 'Offre envoyée',
+      youLead: 'Vous êtes en tête',
+      overtaken: 'Moshe R. vous a dépassé',
+      ended: 'Enchère terminée',
+      won: "Vous avez remporté l'Aliyah",
+      wonRank: 'Remportée',
+      wonTitle: 'Mazal tov ! Aliyah Shéni remportée',
+      wonBody: (price) => price + ' débités · reçu Cerfa envoyé par email',
+    },
+    waitlist: {
+      invalid: 'Merci de saisir une adresse email valide.',
+      sending: 'Envoi…',
+      message: "Inscription à la liste d'attente du lancement des applications mobiles.",
+      success: 'C\'est noté : vous serez prévenu dès la mise en ligne.',
+      error: "Impossible d'enregistrer votre email pour le moment. Écrivez-nous à contact@nederly.io.",
+    },
+  },
+  he: {
+    menuOpen: 'פתיחת התפריט',
+    menuClose: 'סגירת התפריט',
+    soundOn: 'הפעלת הקול',
+    soundOff: 'השתקה',
+    backToTop: 'חזרה למעלה',
+    money: (n) => n + '\u00a0₪',
+    // « +40 » isolé de gauche à droite, sinon le signe passe après le nombre en RTL
+    delta: (n) => '\u2066+' + n + '\u2069\u00a0₪',
+    demo: {
+      rank: 'המקום שלכם',
+      open: 'פתוחה',
+      closed: 'נסגרה',
+      closesAt: 'סגירה אוטומטית ביום שישי ב־17:42, לפני שבת',
+      closedAt: 'נסגרה ביום שישי ב־17:42, לפני שבת',
+      outbidTitle: 'עקפו אתכם',
+      outbidBody: (price) => 'עליית שני: הצעה חדשה של ' + price,
+      otherLeads: 'יוסף מ. מוביל',
+      bid: (price) => 'הציעו ' + price,
+      sent: 'ההצעה נשלחה',
+      youLead: 'אתם מובילים',
+      overtaken: 'משה ר. עקף אתכם',
+      ended: 'המכירה הסתיימה',
+      won: 'זכיתם בעלייה',
+      wonRank: 'זכייה',
+      wonTitle: 'מזל טוב! זכיתם בעליית שני',
+      wonBody: (price) => 'חויבתם ב־' + price,
+    },
+    waitlist: {
+      invalid: 'הזינו כתובת אימייל תקינה.',
+      sending: 'שולחים…',
+      // Lu par l'équipe : reste en français, avec la langue du visiteur
+      message: "Inscription à la liste d'attente du lancement des applications mobiles (site en hébreu).",
+      success: 'רשמנו: נעדכן אתכם ברגע שהאפליקציה תעלה לאוויר.',
+      error: 'לא הצלחנו לשמור את הכתובת כרגע. כתבו לנו ל־contact@nederly.io.',
+    },
+  },
+};
+const T = TEXTS[document.documentElement.lang === 'he' ? 'he' : 'fr'];
+
 // Navbar : ombre plus marquée après défilement
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -16,7 +93,7 @@ function setMenu(open) {
   navbar.classList.toggle('is-open', open);
   document.body.classList.toggle('menu-open', open);
   mobileMenuBtn.setAttribute('aria-expanded', String(open));
-  mobileMenuBtn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  mobileMenuBtn.setAttribute('aria-label', open ? T.menuClose : T.menuOpen);
 }
 
 mobileMenuBtn.addEventListener('click', () => setMenu(!navbar.classList.contains('is-open')));
@@ -177,7 +254,6 @@ function switchParcours(target) {
   document.querySelectorAll('[data-showreel]').forEach((video) => {
     const frame = video.closest('.showreel-frame');
     const soundBtn = frame.querySelector('.showreel-sound');
-    const soundLabel = soundBtn.querySelector('.showreel-sound-label');
     const playBtn = frame.querySelector('.showreel-play');
     let inView = false;
     let pausedByUser = reduce;
@@ -211,13 +287,17 @@ function switchParcours(target) {
       else { pausedByUser = true; video.pause(); }
     });
 
-    soundBtn.addEventListener('click', () => {
-      video.muted = !video.muted;
-      const label = video.muted ? 'Activer le son' : 'Couper le son';
-      soundLabel.textContent = label;
-      soundBtn.setAttribute('aria-label', label);
-      soundBtn.classList.toggle('is-on', !video.muted);
-    });
+    // Pas de bouton son sur la page hébraïque : la voix off est en français
+    if (soundBtn) {
+      const soundLabel = soundBtn.querySelector('.showreel-sound-label');
+      soundBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        const label = video.muted ? T.soundOn : T.soundOff;
+        soundLabel.textContent = label;
+        soundBtn.setAttribute('aria-label', label);
+        soundBtn.classList.toggle('is-on', !video.muted);
+      });
+    }
 
     // Préchargement à l'approche du bloc, lecture quand il est bien visible
     if (!reduce) {
@@ -273,7 +353,8 @@ function switchParcours(target) {
   const toastTitle = $('.ad-toast-title');
   const toastBody = $('.ad-toast-body');
 
-  const eur = (n) => n + ' €';
+  const D = T.demo;
+  const eur = T.money;
 
   // --- Compteur à rouleaux (3 chiffres) ---
   const strips = [];
@@ -349,15 +430,15 @@ function switchParcours(target) {
     lead.dataset.state = 'other';
     rank.dataset.state = 'none';
     delete root.dataset.phase;
-    rankLabel.textContent = 'Votre rang';
+    rankLabel.textContent = D.rank;
     status.dataset.state = 'open';
-    statusText.textContent = 'En cours';
+    statusText.textContent = D.open;
     bidZone.classList.remove('is-ended');
-    footerText.textContent = 'Clôture automatique vendredi à 17\u00a0h\u00a042, avant Shabbat';
-    toastTitle.textContent = 'Vous avez été surenchéri';
-    toastBody.textContent = 'Aliyah Shéni : nouvelle offre de ' + eur(280);
-    leadText.textContent = 'Yossef M. est en tête';
-    ctaLabel.textContent = 'Enchérir ' + eur(260);
+    footerText.textContent = D.closesAt;
+    toastTitle.textContent = D.outbidTitle;
+    toastBody.textContent = D.outbidBody(eur(280));
+    leadText.textContent = D.otherLeads;
+    ctaLabel.textContent = D.bid(eur(260));
     cta.classList.remove('is-sent', 'is-swapping');
     chips.forEach((c, i) => c.classList.toggle('is-selected', i === 1));
     toast.classList.remove('is-visible');
@@ -379,24 +460,24 @@ function switchParcours(target) {
     later(() => press(cta), 2300);
     later(() => {
       cta.classList.add('is-sent');
-      swapText(cta, ctaLabel, 'Offre envoyée');
+      swapText(cta, ctaLabel, D.sent);
       setPrice(260);
-      showDelta('+40\u00a0€', 'you');
-      setLead('you', 'Vous êtes en tête');
+      showDelta(T.delta(40), 'you');
+      setLead('you', D.youLead);
       rank.dataset.state = 'you';
     }, 2450);
     later(() => {
       cta.classList.remove('is-sent');
-      swapText(cta, ctaLabel, 'Enchérir ' + eur(300));
+      swapText(cta, ctaLabel, D.bid(eur(300)));
     }, 3700);
 
     // Moshe R. surenchérit : statut et prix, puis la notification.
     later(() => {
       setPrice(280);
-      showDelta('+20\u00a0€', 'other');
-      setLead('outbid', 'Moshe R. vous a dépassé');
+      showDelta(T.delta(20), 'other');
+      setLead('outbid', D.overtaken);
       rank.dataset.state = 'outbid';
-      swapText(cta, ctaLabel, 'Enchérir ' + eur(320));
+      swapText(cta, ctaLabel, D.bid(eur(320)));
     }, 5600);
     later(() => toast.classList.add('is-visible'), 6100);
     later(() => toast.classList.remove('is-visible'), 8400);
@@ -405,10 +486,10 @@ function switchParcours(target) {
     later(() => press(cta), 8900);
     later(() => {
       cta.classList.add('is-sent');
-      swapText(cta, ctaLabel, 'Offre envoyée');
+      swapText(cta, ctaLabel, D.sent);
       setPrice(320);
-      showDelta('+40\u00a0€', 'you');
-      setLead('you', 'Vous êtes en tête');
+      showDelta(T.delta(40), 'you');
+      setLead('you', D.youLead);
       rank.dataset.state = 'you';
     }, 9050);
 
@@ -416,20 +497,20 @@ function switchParcours(target) {
     later(() => {
       cta.classList.remove('is-sent');
       bidZone.classList.add('is-ended');
-      swapText(cta, ctaLabel, 'Enchère terminée');
+      swapText(cta, ctaLabel, D.ended);
       status.dataset.state = 'closed';
-      swapText(status, statusText, 'Clôturée');
-      swapText(footerText.parentElement, footerText, 'Clôturée vendredi à 17\u00a0h\u00a042, avant Shabbat');
+      swapText(status, statusText, D.closed);
+      swapText(footerText.parentElement, footerText, D.closedAt);
     }, 10600);
     later(() => {
       root.dataset.phase = 'won';
-      setLead('won', "Vous avez remporté l'Aliyah");
+      setLead('won', D.won);
       rank.dataset.state = 'won';
-      swapText(rank, rankLabel, 'Remportée');
+      swapText(rank, rankLabel, D.wonRank);
     }, 11000);
     later(() => {
-      toastTitle.textContent = 'Mazal tov ! Aliyah Shéni remportée';
-      toastBody.textContent = eur(320) + ' débités · reçu Cerfa envoyé par email';
+      toastTitle.textContent = D.wonTitle;
+      toastBody.textContent = D.wonBody(eur(320));
       toast.classList.add('is-visible');
     }, 11800);
     later(() => toast.classList.remove('is-visible'), 14800);
@@ -459,7 +540,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 (function () {
   const btn = document.createElement('button');
   btn.className = 'back-to-top';
-  btn.setAttribute('aria-label', 'Retour en haut');
+  btn.setAttribute('aria-label', T.backToTop);
   btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
   document.body.appendChild(btn);
 
@@ -519,14 +600,14 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
     const email = (input.value || '').trim();
     if (!email || !input.checkValidity()) {
-      setFeedback('Merci de saisir une adresse email valide.', 'is-error');
+      setFeedback(T.waitlist.invalid, 'is-error');
       input.focus();
       return;
     }
 
     if (button) {
       button.disabled = true;
-      button.textContent = 'Envoi…';
+      button.textContent = T.waitlist.sending;
     }
 
     try {
@@ -538,7 +619,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
           lastName: 'attente',
           email: email,
           subject: 'autre',
-          message: "Inscription à la liste d'attente du lancement des applications mobiles.",
+          message: T.waitlist.message,
         }),
       });
 
@@ -547,12 +628,9 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
       }
 
       form.style.display = 'none';
-      setFeedback('C\'est noté : vous serez prévenu dès la mise en ligne.', 'is-success');
+      setFeedback(T.waitlist.success, 'is-success');
     } catch (error) {
-      setFeedback(
-        "Impossible d'enregistrer votre email pour le moment. Écrivez-nous à contact@nederly.io.",
-        'is-error'
-      );
+      setFeedback(T.waitlist.error, 'is-error');
     } finally {
       if (button) {
         button.disabled = false;
